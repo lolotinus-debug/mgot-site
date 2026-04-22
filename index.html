@@ -6,223 +6,185 @@
 <title>MGOT</title>
 
 <style>
+
+/* BACKGROUND */
 body {
   margin:0;
   font-family: Arial, sans-serif;
-  background:#05070d;
   color:#e5e7eb;
+  background: radial-gradient(circle at 20% 20%, #0ea5e9 0%, transparent 40%),
+              radial-gradient(circle at 80% 30%, #22c55e 0%, transparent 40%),
+              radial-gradient(circle at 50% 80%, #9333ea 0%, transparent 40%),
+              #05070d;
+}
+
+/* CONTAINER */
+.container {
+  max-width:900px;
+  margin:auto;
+  padding:30px;
 }
 
 /* HERO */
 .hero {
   text-align:center;
-  padding:80px 20px 60px;
+  margin-bottom:40px;
 }
 
 .hero img {
-  width:140px;
-  border-radius:10px;
-  margin-bottom:20px;
-  box-shadow:0 0 25px rgba(56,189,248,0.3);
+  width:180px;
+  border-radius:12px;
+  margin-bottom:15px;
+  box-shadow:0 0 30px rgba(56,189,248,0.4);
 }
 
 .hero h1 {
-  font-size:64px;
+  font-size:56px;
   letter-spacing:6px;
-  color:white;
+  margin:0;
 }
 
 .hero p {
   color:#9ca3af;
-  font-size:18px;
 }
 
-.btn {
-  display:inline-block;
-  margin:10px;
-  padding:12px 20px;
-  border:1px solid #38bdf8;
-  color:#38bdf8;
-  text-decoration:none;
-  border-radius:8px;
-}
-
-.btn:hover {
-  color:white;
-  border-color:white;
-}
-
-/* SECTION */
-.section {
-  max-width:900px;
-  margin:auto;
-  padding:40px 20px;
-}
-
-.section h2 {
-  color:#38bdf8;
-  margin-bottom:15px;
-}
-
-.card {
+/* BLOCK */
+.block {
   background:#0f172a;
   border:1px solid #1f2937;
   padding:20px;
   border-radius:12px;
+  margin-bottom:20px;
 }
 
-/* GRID */
-.grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
+.block h3 {
+  color:#38bdf8;
+  margin-bottom:10px;
 }
 
-/* STAT */
-.stat {
-  font-size:28px;
-  color:#22c55e;
+/* BUTTON */
+button {
+  padding:10px 16px;
+  border:1px solid #38bdf8;
+  background:none;
+  color:#38bdf8;
+  cursor:pointer;
+  border-radius:6px;
 }
 
-/* CHART */
-canvas {
-  width:100%;
-  height:140px;
+button:hover {
+  color:white;
+  border-color:white;
+}
+
+/* LINKS */
+a {
+  color:#38bdf8;
+  text-decoration:none;
+  display:block;
+  margin:6px 0;
+}
+
+a:hover {
+  color:white;
 }
 
 /* MOBILE */
 @media(max-width:700px){
-  .grid { grid-template-columns:1fr; }
-  .hero h1 { font-size:42px; }
+  .hero h1 { font-size:40px; }
 }
+
 </style>
 </head>
 
 <body>
 
+<div class="container">
+
 <!-- HERO -->
 <div class="hero">
 
-  <!-- REAL MACGYVER IMAGE -->
-  <img src="https://upload.wikimedia.org/wikipedia/en/9/9d/MacGyver_season_1.jpg" alt="MacGyver">
+<img src="macgyver.jpg" alt="MacGyver">
 
-  <h1>MGOT</h1>
-  <p>Built with logic. Not hype.</p>
-
-  <a class="btn" href="https://t.me/MGOT_Community">Telegram</a>
-  <a class="btn" href="https://solscan.io/token/54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17#metadata">Solscan</a>
+<h1>MGOT</h1>
+<p>Built with logic. Not hype.</p>
 
 </div>
 
 <!-- WHAT -->
-<div class="section">
-  <h2>WHAT IS MGOT</h2>
-  <div class="card">
-    MGOT is a Solana-based token inspired by the legendary TV series MacGyver.<br><br>
-    It reflects a mindset of solving complex problems using minimal tools, logic, and creativity.<br><br>
-    The project focuses on system efficiency, adaptability, and community-driven development instead of hype.
-  </div>
+<div class="block">
+<h3>WHAT IS MGOT</h3>
+MGOT is a Solana token inspired by the legendary MacGyver series.<br><br>
+It represents solving complex problems using minimal tools, logic, and creativity.<br><br>
+A system built on adaptability — not hype.
 </div>
 
 <!-- TOKENOMICS -->
-<div class="section">
-  <h2>TOKENOMICS</h2>
-  <div class="card">
-    Total Supply: 1,000,000,000<br><br>
-    Airdrop: 39.99%<br>
-    Primary LP: 21.78%<br>
-    Unlock Treasury: 4.95%<br>
-    Locked Treasury: 10%<br>
-    Marketing: 8%<br>
-    Staking: 8%<br>
-    Vesting: 6%<br>
-    Orca LP: 0.23%
-  </div>
-</div>
+<div class="block">
+<h3>TOKENOMICS</h3>
 
-<!-- LIVE -->
-<div class="section">
-  <h2>LIVE DATA</h2>
-  <div class="grid">
+Total Supply: 1,000,000,000<br><br>
 
-    <div class="card">
-      <h3>Price (simulation)</h3>
-      <canvas id="chart"></canvas>
-    </div>
+Airdrop: 39.99%<br>
+Primary LP: 21.78%<br>
+Unlock Treasury: 4.95%<br>
+Locked Treasury: 10%<br>
+Marketing: 8%<br>
+Staking: 8%<br>
+Vesting: 6%<br>
+Orca LP: 0.23%
 
-    <div class="card">
-      <h3>Holders</h3>
-      <div id="holders" class="stat">120</div>
-    </div>
-
-  </div>
 </div>
 
 <!-- MARKET -->
-<div class="section">
-  <h2>MARKET</h2>
-  <div class="card">
-    Trend: Emerging<br>
-    Liquidity: Active<br>
-    Sentiment: Early Stage Growth
-  </div>
+<div class="block">
+<h3>MARKET</h3>
+
+Liquidity: Active<br>
+Stage: Early<br>
+Focus: Community Growth
+
 </div>
 
 <!-- SYSTEM -->
-<div class="section">
-  <h2>SYSTEM STATUS</h2>
-  <div class="card">
-    ✔ Mint Authority: REVOKED<br>
-    ✔ Freeze Authority: REVOKED<br>
-    ✔ Liquidity: LOCKED
-  </div>
+<div class="block">
+<h3>SYSTEM STATUS</h3>
+
+✔ Mint Authority: REVOKED<br>
+✔ Freeze Authority: REVOKED<br>
+✔ Liquidity: LOCKED
+
 </div>
 
-<!-- ACTION -->
-<div class="section">
-  <h2>ACCESS</h2>
-  <div class="card">
-    <button onclick="alert('Wallet integration requires Web3 SDK')">Connect Wallet</button><br><br>
-    <button onclick="downloadPitch()">Download Investor Pitch</button>
-  </div>
+<!-- WALLET -->
+<div class="block">
+<h3>CONNECT WALLET</h3>
+
+<button onclick="alert('Wallet integration coming')">Connect Phantom</button>
+
+</div>
+
+<!-- PITCH -->
+<div class="block">
+<h3>INVESTOR PITCH</h3>
+
+<button onclick="downloadPitch()">Download</button>
+
+</div>
+
+<!-- LINKS -->
+<div class="block">
+<h3>LINKS</h3>
+
+<a href="https://solscan.io/token/54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17#metadata">Solscan</a>
+<a href="https://t.me/MGOT_Community">Telegram</a>
+<a href="https://twitter.com">Twitter</a>
+
+</div>
+
 </div>
 
 <script>
-
-/* HOLDERS */
-let h = 120;
-setInterval(()=>{
-  h += Math.floor(Math.random()*2);
-  document.getElementById("holders").innerText = h;
-},1500);
-
-/* CHART */
-const c = document.getElementById("chart");
-c.width = 400;
-c.height = 140;
-
-const ctx = c.getContext("2d");
-
-let data = Array.from({length:30},()=>Math.random()*100);
-
-function draw(){
-  ctx.clearRect(0,0,c.width,c.height);
-  ctx.beginPath();
-  ctx.strokeStyle="#38bdf8";
-
-  data.forEach((v,i)=>{
-    ctx.lineTo(i*(c.width/30), c.height-v);
-  });
-
-  ctx.stroke();
-
-  data.shift();
-  data.push(Math.random()*100);
-}
-
-setInterval(draw,800);
-
-/* PITCH */
 function downloadPitch(){
   const blob = new Blob(["MGOT investor pitch"],{type:"text/plain"});
   const a=document.createElement("a");
@@ -230,7 +192,6 @@ function downloadPitch(){
   a.download="MGOT_pitch.txt";
   a.click();
 }
-
 </script>
 
 </body>
