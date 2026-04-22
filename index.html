@@ -1,198 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MGOT</title>
-
-<style>
-
-/* BACKGROUND */
-body {
-  margin:0;
-  font-family: Arial, sans-serif;
-  color:#e5e7eb;
-  background: radial-gradient(circle at 20% 20%, #0ea5e9 0%, transparent 40%),
-              radial-gradient(circle at 80% 30%, #22c55e 0%, transparent 40%),
-              radial-gradient(circle at 50% 80%, #9333ea 0%, transparent 40%),
-              #05070d;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MGOT | Dark Neon Solana V2</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #0a0f1f, #000);
+      color: #fff;
+      overflow-x: hidden;
+    }.glow {
+  color: #00ffa3;
+  text-shadow: 0 0 10px #00ffa3, 0 0 20px #00ffa3;
 }
 
-/* CONTAINER */
-.container {
-  max-width:900px;
-  margin:auto;
-  padding:30px;
+header {
+  padding: 60px 20px;
+  text-align: center;
+  border-bottom: 1px solid #111;
 }
 
-/* HERO */
+h1 {
+  font-size: 48px;
+  margin: 0;
+}
+
+.sub {
+  color: #aaa;
+  margin-top: 10px;
+}
+
 .hero {
-  text-align:center;
-  margin-bottom:40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
 }
 
 .hero img {
-  width:180px;
-  border-radius:12px;
-  margin-bottom:15px;
-  box-shadow:0 0 30px rgba(56,189,248,0.4);
+  width: 220px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0,255,163,0.3);
 }
 
-.hero h1 {
-  font-size:56px;
-  letter-spacing:6px;
-  margin:0;
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(0,255,163,0.2);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px;
+  max-width: 800px;
 }
 
-.hero p {
-  color:#9ca3af;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
-/* BLOCK */
-.block {
-  background:#0f172a;
-  border:1px solid #1f2937;
-  padding:20px;
-  border-radius:12px;
-  margin-bottom:20px;
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  margin-top: 10px;
+  background: #00ffa3;
+  color: #000;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.block h3 {
-  color:#38bdf8;
-  margin-bottom:10px;
+footer {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  border-top: 1px solid #111;
 }
 
-/* BUTTON */
-button {
-  padding:10px 16px;
-  border:1px solid #38bdf8;
-  background:none;
-  color:#38bdf8;
-  cursor:pointer;
-  border-radius:6px;
+.tag {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #00ffa3;
+  border-radius: 20px;
+  margin: 5px;
+  font-size: 12px;
+  color: #00ffa3;
 }
 
-button:hover {
-  color:white;
-  border-color:white;
-}
-
-/* LINKS */
-a {
-  color:#38bdf8;
-  text-decoration:none;
-  display:block;
-  margin:6px 0;
-}
-
-a:hover {
-  color:white;
-}
-
-/* MOBILE */
-@media(max-width:700px){
-  .hero h1 { font-size:40px; }
-}
-
-</style>
+  </style>
 </head>
-
-<body>
-
-<div class="container">
-
-<!-- HERO -->
-<div class="hero">
-
-<img src="macgyver.jpg" alt="MacGyver">
-
-<h1>MGOT</h1>
-<p>Built with logic. Not hype.</p>
-
-</div>
-
-<!-- WHAT -->
-<div class="block">
-<h3>WHAT IS MGOT</h3>
-MGOT is a Solana token inspired by the legendary MacGyver series.<br><br>
-It represents solving complex problems using minimal tools, logic, and creativity.<br><br>
-A system built on adaptability — not hype.
-</div>
-
-<!-- TOKENOMICS -->
-<div class="block">
-<h3>TOKENOMICS</h3>
-
-Total Supply: 1,000,000,000<br><br>
-
-Airdrop: 39.99%<br>
-Primary LP: 21.78%<br>
-Unlock Treasury: 4.95%<br>
-Locked Treasury: 10%<br>
-Marketing: 8%<br>
-Staking: 8%<br>
-Vesting: 6%<br>
-Orca LP: 0.23%
-
-</div>
-
-<!-- MARKET -->
-<div class="block">
-<h3>MARKET</h3>
-
-Liquidity: Active<br>
-Stage: Early<br>
-Focus: Community Growth
-
-</div>
-
-<!-- SYSTEM -->
-<div class="block">
-<h3>SYSTEM STATUS</h3>
-
-✔ Mint Authority: REVOKED<br>
-✔ Freeze Authority: REVOKED<br>
-✔ Liquidity: LOCKED
-
-</div>
-
-<!-- WALLET -->
-<div class="block">
-<h3>CONNECT WALLET</h3>
-
-<button onclick="alert('Wallet integration coming')">Connect Phantom</button>
-
-</div>
-
-<!-- PITCH -->
-<div class="block">
-<h3>INVESTOR PITCH</h3>
-
-<button onclick="downloadPitch()">Download</button>
-
-</div>
-
-<!-- LINKS -->
-<div class="block">
-<h3>LINKS</h3>
-
-<a href="https://solscan.io/token/54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17#metadata">Solscan</a>
-<a href="https://t.me/MGOT_Community">Telegram</a>
-<a href="https://twitter.com">Twitter</a>
-
-</div>
-
-</div>
-
-<script>
-function downloadPitch(){
-  const blob = new Blob(["MGOT investor pitch"],{type:"text/plain"});
-  const a=document.createElement("a");
-  a.href=URL.createObjectURL(blob);
-  a.download="MGOT_pitch.txt";
-  a.click();
-}
-</script>
-
-</body>
+<body><header>
+  <h1 class="glow">MGOT TOKEN</h1>
+  <p class="sub">Dark Neon Solana V2 | Community Driven Meme Project</p>
+</header><section class="hero">
+  <!-- MacGyver image placeholder -->
+  <img src="https://upload.wikimedia.org/wikipedia/en/6/6e/MacGyver_title_screen.jpg" alt="MGOT Hero" />
+  <h2 class="glow">Built Different. No Fake Holders. No Noise.</h2>
+  <p>Pure on-chain transparency. Real community. Real movement.</p>
+  <a class="btn" href="#join">Join Community</a>
+</section><section class="grid">
+  <div class="card">
+    <h3 class="glow">⚡ Token Vision</h3>
+    <p>MGOT is a Solana-based meme token focused on real engagement, not artificial hype metrics.</p>
+  </div>  <div class="card">
+    <h3 class="glow">📊 Live Dexscreener Chart</h3>
+    <p>Real-time Solana pair tracking via Dexscreener.</p>
+    <iframe
+      src="https://dexscreener.com/solana/coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom?embed=1"
+      style="width:100%; height:420px; border:0; border-radius:12px;"
+      loading="lazy"
+    ></iframe>
+  </div>  <div class="card">
+    <h3 class="glow">🚀 Roadmap</h3>
+    <p>Phase 1: Launch<br/>Phase 2: Community Growth<br/>Phase 3: Listings & Expansion</p>
+  </div>  <div class="card">
+    <h3 class="glow">💬 Community</h3>
+    <p>Telegram + Discord driven growth with transparent updates and engagement.</p>
+  </div>
+</section><section class="card" id="join">
+  <h2 class="glow">Join MGOT</h2>
+  <p>Be part of early community growth before major exposure.</p>
+  <span class="tag">Solana</span>
+  <span class="tag">Meme</span>
+  <span class="tag">Community</span>
+  <span class="tag">Transparency</span>
+  <br/><br/>
+  <a class="btn" href="#">Telegram</a>
+  <a class="btn" href="#">Discord</a>
+</section><footer>
+  MGOT © 2026 | Built on Solana vibe
+</footer></body>
 </html>
