@@ -11,67 +11,31 @@ body {
   margin: 0;
   font-family: monospace;
   color: #d1d5db;
-  overflow-x: hidden;
   background: #05070d;
+  padding: 40px;
 }
 
-/* ===== FUTURISTIC MACGYVER BACKGROUND ===== */
-.bg {
+/* ===== SIMPLE FUTURISTIC BACKGROUND ===== */
+body::before {
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -3;
-
-  background: radial-gradient(circle at 20% 20%, #0b2a3d, transparent 40%),
-              radial-gradient(circle at 80% 30%, #1a0f2e, transparent 45%),
-              radial-gradient(circle at 50% 80%, #0a1f1a, transparent 50%),
-              #05070d;
-
-  animation: bgMove 12s ease-in-out infinite alternate;
-}
-
-.bg::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image:
-    linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px);
-  background-size: 60px 60px;
-  opacity: 0.25;
-}
-
-.bg::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 30% 40%, rgba(34,197,94,0.08), transparent 25%),
-              radial-gradient(circle at 70% 60%, rgba(56,189,248,0.08), transparent 30%),
-              radial-gradient(circle at 50% 20%, rgba(168,85,247,0.06), transparent 35%);
-  animation: floatGlow 10s infinite alternate;
-}
-
-/* ===== OVERLAY ===== */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(0,0,0,0.2), rgba(0,0,0,0.85));
   z-index: -1;
-  pointer-events: none;
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(56,189,248,0.15), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(34,197,94,0.12), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(168,85,247,0.10), transparent 45%),
+    #05070d;
 }
 
 /* ===== CONTAINER ===== */
 .container {
   max-width: 850px;
   margin: auto;
-  padding: 40px;
 }
 
 /* ===== TITLE ===== */
@@ -80,8 +44,7 @@ h1 {
   color: white;
   text-align: center;
   letter-spacing: 6px;
-  text-shadow: 0 0 25px rgba(56,189,248,0.25);
-  animation: flicker 3s infinite;
+  text-shadow: 0 0 15px rgba(56,189,248,0.3);
 }
 
 p {
@@ -91,13 +54,11 @@ p {
 
 /* ===== BLOCKS ===== */
 .block {
-  background: rgba(15, 23, 42, 0.75);
+  background: rgba(15, 23, 42, 0.85);
   border: 1px solid #1f2937;
   padding: 18px;
   margin: 18px 0;
-  border-radius: 12px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 15px rgba(56,189,248,0.08);
+  border-radius: 10px;
 }
 
 /* ===== GREEN ===== */
@@ -111,30 +72,72 @@ a {
   display: block;
   margin: 6px 0;
   text-decoration: none;
-  transition: 0.2s;
 }
 
 a:hover {
-  color: #ffffff;
-  text-shadow: 0 0 10px #38bdf8;
+  color: white;
 }
 
-/* ===== ANIMATIONS ===== */
-@keyframes flicker {
-  0% { opacity: 1; }
-  50% { opacity: 0.85; }
-  100% { opacity: 1; }
-}
-
-@keyframes bgMove {
-  0% { filter: hue-rotate(0deg) brightness(1); }
-  100% { filter: hue-rotate(20deg) brightness(1.2); }
-}
-
-@keyframes floatGlow {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(-20px); }
-}
+/* ===== REMOVE ANY OVERLAY/BUG RISKS ===== */
+/* intentionally no z-index layering */
 
 </style>
-</head
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>MGOT</h1>
+<p>Built with logic. Not hype.</p>
+
+<div class="block">
+<h3>WHAT IS MGOT</h3>
+MGOT is a Solana token built with a MacGyver mindset.<br>
+Simple systems. No unnecessary control.
+</div>
+
+<div class="block">
+<h3>CONTROL STATUS</h3>
+<span class="green">✔ Mint Authority: REVOKED</span><br>
+<span class="green">✔ Freeze Authority: REVOKED</span><br>
+<span class="green">✔ Liquidity: LOCKED</span>
+</div>
+
+<div class="block">
+<h3>TOKENOMICS</h3>
+
+Total Supply: 1,000,000,000 MGOT<br><br>
+
+Airdrop: 39.99%<br>
+Primary LP: 21.78%<br>
+Unlock Treasury: 4.95%<br>
+Locked Treasury: 10%<br>
+Marketing: 8%<br>
+Staking: 8%<br>
+Vesting: 6%<br>
+Orca LP: 0.23%<br>
+Unknown holders: ~1.05%
+</div>
+
+<div class="block">
+<h3>ROADMAP</h3>
+Phase 1: Build<br>
+Phase 2: Launch<br>
+Phase 3: Community<br>
+Phase 4: Expansion
+</div>
+
+<div class="block">
+<h3>LINKS</h3>
+
+<a href="https://solscan.io/token/54SW86tXqXRo7tCJJRcGAPmgw17#metadata" target="_blank">Solscan</a>
+<a href="https://t.me/MGOT_Community" target="_blank">Telegram</a>
+<a href="https://twitter.com" target="_blank">Twitter</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
