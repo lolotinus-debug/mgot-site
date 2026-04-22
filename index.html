@@ -5,46 +5,105 @@
 <title>MGOT</title>
 
 <style>
+
+/* ===== GLOBAL ===== */
 body {
-  background: #0b0f14;
-  color: #d1d5db;
-  font-family: monospace;
   margin: 0;
+  font-family: monospace;
+  color: #d1d5db;
+  overflow-x: hidden;
+  background: black;
+}
+
+/* ===== BACKGROUND ===== */
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://i.imgur.com/8Q3ZQZL.jpg") center/cover no-repeat;
+  z-index: -2;
+  filter: grayscale(20%) contrast(1.2);
+}
+
+/* DARK OVERLAY */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0,0,0,0.4), rgba(0,0,0,0.95));
+  z-index: -1;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 850px;
+  margin: auto;
   padding: 40px;
 }
 
-.container {
-  max-width: 800px;
-  margin: auto;
-}
-
+/* ===== TITLE ===== */
 h1 {
-  color: #ffffff;
-  font-size: 40px;
+  font-size: 55px;
+  color: white;
+  text-align: center;
+  letter-spacing: 6px;
+  text-shadow: 0 0 20px rgba(56,189,248,0.3);
+  animation: flicker 3s infinite;
 }
 
+p {
+  text-align: center;
+  color: #9ca3af;
+}
+
+/* ===== BLOCKS ===== */
 .block {
+  background: rgba(15, 23, 42, 0.75);
   border: 1px solid #1f2937;
-  padding: 15px;
-  margin: 15px 0;
-  background: #0f172a;
+  padding: 18px;
+  margin: 18px 0;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 15px rgba(56,189,248,0.08);
 }
 
+/* ===== GREEN ===== */
 .green {
   color: #22c55e;
 }
 
+/* ===== LINKS ===== */
 a {
   color: #38bdf8;
-  text-decoration: none;
   display: block;
-  margin: 5px 0;
+  margin: 6px 0;
+  text-decoration: none;
+  transition: 0.2s;
 }
-</style>
 
+a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px #38bdf8;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.85; }
+  100% { opacity: 1; }
+}
+
+</style>
 </head>
 
 <body>
+
+<div class="bg"></div>
+<div class="overlay"></div>
 
 <div class="container">
 
@@ -79,14 +138,13 @@ Phase 3: Community<br>
 Phase 4: Expansion
 </div>
 
-<!-- 🔥 MGOT TOKENOMICS -->
 <div class="block">
 <h3>TOKENOMICS</h3>
 
 Total Supply: 1,000,000,000 MGOT<br><br>
 
 Airdrop: 39.99%<br>
-Primary LP: 21.78% (sent from owner wallet to Orca pool)<br>
+Primary LP: 21.78%<br>
 Unlock Treasury: 4.95%<br>
 Locked Treasury: 10%<br>
 Marketing: 8%<br>
@@ -99,13 +157,4 @@ Unknown holders: ~1.05%
 <div class="block">
 <h3>LINKS</h3>
 
-<a href="https://solscan.io/token/54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17#metadata">Solscan</a>
-<a href="https://t.me/MGOT_Community">Telegram</a>
-<a href="#">Twitter</a>
-
-</div>
-
-</div>
-
-</body>
-</html>
+<a href="https
