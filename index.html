@@ -14,11 +14,10 @@ body {
   font-family: monospace;
   color: #d1d5db;
   background: #05070d;
-  overflow-x: hidden;
 }
 
 /* =========================
-   MACGYVER FUTURISTIC BACKGROUND
+   FUTURISTIC DASHBOARD BACKGROUND
 ========================= */
 body::before {
   content: "";
@@ -27,12 +26,13 @@ body::before {
   z-index: -4;
 
   background:
-    radial-gradient(circle at 15% 20%, rgba(56,189,248,0.18), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(34,197,94,0.14), transparent 40%),
-    radial-gradient(circle at 50% 80%, rgba(168,85,247,0.12), transparent 45%),
+    radial-gradient(circle at 10% 20%, rgba(56,189,248,0.18), transparent 35%),
+    radial-gradient(circle at 80% 20%, rgba(34,197,94,0.14), transparent 35%),
+    radial-gradient(circle at 40% 80%, rgba(168,85,247,0.12), transparent 40%),
+    radial-gradient(circle at 90% 70%, rgba(255,255,255,0.05), transparent 40%),
     #05070d;
 
-  animation: bgShift 12s ease-in-out infinite alternate;
+  animation: drift 14s ease-in-out infinite alternate;
 }
 
 /* GRID */
@@ -47,7 +47,7 @@ body::after {
     linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px);
 
-  background-size: 70px 70px;
+  background-size: 80px 80px;
   opacity: 0.35;
 }
 
@@ -64,10 +64,10 @@ body::after {
     transparent
   );
 
-  animation: scanMove 6s linear infinite;
+  animation: scan 7s linear infinite;
 }
 
-/* PARTICLES (crypto dust) */
+/* PARTICLES */
 .particles {
   position: fixed;
   inset: 0;
@@ -75,20 +75,19 @@ body::after {
   pointer-events: none;
 }
 
-.particles::before,
-.particles::after {
+.particles::before {
   content: "";
   position: absolute;
   width: 200%;
   height: 200%;
   background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: float 20s linear infinite;
-  opacity: 0.3;
+  background-size: 45px 45px;
+  animation: float 25s linear infinite;
+  opacity: 0.25;
 }
 
 /* =========================
-   CONTAINER
+   LAYOUT
 ========================= */
 .container {
   max-width: 900px;
@@ -97,69 +96,55 @@ body::after {
 }
 
 /* =========================
-   HERO
+   MACGYVER IMAGE
 ========================= */
-.hero {
+.hero-img {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.hero-img img {
+  width: 170px;
+  height: 170px;
+  border-radius: 12px;
+  border: 1px solid #1f2937;
+  box-shadow: 0 0 25px rgba(56,189,248,0.25);
+}
+
+/* =========================
+   TITLE
+========================= */
+h1 {
+  font-size: 60px;
+  color: white;
   text-align: center;
-  margin-bottom: 30px;
+  letter-spacing: 8px;
+  text-shadow: 0 0 25px rgba(56,189,248,0.25);
 }
 
-.hero h2 {
-  color: #38bdf8;
-  letter-spacing: 4px;
-}
-
-.hero p {
+p {
+  text-align: center;
   color: #9ca3af;
 }
 
-.hero a {
-  display: inline-block;
-  padding: 10px 18px;
-  border: 1px solid #38bdf8;
-  border-radius: 8px;
-  margin: 6px;
-  text-decoration: none;
-  color: #38bdf8;
-  transition: 0.2s;
-}
-
-.hero a:hover {
-  color: white;
-  border-color: white;
-  box-shadow: 0 0 15px rgba(56,189,248,0.3);
-}
-
-/* BUY BUTTON */
-.buy {
-  background: #22c55e;
-  color: black !important;
-  border: none !important;
-}
-
 /* =========================
-   LOGO GLITCH
+   DASHBOARD GRID BOXES
 ========================= */
-.logo {
-  font-size: 65px;
-  text-align: center;
-  color: white;
-  letter-spacing: 8px;
-  text-shadow: 0 0 25px rgba(56,189,248,0.3);
-  animation: glitch 2.5s infinite;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
 }
 
-/* =========================
-   BLOCKS
-========================= */
 .block {
   background: rgba(15, 23, 42, 0.85);
   border: 1px solid #1f2937;
-  padding: 18px;
-  margin: 18px 0;
+  padding: 16px;
   border-radius: 12px;
-  transition: 0.3s;
   backdrop-filter: blur(6px);
+  transition: 0.3s;
 }
 
 .block:hover {
@@ -169,6 +154,7 @@ body::after {
 
 /* COLORS */
 .green { color: #22c55e; }
+.blue { color: #38bdf8; }
 
 /* LINKS */
 a {
@@ -185,29 +171,19 @@ a:hover {
 /* =========================
    ANIMATIONS
 ========================= */
-@keyframes bgShift {
+@keyframes drift {
   0% { filter: hue-rotate(0deg) brightness(1); }
   100% { filter: hue-rotate(18deg) brightness(1.2); }
 }
 
-@keyframes scanMove {
+@keyframes scan {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(100%); }
 }
 
 @keyframes float {
   0% { transform: translate(0,0); }
-  100% { transform: translate(-50px,-50px); }
-}
-
-/* GLITCH EFFECT */
-@keyframes glitch {
-  0% { transform: translate(0); }
-  20% { transform: translate(-1px,1px); }
-  40% { transform: translate(1px,-1px); }
-  60% { transform: translate(-1px,-1px); }
-  80% { transform: translate(1px,1px); }
-  100% { transform: translate(0); }
+  100% { transform: translate(-60px,-60px); }
 }
 
 </style>
@@ -218,36 +194,67 @@ a:hover {
 <div class="scan"></div>
 <div class="particles"></div>
 
-<!-- HERO -->
-<div class="hero">
-  <h2>MACGYVER ENGINEERING PROTOCOL</h2>
-  <p>Adaptive systems. Improvised logic. Solana-grade resilience.</p>
-
-  <a href="https://t.me/MGOT_Community">JOIN TELEGRAM</a>
-  <a href="https://solscan.io/token/54SW86tXqXRo7tCJJRcGAPmgw17#metadata">VIEW SOLSCAN</a>
-  <a class="buy" href="#">BUY MGOT</a>
-</div>
-
 <div class="container">
 
-<div class="logo">MGOT</div>
-<p style="text-align:center;">Built with logic. Not hype.</p>
+<!-- MACGYVER IMAGE -->
+<div class="hero-img">
+  <img src="https://upload.wikimedia.org/wikipedia/en/6/6d/MacGyver_title_card.jpg" alt="MacGyver">
+</div>
+
+<h1>MGOT</h1>
+<p>Built with logic. Not hype.</p>
+
+<!-- DASHBOARD -->
+<div class="grid">
 
 <div class="block">
+<h3 class="blue">SYSTEM STATUS</h3>
+✔ Network: Solana<br>
+✔ Contract: Active<br>
+✔ Mint: REVOKED<br>
+✔ Freeze: REVOKED
+</div>
+
+<div class="block">
+<h3 class="blue">LIQUIDITY</h3>
+Status: Locked<br>
+Primary LP: Active<br>
+Orca LP: 0.23%
+</div>
+
+<div class="block">
+<h3 class="blue">MARKET SIGNAL</h3>
+Trend: Neutral<br>
+Volatility: Medium<br>
+Community: Growing
+</div>
+
+<div class="block">
+<h3 class="blue">WALLET DISTRIBUTION</h3>
+Airdrop: 39.99%<br>
+Treasury: 14.95%<br>
+Staking: 8%<br>
+Marketing: 8%
+</div>
+
+</div>
+
+<!-- DESCRIPTION -->
+<div class="block" style="margin-top:20px;">
 <h3>WHAT IS MGOT</h3>
-Solana token built with MacGyver engineering mindset.<br>
-No hype. Just systems.
+
+MGOT is a Solana-based experimental token inspired by the legendary TV series <b>MacGyver</b>.<br><br>
+
+The project represents the mindset of the character — solving impossible problems using creativity, improvisation, and minimal resources instead of brute force.<br><br>
+
+Just like MacGyver’s iconic ability to engineer solutions in extreme conditions, MGOT reflects adaptive system design, resilience, and unconventional thinking applied to blockchain infrastructure.
 </div>
 
-<div class="block">
-<h3>CONTROL STATUS</h3>
-<span class="green">✔ Mint Authority: REVOKED</span><br>
-<span class="green">✔ Freeze Authority: REVOKED</span><br>
-<span class="green">✔ Liquidity: LOCKED</span>
-</div>
-
+<!-- TOKENOMICS -->
 <div class="block">
 <h3>TOKENOMICS</h3>
+
+Total Supply: 1,000,000,000 MGOT<br><br>
 
 Airdrop: 39.99%<br>
 Primary LP: 21.78%<br>
@@ -256,18 +263,10 @@ Locked Treasury: 10%<br>
 Marketing: 8%<br>
 Staking: 8%<br>
 Vesting: 6%<br>
-Orca LP: 0.23%<br>
-Unknown holders: ~1.05%
+Orca LP: 0.23%
 </div>
 
-<div class="block">
-<h3>ROADMAP</h3>
-Phase 1: Build<br>
-Phase 2: Launch<br>
-Phase 3: Community<br>
-Phase 4: Expansion
-</div>
-
+<!-- LINKS -->
 <div class="block">
 <h3>LINKS</h3>
 
