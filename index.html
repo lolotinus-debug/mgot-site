@@ -1,173 +1,62 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MGOT | Live Solana Dashboard</title>  <style>
-    :root{
-      --bg:#050814;
-      --card:rgba(255,255,255,0.04);
-      --neon:#00ffa3;
-      --text:#eaeaea;
-      --muted:#9aa4b2;
+  <title>MGOT | Dark Neon Solana V2</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #0a0f1f, #000);
+      color: #fff;
+      overflow-x: hidden;
     }
 
-    *{box-sizing:border-box;}
-
-    body{
-      margin:0;
-      font-family:Arial, sans-serif;
-      background:radial-gradient(circle at top, #0b1430, var(--bg));
-      color:var(--text);
+    .glow {
+      color: #00ffa3;
+      text-shadow: 0 0 10px #00ffa3, 0 0 20px #00ffa3;
     }
 
-    header{
-      position:sticky;
-      top:0;
-      background:rgba(5,8,20,0.85);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(255,255,255,0.05);
-      padding:14px 20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      z-index:100;
+    header {
+      padding: 60px 20px;
+      text-align: center;
+      border-bottom: 1px solid #111;
     }
 
-    .logo{
-      font-weight:bold;
-      color:var(--neon);
-      letter-spacing:1px;
+    h1 {
+      font-size: 48px;
+      margin: 0;
     }
 
-    nav a{
-      color:var(--muted);
-      margin-left:15px;
-      text-decoration:none;
-      font-size:14px;
+    .sub {
+      color: #aaa;
+      margin-top: 10px;
     }
 
-    nav a:hover{
-      color:var(--neon);
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px;
     }
 
-    .hero{
-      text-align:center;
-      padding:60px 20px 30px;
+    .hero img {
+      width: 220px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,255,163,0.3);
     }
 
-    .hero h1{
-      font-size:42px;
-      margin:0;
-      color:var(--neon);
-      text-shadow:0 0 20px rgba(0,255,163,0.3);
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(0,255,163,0.2);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px;
+      max-width: 800px;
     }
 
-    .hero p{
-      color:var(--muted);
-      margin-top:10px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:16px;
-      padding:20px;
-    }
-
-    .card{
-      background:var(--card);
-      border:1px solid rgba(0,255,163,0.15);
-      border-radius:14px;
-      padding:16px;
-    }
-
-    .card h3{
-      margin-top:0;
-      color:var(--neon);
-      font-size:16px;
-    }
-
-    .chart{
-      padding:20px;
-    }
-
-    iframe{
-      width:100%;
-      height:520px;
-      border:0;
-      border-radius:12px;
-    }
-
-    .cta{
-      text-align:center;
-      padding:30px;
-    }
-
-    .btn{
-      display:inline-block;
-      margin:8px;
-      padding:12px 18px;
-      background:var(--neon);
-      color:#000;
-      font-weight:bold;
-      border-radius:10px;
-      text-decoration:none;
-    }
-
-    footer{
-      text-align:center;
-      padding:30px;
-      color:#666;
-      font-size:12px;
-    }
-
-    .badge{
-      display:inline-block;
-      padding:4px 10px;
-      border:1px solid var(--neon);
-      color:var(--neon);
-      border-radius:20px;
-      font-size:12px;
-      margin:4px;
-    }
-  </style></head><body><header>
-  <div class="logo">MGOT DASHBOARD</div>
-  <nav>
-    <a href="#chart">Live Chart</a>
-    <a href="#info">Info</a>
-    <a href="#join">Community</a>
-  </nav>
-</header><section class="hero">
-  <h1>REAL TIME SOLANA TRACKING</h1>
-  <p>Transparent meme token dashboard • live data • no fake metrics</p>
-</section><section id="chart" class="chart">
-  <div class="card">
-    <h3>📊 Live Dexscreener Chart</h3>
-    <p style="color:#9aa4b2; font-size:13px;">MGOT / SOL real-time market data</p>
-    <iframe
-      src="https://dexscreener.com/solana/coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom?embed=1"
-      loading="lazy"
-    ></iframe>
-  </div>
-</section><section id="info" class="grid">  <div class="card">
-    <h3>⚡ Transparency</h3>
-    <p>On-chain verified data only. No fake holders or manipulated stats.</p>
-  </div>  <div class="card">
-    <h3>🔗 Blockchain</h3>
-    <p>Built on Solana for speed, low fees and real-time tracking.</p>
-  </div>  <div class="card">
-    <h3>🚀 Vision</h3>
-    <p>Community-driven growth with long-term meme ecosystem strategy.</p>
-  </div>  <div class="card">
-    <h3>📡 Live Updates</h3>
-    <p>Market activity updates automatically from Dexscreener API.</p>
-  </div></section><section id="join" class="cta">
-  <h2 style="color:#00ffa3;">Join MGOT</h2>
-  <p style="color:#9aa4b2;">Early community access</p><span class="badge">Solana</span> <span class="badge">Meme</span> <span class="badge">Community</span>
-
-  <br/><a class="btn" href="#">Telegram</a> <a class="btn" href="#">Discord</a>
-
-</section><footer>
-  MGOT © 2026 • Live Solana Dashboard
-</footer></body>
-</html>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
