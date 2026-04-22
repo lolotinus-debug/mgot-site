@@ -18,7 +18,7 @@ body {
 }
 
 /* =========================
-   BACKGROUND (SAFE DASHBOARD)
+   FUTURISTIC BACKGROUND
 ========================= */
 body::before {
   content: "";
@@ -74,7 +74,7 @@ body::after {
 }
 
 /* =========================
-   CONTAINER
+   LAYOUT
 ========================= */
 .container {
   max-width: 950px;
@@ -83,68 +83,7 @@ body::after {
 }
 
 /* =========================
-   GLITCH LOGO
-========================= */
-.logo {
-  font-size: 64px;
-  text-align: center;
-  color: white;
-  letter-spacing: 8px;
-  animation: glitch 2.2s infinite;
-  text-shadow: 0 0 25px rgba(56,189,248,0.25);
-}
-
-/* =========================
-   HERO
-========================= */
-.hero {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.hero button {
-  margin: 5px;
-  padding: 10px 16px;
-  border-radius: 8px;
-  border: 1px solid #38bdf8;
-  background: transparent;
-  color: #38bdf8;
-  cursor: pointer;
-}
-
-.hero button:hover {
-  color: white;
-  border-color: white;
-}
-
-/* =========================
-   GRID
-========================= */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-}
-
-.block {
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid #1f2937;
-  padding: 16px;
-  border-radius: 12px;
-  transition: 0.3s;
-}
-
-.block:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 25px rgba(56,189,248,0.15);
-}
-
-/* COLORS */
-.blue { color: #38bdf8; }
-.green { color: #22c55e; }
-
-/* =========================
-   MACGYVER SVG (SAFE IMAGE)
+   MACGYVER “AVATAR”
 ========================= */
 .macgyver {
   display: flex;
@@ -153,39 +92,60 @@ body::after {
 }
 
 .macgyver svg {
-  width: 140px;
-  height: 140px;
-  filter: drop-shadow(0 0 10px rgba(56,189,248,0.4));
+  width: 150px;
+  height: 150px;
+  filter: drop-shadow(0 0 15px rgba(56,189,248,0.4));
 }
 
 /* =========================
-   CHART
+   LOGO
 ========================= */
-canvas {
-  width: 100%;
-  height: 120px;
-  background: rgba(0,0,0,0.2);
-  border-radius: 10px;
+.logo {
+  font-size: 62px;
+  text-align: center;
+  letter-spacing: 8px;
+  color: white;
+  animation: glitch 2.2s infinite;
 }
 
 /* =========================
-   WALLET MODAL
+   SECTIONS
 ========================= */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background: #0f172a;
-  padding: 20px;
+.block {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid #1f2937;
+  padding: 16px;
+  margin: 14px 0;
   border-radius: 12px;
-  border: 1px solid #38bdf8;
-  width: 300px;
+  backdrop-filter: blur(6px);
+  transition: 0.3s;
+}
+
+.block:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(56,189,248,0.15);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* COLORS */
+.blue { color: #38bdf8; }
+.green { color: #22c55e; }
+
+/* LINKS */
+a {
+  color: #38bdf8;
+  display: block;
+  margin: 6px 0;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
 }
 
 /* =========================
@@ -223,148 +183,185 @@ canvas {
 <div class="scan"></div>
 <div class="particles"></div>
 
-<!-- MACGYVER SVG -->
+<div class="container">
+
+<!-- MACGYVER SVG (SAFE IMAGE) -->
 <div class="macgyver">
 <svg viewBox="0 0 100 100">
-  <circle cx="50" cy="40" r="18" fill="#38bdf8"/>
-  <rect x="30" y="60" width="40" height="30" fill="#22c55e"/>
+  <rect x="10" y="10" width="80" height="80" rx="12" fill="#0f172a" stroke="#38bdf8"/>
+  <circle cx="50" cy="40" r="14" fill="#38bdf8"/>
+  <rect x="30" y="60" width="40" height="20" fill="#22c55e"/>
 </svg>
 </div>
-
-<div class="container">
 
 <div class="logo">MGOT</div>
 
 <p style="text-align:center;">Built with logic. Not hype.</p>
 
-<!-- HERO -->
-<div class="hero">
-  <button onclick="openWallet()">Connect Wallet</button>
-  <button onclick="downloadPitch()">Investor Pitch</button>
+---
+
+# 1. WHAT IS MGOT
+<div class="block">
+<h3 class="blue">WHAT IS MGOT</h3>
+
+MGOT is a Solana-based experimental token inspired by the legendary TV series <b>MacGyver</b>.<br><br>
+
+It represents problem-solving intelligence, improvisation, and engineering logic under extreme constraints — just like the character who could turn almost anything into a solution.<br><br>
+
+MGOT applies that mindset to blockchain systems: adaptive design, minimal assumptions, maximum efficiency.
 </div>
 
-<!-- DASHBOARD -->
+---
+
+# 2. TOKENOMICS
+<div class="block">
+<h3 class="blue">TOKENOMICS</h3>
+
+Total Supply: 1,000,000,000 MGOT<br><br>
+
+Airdrop: 39.99%<br>
+Primary LP: 21.78%<br>
+Unlock Treasury: 4.95%<br>
+Locked Treasury: 10%<br>
+Marketing: 8%<br>
+Staking: 8%<br>
+Vesting: 6%<br>
+Orca LP: 0.23%
+</div>
+
+---
+
+# 3. LIVE PRICE + HOLDERS
 <div class="grid">
 
 <div class="block">
-<h3 class="blue">LIVE PRICE</h3>
-<canvas id="chart"></canvas>
+<h3 class="blue">LIVE PRICE (SIM)</h3>
+<canvas id="chart" width="300" height="120"></canvas>
 </div>
 
 <div class="block">
 <h3 class="blue">HOLDERS</h3>
-<span id="holders" class="green">0</span>
+<span id="holders" class="green">142</span>
 </div>
 
-<div class="block">
-<h3 class="blue">SYSTEM STATUS</h3>
-✔ Solana Active<br>
-✔ Mint Revoked<br>
-✔ Liquidity Locked
 </div>
 
+---
+
+# 4. MARKET
 <div class="block">
 <h3 class="blue">MARKET</h3>
-Trend: Stable<br>
-Volatility: Medium
+
+Trend: Stable Growth<br>
+Volatility: Medium<br>
+Sentiment: Community Driven<br>
+Liquidity: Locked
 </div>
 
-</div>
+---
 
-<!-- DESCRIPTION -->
+# 5. SYSTEM STATUS
 <div class="block">
-<h3>WHAT IS MGOT</h3>
+<h3 class="blue">SYSTEM STATUS</h3>
 
-MGOT is a Solana token inspired by the legendary TV series <b>MacGyver</b>.<br><br>
-
-It reflects his unmatched ability to solve extreme situations using creativity, intelligence, and minimal resources.<br><br>
-
-MGOT represents adaptive blockchain engineering, improvisation, and problem-solving logic applied to decentralized systems.
+✔ Solana Network: Active<br>
+✔ Mint Authority: REVOKED<br>
+✔ Freeze Authority: REVOKED<br>
+✔ Liquidity: LOCKED<br>
+✔ Smart Contract: Verified Logic
 </div>
 
-<!-- TOKENOMICS -->
-<div class="block">
-<h3>TOKENOMICS</h3>
+---
 
-Airdrop 39.99%<br>
-LP 21.78%<br>
-Treasury 14.95%<br>
-Staking 8%<br>
-Marketing 8%
+# 6. CONNECT WALLET
+<div class="block">
+<h3 class="blue">CONNECT WALLET</h3>
+
+<button onclick="openWallet()">Connect Phantom</button>
+<button onclick="openWallet()">Connect Solflare</button>
+</div>
+
+---
+
+# 7. INVESTOR PITCH
+<div class="block">
+<h3 class="blue">INVESTOR PITCH</h3>
+
+MGOT represents a MacGyver-inspired engineering narrative in Web3 infrastructure.
+
+<br><br>
+
+<button onclick="downloadPitch()">Download Pitch (HTML)</button>
+</div>
+
+---
+
+# 8. LINKS
+<div class="block">
+<h3 class="blue">LINKS</h3>
+
+<a href="https://solscan.io/token/54SW86tXqXRo7tCJJRcGAPmgw17#metadata">Solscan</a>
+<a href="https://t.me/MGOT_Community">Telegram</a>
+<a href="https://twitter.com">Twitter</a>
+
 </div>
 
 </div>
 
 <!-- WALLET MODAL -->
-<div class="modal" id="walletModal">
-  <div class="modal-content">
-    <h3>Connect Wallet</h3>
-    <button onclick="closeWallet()">Phantom</button>
-    <button onclick="closeWallet()">Solflare</button>
+<div id="wallet" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;">
+  <div style="background:#0f172a;padding:20px;border:1px solid #38bdf8;border-radius:12px;">
+    <h3>Wallet Connect</h3>
+    <button onclick="closeWallet()">Close</button>
   </div>
 </div>
 
 <script>
 
-/* =========================
-   HOLDERS COUNTER
-========================= */
-let h = 120;
-setInterval(() => {
-  h += Math.floor(Math.random() * 5);
+/* HOLDERS */
+let h = 142;
+setInterval(()=>{
+  h += Math.floor(Math.random()*3);
   document.getElementById("holders").innerText = h;
 }, 1500);
 
-/* =========================
-   FAKE PRICE CHART
-========================= */
+/* PRICE CHART */
 const c = document.getElementById("chart");
 const ctx = c.getContext("2d");
 
-let data = Array.from({length: 30}, () => Math.random()*50);
+let data = Array.from({length:30},()=>Math.random()*100);
 
 function draw(){
-  ctx.clearRect(0,0,c.width,c.height);
+  ctx.clearRect(0,0,300,120);
   ctx.beginPath();
-  ctx.strokeStyle = "#38bdf8";
+  ctx.strokeStyle="#38bdf8";
 
   data.forEach((v,i)=>{
-    ctx.lineTo(i*10, 100-v);
+    ctx.lineTo(i*10,120-v);
   });
 
   ctx.stroke();
 
   data.shift();
-  data.push(Math.random()*50);
+  data.push(Math.random()*100);
 }
+setInterval(draw,800);
 
-setInterval(draw, 800);
-
-/* =========================
-   WALLET MODAL
-========================= */
+/* WALLET */
 function openWallet(){
-  document.getElementById("walletModal").style.display="flex";
+  document.getElementById("wallet").style.display="flex";
 }
-
 function closeWallet(){
-  document.getElementById("walletModal").style.display="none";
+  document.getElementById("wallet").style.display="none";
 }
 
-/* =========================
-   INVESTOR PITCH DOWNLOAD
-========================= */
+/* PITCH */
 function downloadPitch(){
-  const html = `
-  <h1>MGOT INVESTOR PITCH</h1>
-  <p>MacGyver-inspired Solana infrastructure token.</p>
-  <p>Adaptive systems. Community-driven growth.</p>
-  `;
-
-  const blob = new Blob([html], {type:"text/html"});
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "MGOT_PITCH.html";
+  const html = "<h1>MGOT INVESTOR PITCH</h1><p>MacGyver-inspired Solana token.</p>";
+  const blob = new Blob([html],{type:"text/html"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="MGOT_PITCH.html";
   a.click();
 }
 
