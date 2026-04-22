@@ -2,9 +2,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MACGYVER | VC Solana Live Dashboard</title>  <style>
+  <title>Macgyver Official Token (MGOT) | VC Dashboard</title>  <style>
     :root{
-      --bg:#040712;
+      --bg:#030614;
       --card:rgba(255,255,255,0.04);
       --neon:#00ffa3;
       --text:#eaeaea;
@@ -16,27 +16,36 @@
     body{
       margin:0;
       font-family:Arial, sans-serif;
-      background:radial-gradient(circle at top, #0b1635, var(--bg));
       color:var(--text);
+      background:linear-gradient(-45deg,#050816,#071a2b,#040712,#0b1635);
+      background-size:400% 400%;
+      animation:bgMove 12s ease infinite;
     }
 
+    @keyframes bgMove{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    /* TOP LIVE BAR */
     .topbar{
       position:fixed;
       top:0;
       left:0;
       width:100%;
-      background:#050a18;
-      border-bottom:1px solid rgba(255,255,255,0.05);
       display:flex;
       justify-content:center;
       gap:20px;
       padding:8px;
       font-size:12px;
+      background:#050a18;
+      border-bottom:1px solid rgba(255,255,255,0.05);
       z-index:999;
       color:var(--muted);
     }
 
-    .live-dot{color:var(--neon);animation:pulse 1.5s infinite;}
+    .live{color:var(--neon);font-weight:bold;animation:pulse 1.5s infinite;}
 
     @keyframes pulse{0%{opacity:1;}50%{opacity:0.3;}100%{opacity:1;}}
 
@@ -44,7 +53,6 @@
       margin-top:35px;
       position:sticky;
       top:35px;
-      z-index:100;
       display:flex;
       justify-content:space-between;
       align-items:center;
@@ -54,11 +62,7 @@
       border-bottom:1px solid rgba(255,255,255,0.05);
     }
 
-    .logo{
-      color:var(--neon);
-      font-weight:bold;
-      letter-spacing:1px;
-    }
+    .logo{color:var(--neon);font-weight:bold;}
 
     nav a{
       color:var(--muted);
@@ -75,13 +79,19 @@
     }
 
     .hero h1{
+      font-size:40px;
       margin:0;
-      font-size:42px;
       color:var(--neon);
-      text-shadow:0 0 25px rgba(0,255,163,0.3);
+      text-shadow:0 0 25px rgba(0,255,163,0.25);
     }
 
-    .hero p{color:var(--muted);margin-top:10px;}
+    .hero p{color:var(--muted);}
+
+    .ticker{
+      margin-top:10px;
+      font-size:14px;
+      color:var(--neon);
+    }
 
     .stats{
       display:grid;
@@ -98,9 +108,6 @@
       text-align:center;
     }
 
-    .stat h3{margin:0;color:var(--neon);font-size:16px;}
-    .stat p{margin:5px 0 0;color:var(--muted);font-size:12px;}
-
     .grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -115,16 +122,12 @@
       padding:16px;
     }
 
-    .card h3{margin-top:0;color:var(--neon);}
-
     iframe{
       width:100%;
       height:520px;
       border:0;
       border-radius:12px;
     }
-
-    .cta{text-align:center;padding:30px;}
 
     .btn{
       display:inline-block;
@@ -147,87 +150,97 @@
       font-size:12px;
     }
 
-    .bar{width:100%;height:8px;background:#111a2e;border-radius:10px;overflow:hidden;margin-top:6px;}
+    .bar{height:8px;background:#111a2e;border-radius:10px;overflow:hidden;}
     .fill{height:100%;background:var(--neon);}
 
     footer{text-align:center;padding:30px;color:#666;font-size:12px;}
   </style></head><body><div class="topbar">
-  <span class="live-dot">● LIVE</span>
-  <span>MACGYVER / SOL</span>
-  <span>ON-CHAIN VERIFIED</span>
+  <span class="live">● LIVE</span>
+  <span>MGOT / SOL</span>
+  <span id="price">PRICE: loading...</span>
+  <span id="mc">MCAP: loading...</span>
 </div><header>
-  <div class="logo">MACGYVER VC DASHBOARD</div>
+  <div class="logo">MGOT OFFICIAL TOKEN</div>
   <nav>
     <a href="#chart">Live</a>
-    <a href="#stats">Stats</a>
     <a href="#wallets">Wallets</a>
     <a href="#token">Token</a>
     <a href="#info">Info</a>
   </nav>
 </header><section class="hero">
-  <h1>MACGYVER LIVE VC DASHBOARD</h1>
-  <p>Real on-chain Solana asset • transparent distribution • no fake metrics</p>
-</section><section id="stats" class="stats">
-  <div class="stat"><h3>LIVE</h3><p>Market Active</p></div>
-  <div class="stat"><h3>SPL</h3><p>Token Standard</p></div>
-  <div class="stat"><h3>DEX</h3><p>Raydium / Orca</p></div>
-  <div class="stat"><h3>CHAIN</h3><p>Solana</p></div>
+  <h1>MACGYVER OFFICIAL TOKEN (MGOT)</h1>
+  <p>Fully on-chain Solana asset • VC dashboard • real liquidity</p>
+  <div class="ticker" id="ticker">Live market data syncing...</div>
 </section><section id="chart" class="card" style="margin:20px;">
   <h3>📊 Live Chart</h3>
   <iframe src="https://dexscreener.com/solana/coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom?embed=1"></iframe>
 </section><section id="wallets" class="grid">  <div class="card">
-    <h3>💧 Liquidity Pool</h3>
-    <p>40%</p>
-    <div class="bar"><div class="fill" style="width:40%"></div></div>
+    <h3>Liquidity Pool</h3>
+    <p>40%</p><div class="bar"><div class="fill" style="width:40%"></div></div>
   </div>  <div class="card">
-    <h3>🌍 Community Allocation</h3>
-    <p>35%</p>
-    <div class="bar"><div class="fill" style="width:35%"></div></div>
+    <h3>Community</h3>
+    <p>35%</p><div class="bar"><div class="fill" style="width:35%"></div></div>
   </div>  <div class="card">
-    <h3>🏢 Treasury (Development Fund)</h3>
-    <p>15%</p>
-    <div class="bar"><div class="fill" style="width:15%"></div></div>
+    <h3>Treasury</h3>
+    <p>15%</p><div class="bar"><div class="fill" style="width:15%"></div></div>
   </div>  <div class="card">
-    <h3>📢 Marketing & Growth Fund</h3>
-    <p>7%</p>
-    <div class="bar"><div class="fill" style="width:7%"></div></div>
+    <h3>Marketing</h3>
+    <p>7%</p><div class="bar"><div class="fill" style="width:7%"></div></div>
   </div>  <div class="card">
-    <h3>👥 Team Allocation</h3>
-    <p>3%</p>
-    <div class="bar"><div class="fill" style="width:3%"></div></div>
-  </div></section><section id="token" class="grid">  <div class="card">
-    <h3>🪙 Tokenization</h3>
-    <p>SPL token deployed on Solana blockchain.</p>
+    <h3>Team</h3>
+    <p>3%</p><div class="bar"><div class="fill" style="width:3%"></div></div>
+  </div></section><section id="token" class="grid">
+  <div class="card">
+    <h3>🪙 SPL Token</h3>
+    <p>Deployed on Solana network</p>
   </div>  <div class="card">
-    <h3>📦 Supply</h3>
-    <p>Fixed supply. No hidden mint authority.</p>
+    <h3>📦 Fixed Supply</h3>
+    <p>No mint authority</p>
   </div>  <div class="card">
     <h3>💧 Liquidity</h3>
-    <p>Tracked live via Dexscreener pools.</p>
+    <p>DEX tracked in real time</p>
   </div>  <div class="card">
     <h3>🔐 Security</h3>
-    <p>No manipulation. Fully on-chain verified.</p>
-  </div></section><section id="info" class="grid">  <div class="card" style="grid-column:1/-1;">
-    <h3>📡 MACGYVER VC OVERVIEW</h3>
-    <p style="color:#9aa4b2;">Institutional-grade Solana dashboard</p>
+    <p>Fully on-chain verified</p>
+  </div>
+</section><section id="info" class="grid">  <div class="card" style="grid-column:1/-1;">
+    <h3>VC OVERVIEW</h3>
+    <p style="color:#9aa4b2;">Institutional-grade token dashboard</p>
   </div>  <div class="card">
-    <h3>⚡ Transparency</h3>
-    <p>All data sourced from blockchain.</p>
+    <h3>Transparency</h3>
+    <p>On-chain verified data only</p>
   </div>  <div class="card">
-    <h3>🔗 Infrastructure</h3>
-    <p>Built on Solana for speed and scalability.</p>
+    <h3>Infrastructure</h3>
+    <p>Built on Solana</p>
   </div>  <div class="card">
-    <h3>📊 Market Data</h3>
-    <p>Live price, liquidity, volume tracking.</p>
-  </div>  <div class="card">
-    <h3>🚀 Growth Engine</h3>
-    <p>Community-driven expansion model.</p>
-  </div></section><section class="cta">
-  <h2 style="color:var(--neon);">Join MACGYVER</h2><span class="badge">Solana</span> <span class="badge">SPL</span> <span class="badge">On-chain</span> <span class="badge">VC Ready</span>
-
-  <br/><a class="btn" href="#">Telegram</a> <a class="btn" href="#">Discord</a>
-
+    <h3>Growth</h3>
+    <p>Community-driven expansion</p>
+  </div></section><section style="text-align:center;padding:30px;">
+  <h2 style="color:var(--neon);">Buy MGOT</h2>
+  <a class="btn" href="#">Buy on Raydium</a>
+  <a class="btn" href="#">Telegram</a>
+  <a class="btn" href="#">Discord</a>
+  <div class="badge">VC READY</div>
 </section><footer>
-  MACGYVER © 2026 • VC Dashboard
-</footer></body>
+  MGOT © 2026 • Macgyver Official Token
+</footer><script>
+async function loadData(){
+  try{
+    const res = await fetch('https://api.dexscreener.com/latest/dex/pairs/solana/coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom');
+    const data = await res.json();
+    const pair = data.pairs?.[0];
+
+    if(pair){
+      document.getElementById('price').innerText = "PRICE: $" + pair.priceUsd;
+      document.getElementById('mc').innerText = "MCAP: $" + (pair.fdv || "n/a");
+      document.getElementById('ticker').innerText = "Liquidity: $" + pair.liquidity.usd;
+    }
+  }catch(e){
+    console.log(e);
+  }
+}
+
+loadData();
+setInterval(loadData,10000);
+</script></body>
 </html>
