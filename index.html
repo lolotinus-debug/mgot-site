@@ -12,30 +12,42 @@ body {
   font-family: monospace;
   color: #d1d5db;
   overflow-x: hidden;
-  background: black;
+  background: #05070d;
 }
 
-/* ===== BACKGROUND ===== */
+/* ===== CINEMATIC BACKGROUND (NO IMAGE DEPENDENCY) ===== */
 .bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("https://i.imgur.com/8Q3ZQZL.jpg") center/cover no-repeat;
   z-index: -2;
-  filter: grayscale(20%) contrast(1.2);
+  background: radial-gradient(circle at top, #0b1a2f, #05070d 60%, #000);
 }
 
-/* DARK OVERLAY */
+/* subtle “tech grid” feel */
+.bg::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.2;
+}
+
+/* ===== OVERLAY (IMPORTANT: NOT BLOCKING CLICKS) ===== */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(0,0,0,0.4), rgba(0,0,0,0.95));
+  background: radial-gradient(circle, rgba(0,0,0,0.2), rgba(0,0,0,0.85));
   z-index: -1;
+  pointer-events: none; /* 🔥 FIX: allows clicking links */
 }
 
 /* ===== CONTAINER ===== */
@@ -51,7 +63,7 @@ h1 {
   color: white;
   text-align: center;
   letter-spacing: 6px;
-  text-shadow: 0 0 20px rgba(56,189,248,0.3);
+  text-shadow: 0 0 25px rgba(56,189,248,0.25);
   animation: flicker 3s infinite;
 }
 
@@ -66,7 +78,7 @@ p {
   border: 1px solid #1f2937;
   padding: 18px;
   margin: 18px 0;
-  border-radius: 10px;
+  border-radius: 12px;
   backdrop-filter: blur(6px);
   box-shadow: 0 0 15px rgba(56,189,248,0.08);
 }
@@ -124,21 +136,6 @@ Simple systems. No unnecessary control.
 </div>
 
 <div class="block">
-<h3>TOKEN LOGIC</h3>
-Supply: Fixed<br>
-Distribution: Community-based<br>
-Treasury: Defined allocation
-</div>
-
-<div class="block">
-<h3>ROADMAP</h3>
-Phase 1: Build<br>
-Phase 2: Launch<br>
-Phase 3: Community<br>
-Phase 4: Expansion
-</div>
-
-<div class="block">
 <h3>TOKENOMICS</h3>
 
 Total Supply: 1,000,000,000 MGOT<br><br>
@@ -155,6 +152,23 @@ Unknown holders: ~1.05%
 </div>
 
 <div class="block">
+<h3>ROADMAP</h3>
+Phase 1: Build<br>
+Phase 2: Launch<br>
+Phase 3: Community<br>
+Phase 4: Expansion
+</div>
+
+<div class="block">
 <h3>LINKS</h3>
 
-<a href="https
+<a href="https://solscan.io/token/54SW86tXqXRo7tCJJRcGAPmgw17#metadata" target="_blank">Solscan</a>
+<a href="https://t.me/MGOT_Community" target="_blank">Telegram</a>
+<a href="https://twitter.com" target="_blank">Twitter</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
