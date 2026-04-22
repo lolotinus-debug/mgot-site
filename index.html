@@ -2,342 +2,182 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MGOT</title>
 
 <style>
-
-/* =========================
-   GLOBAL
-========================= */
 body {
-  margin: 0;
+  margin:0;
   font-family: monospace;
-  color: #d1d5db;
-  background: #05070d;
-  overflow-x: hidden;
+  background:#05070d;
+  color:#d1d5db;
 }
 
-/* =========================
-   FUTURISTIC BACKGROUND
-========================= */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -4;
-
-  background:
-    radial-gradient(circle at 15% 20%, rgba(56,189,248,0.18), transparent 35%),
-    radial-gradient(circle at 80% 30%, rgba(34,197,94,0.14), transparent 35%),
-    radial-gradient(circle at 50% 80%, rgba(168,85,247,0.12), transparent 40%),
-    #05070d;
-
-  animation: drift 14s ease-in-out infinite alternate;
-}
-
-/* GRID */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -3;
-  pointer-events: none;
-
-  background:
-    linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px);
-
-  background-size: 80px 80px;
-  opacity: 0.35;
-}
-
-/* SCAN */
-.scan {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
-  background: linear-gradient(to bottom, transparent, rgba(56,189,248,0.05), transparent);
-  animation: scan 7s linear infinite;
-}
-
-/* PARTICLES */
-.particles::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 45px 45px;
-  animation: float 25s linear infinite;
-  opacity: 0.25;
-}
-
-/* =========================
-   LAYOUT
-========================= */
 .container {
-  max-width: 950px;
-  margin: auto;
-  padding: 40px;
+  max-width:900px;
+  margin:auto;
+  padding:30px;
 }
 
-/* =========================
-   MACGYVER “AVATAR”
-========================= */
-.macgyver {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.macgyver svg {
-  width: 150px;
-  height: 150px;
-  filter: drop-shadow(0 0 15px rgba(56,189,248,0.4));
-}
-
-/* =========================
-   LOGO
-========================= */
 .logo {
-  font-size: 62px;
-  text-align: center;
-  letter-spacing: 8px;
-  color: white;
-  animation: glitch 2.2s infinite;
+  text-align:center;
+  font-size:50px;
+  color:white;
+  letter-spacing:6px;
+  margin-bottom:10px;
 }
 
-/* =========================
-   SECTIONS
-========================= */
+.subtitle {
+  text-align:center;
+  color:#9ca3af;
+  margin-bottom:30px;
+}
+
 .block {
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid #1f2937;
-  padding: 16px;
-  margin: 14px 0;
-  border-radius: 12px;
-  backdrop-filter: blur(6px);
-  transition: 0.3s;
+  background:#0f172a;
+  border:1px solid #1f2937;
+  padding:20px;
+  border-radius:10px;
+  margin-bottom:20px;
 }
 
-.block:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 25px rgba(56,189,248,0.15);
+.block h3 {
+  color:#38bdf8;
+  margin-bottom:10px;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
 }
 
-/* COLORS */
-.blue { color: #38bdf8; }
-.green { color: #22c55e; }
-
-/* LINKS */
-a {
-  color: #38bdf8;
-  display: block;
-  margin: 6px 0;
-  text-decoration: none;
+button {
+  padding:10px;
+  border:1px solid #38bdf8;
+  background:none;
+  color:#38bdf8;
+  cursor:pointer;
 }
 
-a:hover {
-  color: white;
+button:hover {
+  color:white;
+  border-color:white;
 }
 
-/* =========================
-   ANIMATIONS
-========================= */
-@keyframes drift {
-  0% { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(18deg); }
+.green { color:#22c55e; }
+
+canvas {
+  width:100%;
+  height:120px;
 }
 
-@keyframes scan {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
+/* mobile */
+@media(max-width:700px){
+  .grid { grid-template-columns:1fr; }
 }
-
-@keyframes float {
-  0% { transform: translate(0,0); }
-  100% { transform: translate(-60px,-60px); }
-}
-
-@keyframes glitch {
-  0% { transform: translate(0); }
-  20% { transform: translate(-1px,1px); }
-  40% { transform: translate(1px,-1px); }
-  60% { transform: translate(-1px,-1px); }
-  80% { transform: translate(1px,1px); }
-  100% { transform: translate(0); }
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="scan"></div>
-<div class="particles"></div>
-
 <div class="container">
 
-<!-- MACGYVER SVG (SAFE IMAGE) -->
-<div class="macgyver">
-<svg viewBox="0 0 100 100">
-  <rect x="10" y="10" width="80" height="80" rx="12" fill="#0f172a" stroke="#38bdf8"/>
-  <circle cx="50" cy="40" r="14" fill="#38bdf8"/>
-  <rect x="30" y="60" width="40" height="20" fill="#22c55e"/>
-</svg>
-</div>
-
 <div class="logo">MGOT</div>
+<div class="subtitle">Built with logic. Not hype.</div>
 
-<p style="text-align:center;">Built with logic. Not hype.</p>
-
----
-
-# 1. WHAT IS MGOT
+<!-- WHAT -->
 <div class="block">
-<h3 class="blue">WHAT IS MGOT</h3>
-
-MGOT is a Solana-based experimental token inspired by the legendary TV series <b>MacGyver</b>.<br><br>
-
-It represents problem-solving intelligence, improvisation, and engineering logic under extreme constraints — just like the character who could turn almost anything into a solution.<br><br>
-
-MGOT applies that mindset to blockchain systems: adaptive design, minimal assumptions, maximum efficiency.
+<h3>WHAT IS MGOT</h3>
+MGOT is a Solana token inspired by the TV series MacGyver.<br><br>
+It represents problem-solving, improvisation and building systems from minimal resources.<br><br>
+Just like MacGyver, MGOT focuses on logic over hype.
 </div>
 
----
-
-# 2. TOKENOMICS
+<!-- TOKENOMICS -->
 <div class="block">
-<h3 class="blue">TOKENOMICS</h3>
-
-Total Supply: 1,000,000,000 MGOT<br><br>
-
+<h3>TOKENOMICS</h3>
 Airdrop: 39.99%<br>
-Primary LP: 21.78%<br>
-Unlock Treasury: 4.95%<br>
-Locked Treasury: 10%<br>
-Marketing: 8%<br>
+LP: 21.78%<br>
+Treasury: 14.95%<br>
 Staking: 8%<br>
-Vesting: 6%<br>
-Orca LP: 0.23%
+Marketing: 8%
 </div>
 
----
-
-# 3. LIVE PRICE + HOLDERS
+<!-- LIVE -->
 <div class="grid">
 
 <div class="block">
-<h3 class="blue">LIVE PRICE (SIM)</h3>
-<canvas id="chart" width="300" height="120"></canvas>
+<h3>LIVE PRICE</h3>
+<canvas id="chart"></canvas>
 </div>
 
 <div class="block">
-<h3 class="blue">HOLDERS</h3>
-<span id="holders" class="green">142</span>
+<h3>HOLDERS</h3>
+<span id="holders" class="green">150</span>
 </div>
 
 </div>
 
----
-
-# 4. MARKET
+<!-- MARKET -->
 <div class="block">
-<h3 class="blue">MARKET</h3>
-
-Trend: Stable Growth<br>
+<h3>MARKET</h3>
+Trend: Stable<br>
 Volatility: Medium<br>
-Sentiment: Community Driven<br>
-Liquidity: Locked
+Community: Growing
 </div>
 
----
-
-# 5. SYSTEM STATUS
+<!-- SYSTEM -->
 <div class="block">
-<h3 class="blue">SYSTEM STATUS</h3>
-
-✔ Solana Network: Active<br>
-✔ Mint Authority: REVOKED<br>
-✔ Freeze Authority: REVOKED<br>
-✔ Liquidity: LOCKED<br>
-✔ Smart Contract: Verified Logic
+<h3>SYSTEM STATUS</h3>
+<span class="green">✔ Mint: REVOKED</span><br>
+<span class="green">✔ Freeze: REVOKED</span><br>
+<span class="green">✔ Liquidity: LOCKED</span>
 </div>
 
----
-
-# 6. CONNECT WALLET
+<!-- WALLET -->
 <div class="block">
-<h3 class="blue">CONNECT WALLET</h3>
-
-<button onclick="openWallet()">Connect Phantom</button>
-<button onclick="openWallet()">Connect Solflare</button>
+<h3>CONNECT WALLET</h3>
+<button onclick="alert('Wallet UI only')">Phantom</button>
 </div>
 
----
-
-# 7. INVESTOR PITCH
+<!-- PITCH -->
 <div class="block">
-<h3 class="blue">INVESTOR PITCH</h3>
-
-MGOT represents a MacGyver-inspired engineering narrative in Web3 infrastructure.
-
-<br><br>
-
-<button onclick="downloadPitch()">Download Pitch (HTML)</button>
+<h3>INVESTOR PITCH</h3>
+<button onclick="downloadPitch()">Download</button>
 </div>
 
----
-
-# 8. LINKS
+<!-- LINKS -->
 <div class="block">
-<h3 class="blue">LINKS</h3>
-
+<h3>LINKS</h3>
 <a href="https://solscan.io/token/54SW86tXqXRo7tCJJRcGAPmgw17#metadata">Solscan</a>
 <a href="https://t.me/MGOT_Community">Telegram</a>
-<a href="https://twitter.com">Twitter</a>
-
 </div>
 
-</div>
-
-<!-- WALLET MODAL -->
-<div id="wallet" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;">
-  <div style="background:#0f172a;padding:20px;border:1px solid #38bdf8;border-radius:12px;">
-    <h3>Wallet Connect</h3>
-    <button onclick="closeWallet()">Close</button>
-  </div>
 </div>
 
 <script>
 
 /* HOLDERS */
-let h = 142;
+let h = 150;
 setInterval(()=>{
-  h += Math.floor(Math.random()*3);
+  h += Math.floor(Math.random()*2);
   document.getElementById("holders").innerText = h;
-}, 1500);
+},1500);
 
-/* PRICE CHART */
+/* CHART */
 const c = document.getElementById("chart");
 const ctx = c.getContext("2d");
 
 let data = Array.from({length:30},()=>Math.random()*100);
 
 function draw(){
-  ctx.clearRect(0,0,300,120);
+  ctx.clearRect(0,0,c.width,c.height);
   ctx.beginPath();
   ctx.strokeStyle="#38bdf8";
 
   data.forEach((v,i)=>{
-    ctx.lineTo(i*10,120-v);
+    ctx.lineTo(i*(c.width/30), c.height-v);
   });
 
   ctx.stroke();
@@ -345,23 +185,15 @@ function draw(){
   data.shift();
   data.push(Math.random()*100);
 }
-setInterval(draw,800);
 
-/* WALLET */
-function openWallet(){
-  document.getElementById("wallet").style.display="flex";
-}
-function closeWallet(){
-  document.getElementById("wallet").style.display="none";
-}
+setInterval(draw,800);
 
 /* PITCH */
 function downloadPitch(){
-  const html = "<h1>MGOT INVESTOR PITCH</h1><p>MacGyver-inspired Solana token.</p>";
-  const blob = new Blob([html],{type:"text/html"});
+  const blob = new Blob(["MGOT investor pitch"],{type:"text/plain"});
   const a=document.createElement("a");
   a.href=URL.createObjectURL(blob);
-  a.download="MGOT_PITCH.html";
+  a.download="MGOT.txt";
   a.click();
 }
 
