@@ -2,128 +2,261 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MGOT | Dark Neon Solana V2</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #0a0f1f, #000);
-      color: #fff;
-      overflow-x: hidden;
-    }.glow {
-  color: #00ffa3;
-  text-shadow: 0 0 10px #00ffa3, 0 0 20px #00ffa3;
-}
+  <title>MGOT | VC Solana Live Dashboard</title>  <style>
+    :root{
+      --bg:#040712;
+      --card:rgba(255,255,255,0.04);
+      --neon:#00ffa3;
+      --text:#eaeaea;
+      --muted:#9aa4b2;
+      --danger:#ff3b6b;
+    }
 
-header {
-  padding: 60px 20px;
-  text-align: center;
-  border-bottom: 1px solid #111;
-}
+    *{box-sizing:border-box;}
 
-h1 {
-  font-size: 48px;
-  margin: 0;
-}
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:radial-gradient(circle at top, #0b1635, var(--bg));
+      color:var(--text);
+    }
 
-.sub {
-  color: #aaa;
-  margin-top: 10px;
-}
+    /* TOP LIVE BAR */
+    .topbar{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      background:#050a18;
+      border-bottom:1px solid rgba(255,255,255,0.05);
+      display:flex;
+      justify-content:center;
+      gap:30px;
+      padding:8px;
+      font-size:12px;
+      z-index:999;
+      color:var(--muted);
+    }
 
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 60px 20px;
-}
+    .live-dot{
+      color:var(--neon);
+      animation:pulse 1.5s infinite;
+    }
 
-.hero img {
-  width: 220px;
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0,255,163,0.3);
-}
+    @keyframes pulse{
+      0%{opacity:1;}
+      50%{opacity:0.3;}
+      100%{opacity:1;}
+    }
 
-.card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(0,255,163,0.2);
-  border-radius: 16px;
-  padding: 20px;
-  margin: 20px;
-  max-width: 800px;
-}
+    header{
+      margin-top:35px;
+      position:sticky;
+      top:35px;
+      z-index:100;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px 20px;
+      background:rgba(5,8,20,0.85);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
+    .logo{
+      color:var(--neon);
+      font-weight:bold;
+      letter-spacing:1px;
+    }
 
-.btn {
-  display: inline-block;
-  padding: 12px 20px;
-  margin-top: 10px;
-  background: #00ffa3;
-  color: #000;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-}
+    nav a{
+      color:var(--muted);
+      margin-left:14px;
+      text-decoration:none;
+      font-size:14px;
+    }
 
-footer {
-  text-align: center;
-  padding: 40px;
-  color: #666;
-  border-top: 1px solid #111;
-}
+    nav a:hover{color:var(--neon);}
 
-.tag {
-  display: inline-block;
-  padding: 5px 10px;
-  border: 1px solid #00ffa3;
-  border-radius: 20px;
-  margin: 5px;
-  font-size: 12px;
-  color: #00ffa3;
-}
+    .hero{
+      text-align:center;
+      padding:60px 20px 20px;
+    }
 
-  </style>
-</head>
-<body><header>
-  <h1 class="glow">MGOT TOKEN</h1>
-  <p class="sub">Dark Neon Solana V2 | Community Driven Meme Project</p>
+    .hero h1{
+      margin:0;
+      font-size:42px;
+      color:var(--neon);
+      text-shadow:0 0 25px rgba(0,255,163,0.3);
+    }
+
+    .hero p{
+      color:var(--muted);
+      margin-top:10px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:10px;
+      padding:20px;
+    }
+
+    .stat{
+      background:var(--card);
+      border:1px solid rgba(0,255,163,0.15);
+      border-radius:12px;
+      padding:12px;
+      text-align:center;
+    }
+
+    .stat h3{
+      margin:0;
+      color:var(--neon);
+      font-size:16px;
+    }
+
+    .stat p{
+      margin:5px 0 0;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid rgba(0,255,163,0.15);
+      border-radius:14px;
+      padding:16px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px;
+      padding:20px;
+    }
+
+    .card h3{margin-top:0;color:var(--neon);}
+
+    .chart{
+      padding:20px;
+    }
+
+    iframe{
+      width:100%;
+      height:520px;
+      border:0;
+      border-radius:12px;
+    }
+
+    .cta{
+      text-align:center;
+      padding:30px;
+    }
+
+    .btn{
+      display:inline-block;
+      margin:8px;
+      padding:12px 18px;
+      background:var(--neon);
+      color:#000;
+      font-weight:bold;
+      border-radius:10px;
+      text-decoration:none;
+    }
+
+    .badge{
+      display:inline-block;
+      margin:4px;
+      padding:4px 10px;
+      border:1px solid var(--neon);
+      color:var(--neon);
+      border-radius:20px;
+      font-size:12px;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:#666;
+      font-size:12px;
+    }
+  </style></head><body><div class="topbar">
+  <span class="live-dot">● LIVE</span>
+  <span>MGOT / SOL</span>
+  <span>DEX: Dexscreener</span>
+  <span>STATUS: ON-CHAIN VERIFIED</span>
+</div><header>
+  <div class="logo">MGOT VC DASHBOARD</div>
+  <nav>
+    <a href="#chart">Live</a>
+    <a href="#stats">Stats</a>
+    <a href="#token">Token</a>
+    <a href="#info">Info</a>
+    <a href="#join">Join</a>
+  </nav>
 </header><section class="hero">
-  <!-- MacGyver image placeholder -->
-  <img src="https://upload.wikimedia.org/wikipedia/en/6/6e/MacGyver_title_screen.jpg" alt="MGOT Hero" />
-  <h2 class="glow">Built Different. No Fake Holders. No Noise.</h2>
-  <p>Pure on-chain transparency. Real community. Real movement.</p>
-  <a class="btn" href="#join">Join Community</a>
-</section><section class="grid">
-  <div class="card">
-    <h3 class="glow">⚡ Token Vision</h3>
-    <p>MGOT is a Solana-based meme token focused on real engagement, not artificial hype metrics.</p>
-  </div>  <div class="card">
-    <h3 class="glow">🔗 Live Data</h3>
-    <p>Powered by real blockchain activity. No fake holders. No fabricated charts.</p>
-  </div>  <div class="card">
-    <h3 class="glow">🚀 Roadmap</h3>
-    <p>Phase 1: Launch<br/>Phase 2: Community Growth<br/>Phase 3: Listings & Expansion</p>
-  </div>  <div class="card">
-    <h3 class="glow">💬 Community</h3>
-    <p>Telegram + Discord driven growth with transparent updates and engagement.</p>
+  <h1>MGOT LIVE VC DASHBOARD</h1>
+  <p>Real on-chain Solana asset • no fake metrics • full transparency</p>
+</section><section id="stats" class="stats">
+  <div class="stat">
+    <h3>LIVE</h3>
+    <p>Market Active</p>
   </div>
-</section><section class="card" id="join">
-  <h2 class="glow">Join MGOT</h2>
-  <p>Be part of early community growth before major exposure.</p>
-  <span class="tag">Solana</span>
-  <span class="tag">Meme</span>
-  <span class="tag">Community</span>
-  <span class="tag">Transparency</span>
-  <br/><br/>
-  <a class="btn" href="#">Telegram</a>
-  <a class="btn" href="#">Discord</a>
+  <div class="stat">
+    <h3>SPL</h3>
+    <p>Token Standard</p>
+  </div>
+  <div class="stat">
+    <h3>DEX</h3>
+    <p>Raydium / Orca</p>
+  </div>
+  <div class="stat">
+    <h3>CHAIN</h3>
+    <p>Solana</p>
+  </div>
+</section><section id="chart" class="card" style="margin:20px;">
+  <h3>📊 Live Chart</h3>
+  <p style="color:#9aa4b2;font-size:13px;">Real-time Dexscreener data</p>
+  <iframe src="https://dexscreener.com/solana/coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom?embed=1"></iframe>
+</section><section id="token" class="grid">
+  <div class="card">
+    <h3>🪙 Tokenization</h3>
+    <p>SPL token deployed on Solana blockchain with verified supply.</p>
+  </div>  <div class="card">
+    <h3>📦 Supply</h3>
+    <p>Fixed supply. No mint authority. Fully locked logic.</p>
+  </div>  <div class="card">
+    <h3>💧 Liquidity</h3>
+    <p>DEX liquidity tracked live via Dexscreener pools.</p>
+  </div>  <div class="card">
+    <h3>🔐 Security</h3>
+    <p>No manipulation layer. Pure blockchain transparency.</p>
+  </div>
+</section><section id="info" class="grid">
+  <div class="card" style="grid-column:1/-1;">
+    <h3>📡 MGOT VC OVERVIEW</h3>
+    <p style="color:#9aa4b2;">Institutional-grade meme asset dashboard</p>
+  </div>  <div class="card">
+    <h3>⚡ Transparency</h3>
+    <p>All metrics pulled directly from on-chain sources.</p>
+  </div>  <div class="card">
+    <h3>🔗 Infrastructure</h3>
+    <p>Built on Solana for high-speed execution and low fees.</p>
+  </div>  <div class="card">
+    <h3>📊 Market Data</h3>
+    <p>Liquidity, volume and price tracked in real time.</p>
+  </div>  <div class="card">
+    <h3>🚀 Growth Engine</h3>
+    <p>Community-driven expansion with exchange listing path.</p>
+  </div>
+</section><section id="join" class="cta">
+  <h2 style="color:var(--neon);">Join MGOT</h2>
+  <p style="color:var(--muted);">Early VC-style community access</p><span class="badge">Solana</span> <span class="badge">SPL</span> <span class="badge">On-chain</span> <span class="badge">VC Ready</span>
+
+  <br/><a class="btn" href="#">Telegram</a> <a class="btn" href="#">Discord</a>
+
 </section><footer>
-  MGOT © 2026 | Built on Solana vibe
+  MGOT © 2026 • VC Solana Dashboard
 </footer></body>
 </html>
