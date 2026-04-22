@@ -14,10 +14,11 @@ body {
   font-family: monospace;
   color: #d1d5db;
   background: #05070d;
+  overflow-x: hidden;
 }
 
 /* =========================
-   FUTURISTIC DASHBOARD BACKGROUND
+   BACKGROUND (SAFE DASHBOARD)
 ========================= */
 body::before {
   content: "";
@@ -26,10 +27,9 @@ body::before {
   z-index: -4;
 
   background:
-    radial-gradient(circle at 10% 20%, rgba(56,189,248,0.18), transparent 35%),
-    radial-gradient(circle at 80% 20%, rgba(34,197,94,0.14), transparent 35%),
-    radial-gradient(circle at 40% 80%, rgba(168,85,247,0.12), transparent 40%),
-    radial-gradient(circle at 90% 70%, rgba(255,255,255,0.05), transparent 40%),
+    radial-gradient(circle at 15% 20%, rgba(56,189,248,0.18), transparent 35%),
+    radial-gradient(circle at 80% 30%, rgba(34,197,94,0.14), transparent 35%),
+    radial-gradient(circle at 50% 80%, rgba(168,85,247,0.12), transparent 40%),
     #05070d;
 
   animation: drift 14s ease-in-out infinite alternate;
@@ -51,35 +51,22 @@ body::after {
   opacity: 0.35;
 }
 
-/* SCAN LINE */
+/* SCAN */
 .scan {
   position: fixed;
   inset: 0;
   z-index: -2;
   pointer-events: none;
-
-  background: linear-gradient(to bottom,
-    transparent,
-    rgba(56,189,248,0.05),
-    transparent
-  );
-
+  background: linear-gradient(to bottom, transparent, rgba(56,189,248,0.05), transparent);
   animation: scan 7s linear infinite;
 }
 
 /* PARTICLES */
-.particles {
+.particles::before {
+  content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
-  pointer-events: none;
-}
-
-.particles::before {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 200%;
   background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 45px 45px;
   animation: float 25s linear infinite;
@@ -87,55 +74,56 @@ body::after {
 }
 
 /* =========================
-   LAYOUT
+   CONTAINER
 ========================= */
 .container {
-  max-width: 900px;
+  max-width: 950px;
   margin: auto;
   padding: 40px;
 }
 
 /* =========================
-   MACGYVER IMAGE
+   GLITCH LOGO
 ========================= */
-.hero-img {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.hero-img img {
-  width: 170px;
-  height: 170px;
-  border-radius: 12px;
-  border: 1px solid #1f2937;
-  box-shadow: 0 0 25px rgba(56,189,248,0.25);
-}
-
-/* =========================
-   TITLE
-========================= */
-h1 {
-  font-size: 60px;
-  color: white;
+.logo {
+  font-size: 64px;
   text-align: center;
+  color: white;
   letter-spacing: 8px;
+  animation: glitch 2.2s infinite;
   text-shadow: 0 0 25px rgba(56,189,248,0.25);
 }
 
-p {
+/* =========================
+   HERO
+========================= */
+.hero {
   text-align: center;
-  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+.hero button {
+  margin: 5px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #38bdf8;
+  background: transparent;
+  color: #38bdf8;
+  cursor: pointer;
+}
+
+.hero button:hover {
+  color: white;
+  border-color: white;
 }
 
 /* =========================
-   DASHBOARD GRID BOXES
+   GRID
 ========================= */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
-  margin-top: 20px;
 }
 
 .block {
@@ -143,7 +131,6 @@ p {
   border: 1px solid #1f2937;
   padding: 16px;
   border-radius: 12px;
-  backdrop-filter: blur(6px);
   transition: 0.3s;
 }
 
@@ -153,27 +140,60 @@ p {
 }
 
 /* COLORS */
-.green { color: #22c55e; }
 .blue { color: #38bdf8; }
+.green { color: #22c55e; }
 
-/* LINKS */
-a {
-  color: #38bdf8;
-  display: block;
-  margin: 6px 0;
-  text-decoration: none;
+/* =========================
+   MACGYVER SVG (SAFE IMAGE)
+========================= */
+.macgyver {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
-a:hover {
-  color: white;
+.macgyver svg {
+  width: 140px;
+  height: 140px;
+  filter: drop-shadow(0 0 10px rgba(56,189,248,0.4));
+}
+
+/* =========================
+   CHART
+========================= */
+canvas {
+  width: 100%;
+  height: 120px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+
+/* =========================
+   WALLET MODAL
+========================= */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #0f172a;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #38bdf8;
+  width: 300px;
 }
 
 /* =========================
    ANIMATIONS
 ========================= */
 @keyframes drift {
-  0% { filter: hue-rotate(0deg) brightness(1); }
-  100% { filter: hue-rotate(18deg) brightness(1.2); }
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(18deg); }
 }
 
 @keyframes scan {
@@ -186,6 +206,15 @@ a:hover {
   100% { transform: translate(-60px,-60px); }
 }
 
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-1px,1px); }
+  40% { transform: translate(1px,-1px); }
+  60% { transform: translate(-1px,-1px); }
+  80% { transform: translate(1px,1px); }
+  100% { transform: translate(0); }
+}
+
 </style>
 </head>
 
@@ -194,89 +223,152 @@ a:hover {
 <div class="scan"></div>
 <div class="particles"></div>
 
-<div class="container">
-
-<!-- MACGYVER IMAGE -->
-<div class="hero-img">
-  <img src="https://upload.wikimedia.org/wikipedia/en/6/6d/MacGyver_title_card.jpg" alt="MacGyver">
+<!-- MACGYVER SVG -->
+<div class="macgyver">
+<svg viewBox="0 0 100 100">
+  <circle cx="50" cy="40" r="18" fill="#38bdf8"/>
+  <rect x="30" y="60" width="40" height="30" fill="#22c55e"/>
+</svg>
 </div>
 
-<h1>MGOT</h1>
-<p>Built with logic. Not hype.</p>
+<div class="container">
+
+<div class="logo">MGOT</div>
+
+<p style="text-align:center;">Built with logic. Not hype.</p>
+
+<!-- HERO -->
+<div class="hero">
+  <button onclick="openWallet()">Connect Wallet</button>
+  <button onclick="downloadPitch()">Investor Pitch</button>
+</div>
 
 <!-- DASHBOARD -->
 <div class="grid">
 
 <div class="block">
+<h3 class="blue">LIVE PRICE</h3>
+<canvas id="chart"></canvas>
+</div>
+
+<div class="block">
+<h3 class="blue">HOLDERS</h3>
+<span id="holders" class="green">0</span>
+</div>
+
+<div class="block">
 <h3 class="blue">SYSTEM STATUS</h3>
-✔ Network: Solana<br>
-✔ Contract: Active<br>
-✔ Mint: REVOKED<br>
-✔ Freeze: REVOKED
+✔ Solana Active<br>
+✔ Mint Revoked<br>
+✔ Liquidity Locked
 </div>
 
 <div class="block">
-<h3 class="blue">LIQUIDITY</h3>
-Status: Locked<br>
-Primary LP: Active<br>
-Orca LP: 0.23%
-</div>
-
-<div class="block">
-<h3 class="blue">MARKET SIGNAL</h3>
-Trend: Neutral<br>
-Volatility: Medium<br>
-Community: Growing
-</div>
-
-<div class="block">
-<h3 class="blue">WALLET DISTRIBUTION</h3>
-Airdrop: 39.99%<br>
-Treasury: 14.95%<br>
-Staking: 8%<br>
-Marketing: 8%
+<h3 class="blue">MARKET</h3>
+Trend: Stable<br>
+Volatility: Medium
 </div>
 
 </div>
 
 <!-- DESCRIPTION -->
-<div class="block" style="margin-top:20px;">
+<div class="block">
 <h3>WHAT IS MGOT</h3>
 
-MGOT is a Solana-based experimental token inspired by the legendary TV series <b>MacGyver</b>.<br><br>
+MGOT is a Solana token inspired by the legendary TV series <b>MacGyver</b>.<br><br>
 
-The project represents the mindset of the character — solving impossible problems using creativity, improvisation, and minimal resources instead of brute force.<br><br>
+It reflects his unmatched ability to solve extreme situations using creativity, intelligence, and minimal resources.<br><br>
 
-Just like MacGyver’s iconic ability to engineer solutions in extreme conditions, MGOT reflects adaptive system design, resilience, and unconventional thinking applied to blockchain infrastructure.
+MGOT represents adaptive blockchain engineering, improvisation, and problem-solving logic applied to decentralized systems.
 </div>
 
 <!-- TOKENOMICS -->
 <div class="block">
 <h3>TOKENOMICS</h3>
 
-Total Supply: 1,000,000,000 MGOT<br><br>
-
-Airdrop: 39.99%<br>
-Primary LP: 21.78%<br>
-Unlock Treasury: 4.95%<br>
-Locked Treasury: 10%<br>
-Marketing: 8%<br>
-Staking: 8%<br>
-Vesting: 6%<br>
-Orca LP: 0.23%
-</div>
-
-<!-- LINKS -->
-<div class="block">
-<h3>LINKS</h3>
-
-<a href="https://solscan.io/token/54SW86tXqXRo7tCJJRcGAPmgw17#metadata">Solscan</a>
-<a href="https://t.me/MGOT_Community">Telegram</a>
-<a href="https://twitter.com">Twitter</a>
-
+Airdrop 39.99%<br>
+LP 21.78%<br>
+Treasury 14.95%<br>
+Staking 8%<br>
+Marketing 8%
 </div>
 
 </div>
+
+<!-- WALLET MODAL -->
+<div class="modal" id="walletModal">
+  <div class="modal-content">
+    <h3>Connect Wallet</h3>
+    <button onclick="closeWallet()">Phantom</button>
+    <button onclick="closeWallet()">Solflare</button>
+  </div>
+</div>
+
+<script>
+
+/* =========================
+   HOLDERS COUNTER
+========================= */
+let h = 120;
+setInterval(() => {
+  h += Math.floor(Math.random() * 5);
+  document.getElementById("holders").innerText = h;
+}, 1500);
+
+/* =========================
+   FAKE PRICE CHART
+========================= */
+const c = document.getElementById("chart");
+const ctx = c.getContext("2d");
+
+let data = Array.from({length: 30}, () => Math.random()*50);
+
+function draw(){
+  ctx.clearRect(0,0,c.width,c.height);
+  ctx.beginPath();
+  ctx.strokeStyle = "#38bdf8";
+
+  data.forEach((v,i)=>{
+    ctx.lineTo(i*10, 100-v);
+  });
+
+  ctx.stroke();
+
+  data.shift();
+  data.push(Math.random()*50);
+}
+
+setInterval(draw, 800);
+
+/* =========================
+   WALLET MODAL
+========================= */
+function openWallet(){
+  document.getElementById("walletModal").style.display="flex";
+}
+
+function closeWallet(){
+  document.getElementById("walletModal").style.display="none";
+}
+
+/* =========================
+   INVESTOR PITCH DOWNLOAD
+========================= */
+function downloadPitch(){
+  const html = `
+  <h1>MGOT INVESTOR PITCH</h1>
+  <p>MacGyver-inspired Solana infrastructure token.</p>
+  <p>Adaptive systems. Community-driven growth.</p>
+  `;
+
+  const blob = new Blob([html], {type:"text/html"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "MGOT_PITCH.html";
+  a.click();
+}
+
+</script>
 
 </body>
 </html>
