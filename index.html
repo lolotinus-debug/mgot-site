@@ -6,64 +6,82 @@
 
 <style>
 
-/* =======================
+/* =========================
    GLOBAL
-======================= */
+========================= */
 body {
   margin: 0;
   font-family: monospace;
   color: #d1d5db;
   background: #05070d;
+  overflow-x: hidden;
 }
 
-/* =======================
-   FUTURISTIC BACKGROUND
-======================= */
+/* =========================
+   MACGYVER FUTURISTIC BACKGROUND
+========================= */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: -3;
 
+  /* sci-fi lab gradient */
   background:
-    radial-gradient(circle at 20% 20%, rgba(56,189,248,0.15), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(34,197,94,0.12), transparent 40%),
-    radial-gradient(circle at 50% 80%, rgba(168,85,247,0.10), transparent 45%),
+    radial-gradient(circle at 15% 20%, rgba(56,189,248,0.18), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(34,197,94,0.14), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(168,85,247,0.12), transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03), transparent 60%),
     #05070d;
 
-  animation: bgMove 12s ease-in-out infinite alternate;
+  animation: bgShift 12s ease-in-out infinite alternate;
 }
 
-/* =======================
-   HUD GRID EFFECT
-======================= */
+/* GRID / ENGINEERING BLUEPRINT */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
+  z-index: -2;
   pointer-events: none;
-  z-index: -1;
 
   background:
-    linear-gradient(rgba(56,189,248,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56,189,248,0.03) 1px, transparent 1px);
+    linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px);
 
-  background-size: 80px 80px;
-  opacity: 0.4;
+  background-size: 70px 70px;
+  opacity: 0.35;
 }
 
-/* =======================
-   CONTAINER
-======================= */
+/* SUBTLE SCAN LINE */
+.scan {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(56,189,248,0.05),
+    transparent
+  );
+
+  animation: scanMove 6s linear infinite;
+}
+
+/* =========================
+   LAYOUT
+========================= */
 .container {
   max-width: 850px;
   margin: auto;
   padding: 40px;
 }
 
-/* =======================
-   HERO VC SECTION
-======================= */
+/* =========================
+   HERO
+========================= */
 .hero {
   text-align: center;
   margin-bottom: 30px;
@@ -92,17 +110,19 @@ body::after {
 .hero a:hover {
   color: white;
   border-color: white;
+  box-shadow: 0 0 15px rgba(56,189,248,0.3);
 }
 
-/* =======================
+/* =========================
    TITLE
-======================= */
+========================= */
 h1 {
   font-size: 55px;
   color: white;
   text-align: center;
   letter-spacing: 6px;
-  text-shadow: 0 0 15px rgba(56,189,248,0.3);
+  text-shadow: 0 0 25px rgba(56,189,248,0.25);
+  animation: flicker 3s infinite;
 }
 
 p {
@@ -110,33 +130,34 @@ p {
   color: #9ca3af;
 }
 
-/* =======================
+/* =========================
    BLOCKS
-======================= */
+========================= */
 .block {
   background: rgba(15, 23, 42, 0.85);
   border: 1px solid #1f2937;
   padding: 18px;
   margin: 18px 0;
-  border-radius: 10px;
+  border-radius: 12px;
   transition: 0.3s;
+  backdrop-filter: blur(6px);
 }
 
 .block:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 25px rgba(56,189,248,0.12);
+  box-shadow: 0 0 25px rgba(56,189,248,0.15);
 }
 
-/* =======================
+/* =========================
    COLORS
-======================= */
+========================= */
 .green {
   color: #22c55e;
 }
 
-/* =======================
+/* =========================
    LINKS
-======================= */
+========================= */
 a {
   color: #38bdf8;
   display: block;
@@ -148,12 +169,23 @@ a:hover {
   color: white;
 }
 
-/* =======================
+/* =========================
    ANIMATIONS
-======================= */
-@keyframes bgMove {
+========================= */
+@keyframes bgShift {
   0% { filter: hue-rotate(0deg) brightness(1); }
-  100% { filter: hue-rotate(20deg) brightness(1.2); }
+  100% { filter: hue-rotate(18deg) brightness(1.2); }
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.85; }
+  100% { opacity: 1; }
+}
+
+@keyframes scanMove {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
 }
 
 </style>
@@ -161,10 +193,12 @@ a:hover {
 
 <body>
 
+<div class="scan"></div>
+
 <!-- HERO -->
 <div class="hero">
-  <h2>SOLANA INFRASTRUCTURE TOKEN</h2>
-  <p>MacGyver-grade logic. No hype. Pure system design.</p>
+  <h2>MACGYVER ENGINEERING PROTOCOL</h2>
+  <p>Adaptive systems. Improvised logic. Solana-grade resilience.</p>
 
   <a href="https://t.me/MGOT_Community">JOIN TELEGRAM</a>
   <a href="https://solscan.io/token/54SW86tXqXRo7tCJJRcGAPmgw17#metadata">VIEW SOLSCAN</a>
@@ -178,7 +212,7 @@ a:hover {
 <div class="block">
 <h3>WHAT IS MGOT</h3>
 MGOT is a Solana token built with a MacGyver mindset.<br>
-Simple systems. No unnecessary control.
+Engineering-first, no unnecessary control layers.
 </div>
 
 <div class="block">
