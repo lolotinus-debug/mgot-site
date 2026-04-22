@@ -21,7 +21,6 @@
       color:var(--text);
     }
 
-    /* TOP LIVE BAR */
     .topbar{
       position:fixed;
       top:0;
@@ -38,10 +37,7 @@
       color:var(--muted);
     }
 
-    .live-dot{
-      color:var(--neon);
-      animation:pulse 1.5s infinite;
-    }
+    .live-dot{color:var(--neon);animation:pulse 1.5s infinite;}
 
     @keyframes pulse{
       0%{opacity:1;}
@@ -90,10 +86,7 @@
       text-shadow:0 0 25px rgba(0,255,163,0.3);
     }
 
-    .hero p{
-      color:var(--muted);
-      margin-top:10px;
-    }
+    .hero p{color:var(--muted);margin-top:10px;}
 
     .stats{
       display:grid;
@@ -110,17 +103,8 @@
       text-align:center;
     }
 
-    .stat h3{
-      margin:0;
-      color:var(--neon);
-      font-size:16px;
-    }
-
-    .stat p{
-      margin:5px 0 0;
-      color:var(--muted);
-      font-size:12px;
-    }
+    .stat h3{margin:0;color:var(--neon);font-size:16px;}
+    .stat p{margin:5px 0 0;color:var(--muted);font-size:12px;}
 
     .card{
       background:var(--card);
@@ -138,10 +122,6 @@
 
     .card h3{margin-top:0;color:var(--neon);}
 
-    .chart{
-      padding:20px;
-    }
-
     iframe{
       width:100%;
       height:520px;
@@ -149,10 +129,7 @@
       border-radius:12px;
     }
 
-    .cta{
-      text-align:center;
-      padding:30px;
-    }
+    .cta{text-align:center;padding:30px;}
 
     .btn{
       display:inline-block;
@@ -175,6 +152,20 @@
       font-size:12px;
     }
 
+    .bar{
+      width:100%;
+      height:8px;
+      background:#111a2e;
+      border-radius:10px;
+      overflow:hidden;
+      margin-top:6px;
+    }
+
+    .fill{
+      height:100%;
+      background:var(--neon);
+    }
+
     footer{
       text-align:center;
       padding:30px;
@@ -184,79 +175,84 @@
   </style></head><body><div class="topbar">
   <span class="live-dot">● LIVE</span>
   <span>MGOT / SOL</span>
+  <span>ON-CHAIN VERIFIED</span>
   <span>DEX: Dexscreener</span>
-  <span>STATUS: ON-CHAIN VERIFIED</span>
 </div><header>
   <div class="logo">MGOT VC DASHBOARD</div>
   <nav>
     <a href="#chart">Live</a>
     <a href="#stats">Stats</a>
+    <a href="#wallets">Wallets</a>
     <a href="#token">Token</a>
     <a href="#info">Info</a>
-    <a href="#join">Join</a>
   </nav>
 </header><section class="hero">
   <h1>MGOT LIVE VC DASHBOARD</h1>
-  <p>Real on-chain Solana asset • no fake metrics • full transparency</p>
+  <p>Real on-chain Solana asset • transparent distribution • no fake metrics</p>
 </section><section id="stats" class="stats">
-  <div class="stat">
-    <h3>LIVE</h3>
-    <p>Market Active</p>
-  </div>
-  <div class="stat">
-    <h3>SPL</h3>
-    <p>Token Standard</p>
-  </div>
-  <div class="stat">
-    <h3>DEX</h3>
-    <p>Raydium / Orca</p>
-  </div>
-  <div class="stat">
-    <h3>CHAIN</h3>
-    <p>Solana</p>
-  </div>
+  <div class="stat"><h3>LIVE</h3><p>Market Active</p></div>
+  <div class="stat"><h3>SPL</h3><p>Token Standard</p></div>
+  <div class="stat"><h3>DEX</h3><p>Raydium / Orca</p></div>
+  <div class="stat"><h3>CHAIN</h3><p>Solana</p></div>
 </section><section id="chart" class="card" style="margin:20px;">
   <h3>📊 Live Chart</h3>
-  <p style="color:#9aa4b2;font-size:13px;">Real-time Dexscreener data</p>
   <iframe src="https://dexscreener.com/solana/coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom?embed=1"></iframe>
-</section><section id="token" class="grid">
-  <div class="card">
+</section><section id="wallets" class="grid">  <div class="card">
+    <h3>💧 Liquidity Pool</h3>
+    <p>40%</p>
+    <div class="bar"><div class="fill" style="width:40%"></div></div>
+  </div>  <div class="card">
+    <h3>🌍 Community Allocation</h3>
+    <p>35%</p>
+    <div class="bar"><div class="fill" style="width:35%"></div></div>
+  </div>  <div class="card">
+    <h3>🏢 Treasury (Development)</h3>
+    <p>15%</p>
+    <div class="bar"><div class="fill" style="width:15%"></div></div>
+  </div>  <div class="card">
+    <h3>📢 Marketing & Growth</h3>
+    <p>7%</p>
+    <div class="bar"><div class="fill" style="width:7%"></div></div>
+  </div>  <div class="card">
+    <h3>👥 Team Allocation</h3>
+    <p>3%</p>
+    <div class="bar"><div class="fill" style="width:3%"></div></div>
+  </div></section><section id="token" class="grid">  <div class="card">
     <h3>🪙 Tokenization</h3>
-    <p>SPL token deployed on Solana blockchain with verified supply.</p>
+    <p>SPL token deployed on Solana blockchain.</p>
   </div>  <div class="card">
     <h3>📦 Supply</h3>
-    <p>Fixed supply. No mint authority. Fully locked logic.</p>
+    <p>Fixed supply. No hidden mint authority.</p>
   </div>  <div class="card">
     <h3>💧 Liquidity</h3>
-    <p>DEX liquidity tracked live via Dexscreener pools.</p>
+    <p>Tracked live via Dexscreener pools.</p>
   </div>  <div class="card">
     <h3>🔐 Security</h3>
-    <p>No manipulation layer. Pure blockchain transparency.</p>
-  </div>
-</section><section id="info" class="grid">
-  <div class="card" style="grid-column:1/-1;">
+    <p>No manipulation. Fully on-chain verified.</p>
+  </div></section><section id="info" class="grid">  <div class="card" style="grid-column:1/-1;">
     <h3>📡 MGOT VC OVERVIEW</h3>
-    <p style="color:#9aa4b2;">Institutional-grade meme asset dashboard</p>
+    <p style="color:#9aa4b2;">Institutional-grade Solana dashboard</p>
   </div>  <div class="card">
     <h3>⚡ Transparency</h3>
-    <p>All metrics pulled directly from on-chain sources.</p>
+    <p>All data sourced from blockchain.</p>
   </div>  <div class="card">
     <h3>🔗 Infrastructure</h3>
-    <p>Built on Solana for high-speed execution and low fees.</p>
+    <p>Built on Solana for speed and scalability.</p>
   </div>  <div class="card">
     <h3>📊 Market Data</h3>
-    <p>Liquidity, volume and price tracked in real time.</p>
+    <p>Live price, liquidity, volume tracking.</p>
   </div>  <div class="card">
     <h3>🚀 Growth Engine</h3>
-    <p>Community-driven expansion with exchange listing path.</p>
-  </div>
-</section><section id="join" class="cta">
+    <p>Community-driven expansion model.</p>
+  </div></section><section class="cta">
   <h2 style="color:var(--neon);">Join MGOT</h2>
-  <p style="color:var(--muted);">Early VC-style community access</p><span class="badge">Solana</span> <span class="badge">SPL</span> <span class="badge">On-chain</span> <span class="badge">VC Ready</span>
-
-  <br/><a class="btn" href="#">Telegram</a> <a class="btn" href="#">Discord</a>
-
+  <span class="badge">Solana</span>
+  <span class="badge">SPL</span>
+  <span class="badge">On-chain</span>
+  <span class="badge">VC Ready</span>  <br/>
+  <a class="btn" href="#">Telegram</a>
+  <a class="btn" href="#">Discord</a>
 </section><footer>
-  MGOT © 2026 • VC Solana Dashboard
+  MGOT © 2026 • VC Dashboard
 </footer></body>
 </html>
