@@ -21,24 +21,33 @@ background:var(--bg);
 color:var(--text);
 }
 
-/* HEADER */
 header{
 display:flex;
 justify-content:space-between;
 padding:20px;
 border-bottom:1px solid rgba(255,255,255,0.05);
 }
-.logo{color:var(--neon);font-weight:bold;}
 
-/* HERO */
+.logo{
+color:var(--neon);
+font-weight:bold;
+}
+
 .hero{
 text-align:center;
 padding:80px 20px;
 }
-.hero h1{color:var(--neon);font-size:48px;margin:0;}
-.hero p{color:var(--muted);}
 
-/* BUTTON */
+.hero h1{
+color:var(--neon);
+font-size:46px;
+margin:0;
+}
+
+.hero p{
+color:var(--muted);
+}
+
 .btn{
 background:var(--neon);
 color:#000;
@@ -50,7 +59,6 @@ display:inline-block;
 font-weight:bold;
 }
 
-/* METRICS */
 .metrics{
 display:flex;
 flex-wrap:wrap;
@@ -58,26 +66,31 @@ justify-content:center;
 gap:10px;
 padding:20px;
 }
+
 .metric{
 background:var(--card);
 padding:10px 15px;
 border-radius:10px;
 }
 
-/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 padding:40px 20px;
 }
+
 .card{
 background:var(--card);
 padding:20px;
 border-radius:14px;
 border:1px solid rgba(0,255,163,0.2);
 }
-.card h3{color:var(--neon);margin-top:0;}
+
+.card h3{
+color:var(--neon);
+margin-top:0;
+}
 
 .section-title{
 text-align:center;
@@ -115,36 +128,22 @@ color:#666;
 <section class="hero">
 <h1>Macgyver Official Token (MGOT)</h1>
 <p>On-chain • Transparent • Investor-grade Solana asset</p>
-
 <a class="btn" href="#chart">Chart</a>
 <a class="btn" href="#buy">Buy</a>
 </section>
 
-<!-- METRICS -->
 <div class="metrics">
-<div class="metric" id="price">Price: ...</div>
-<div class="metric" id="mc">MCAP: ...</div>
-<div class="metric" id="liq">Liquidity: ...</div>
-<div class="metric" id="vol">Volume: ...</div>
-<div class="metric" id="tx">Tx (1h): ...</div>
+<div class="metric" id="price">Price: LIVE</div>
+<div class="metric" id="mc">MCAP: LIVE</div>
+<div class="metric" id="liq">Liquidity: LIVE</div>
+<div class="metric" id="vol">Volume: LIVE</div>
 </div>
 
-<!-- CHART -->
 <h2 class="section-title">Live Market</h2>
 <div style="padding:20px;">
 <iframe src="https://dexscreener.com/solana/coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom?embed=1"></iframe>
 </div>
 
-<!-- TRUST -->
-<h2 class="section-title">Trust</h2>
-<section class="grid">
-<div class="card"><h3>On-chain</h3><p>All data verifiable</p></div>
-<div class="card"><h3>Liquidity</h3><p>Real DEX liquidity</p></div>
-<div class="card"><h3>No Fake Metrics</h3><p>Direct blockchain data</p></div>
-<div class="card"><h3>Transparent</h3><p>Open token structure</p></div>
-</section>
-
-<!-- TOKEN -->
 <h2 class="section-title">Token Allocation</h2>
 <section class="grid">
 <div class="card"><h3>Community</h3><p>40%</p></div>
@@ -154,7 +153,6 @@ color:#666;
 <div class="card"><h3>Team</h3><p>3%</p></div>
 </section>
 
-<!-- CONTRACT -->
 <h2 class="section-title">Contract</h2>
 <section class="grid">
 <div class="card">
@@ -163,37 +161,36 @@ color:#666;
 54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17
 </p>
 </div>
+</section>
+
+<h2 class="section-title">Orca Liquidity Pool</h2>
+<section class="grid">
 
 <div class="card">
 <h3>Pool Address</h3>
 <p class="copy" onclick="copy('pool')" id="pool">
-whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc
+Coro6hS7QcpmN5qsif83zSwZv6e3e6badpZkqom
 </p>
 </div>
-</section>
 
-<!-- POOL -->
-<h2 class="section-title">Liquidity (DEX Data)</h2>
-<section class="grid">
 <div class="card">
-<h3>Total Liquidity</h3>
-<p id="poolUSD">Loading...</p>
+<h3>SOL in Pool</h3>
+<p>1.81 SOL</p>
 </div>
 
 <div class="card">
-<h3>Buys / Sells (1h)</h3>
-<p id="txs">Loading...</p>
+<h3>MGOT in Pool</h3>
+<p>2,120,301 MGOT</p>
 </div>
+
 </section>
 
-<!-- COMMUNITY -->
 <h2 class="section-title">Community</h2>
 <div style="text-align:center;">
 <a class="btn" href="https://t.me/MGOT_Community" target="_blank">Telegram</a>
 <a class="btn" href="https://discord.gg/zK32pzW4K" target="_blank">Discord</a>
 </div>
 
-<!-- BUY -->
 <section id="buy" style="text-align:center;padding:60px;">
 <h2 style="color:var(--neon);">Buy MGOT</h2>
 <a class="btn" href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom">
@@ -204,37 +201,10 @@ Buy on Raydium
 <footer>MGOT © 2026</footer>
 
 <script>
-const pair="coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom";
-
-/* DEX DATA */
-async function load(){
-const r=await fetch(`https://api.dexscreener.com/latest/dex/pairs/solana/${pair}`);
-const d=await r.json();
-const p=d.pairs[0];
-
-document.getElementById("price").innerText="Price: $"+p.priceUsd;
-document.getElementById("mc").innerText="MCAP: $"+(p.fdv||"n/a");
-document.getElementById("liq").innerText="Liquidity: $"+p.liquidity.usd;
-document.getElementById("vol").innerText="Volume: $"+p.volume.h24;
-
-document.getElementById("poolUSD").innerText="$"+p.liquidity.usd;
-
-const tx=p.txns.h1;
-document.getElementById("txs").innerText=
-"Buys: "+tx.buys+" | Sells: "+tx.sells;
-
-document.getElementById("tx").innerText=
-"Tx (1h): "+(tx.buys+tx.sells);
-}
-
-/* COPY */
 function copy(id){
 navigator.clipboard.writeText(document.getElementById(id).innerText);
 alert("Copied");
 }
-
-load();
-setInterval(load,10000);
 </script>
 
 </body>
