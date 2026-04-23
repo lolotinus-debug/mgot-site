@@ -1,129 +1,220 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Macgyver Official Token (MGOT) | VC Dashboard</title>  <style>
-    :root{
-      --bg:#030614;
-      --card:rgba(255,255,255,0.04);
-      --neon:#00ffa3;
-      --text:#eaeaea;
-      --muted:#9aa4b2;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Macgyver Official Token (MGOT)</title>
 
-    *{box-sizing:border-box;}
-
-    body{
-      margin:0;
-      font-family:Arial, sans-serif;
-      color:var(--text);
-      background:linear-gradient(-45deg,#050816,#071a2b,#040712,#0b1635);
-      background-size:400% 400%;
-      animation:bgMove 12s ease infinite;
-    }
-
-    @keyframes bgMove{
-      0%{background-position:0% 50%;}
-      50%{background-position:100% 50%;}
-      100%{background-position:0% 50%;}
-    }
-
-    .topbar{
-      position:fixed;
-      top:0;
-      width:100%;
-      display:flex;
-      justify-content:center;
-      gap:20px;
-      padding:8px;
-      font-size:12px;
-      background:#050a18;
-      border-bottom:1px solid rgba(255,255,255,0.05);
-      z-index:999;
-      color:var(--muted);
-    }
-
-    .live{color:var(--neon);animation:pulse 1.5s infinite;}
-
-    @keyframes pulse{0%{opacity:1;}50%{opacity:0.3;}100%{opacity:1;}}
-
-    header{
-      margin-top:35px;
-      position:sticky;
-      top:35px;
-      display:flex;
-      justify-content:space-between;
-      padding:14px 20px;
-      background:rgba(5,8,20,0.85);
-      backdrop-filter:blur(10px);
-    }
-
-    .logo{color:var(--neon);font-weight:bold;}
-
-    nav a{color:var(--muted);margin-left:14px;text-decoration:none;}
-    nav a:hover{color:var(--neon);}
-
-    .hero{text-align:center;padding:60px 20px 20px;}
-    .hero h1{font-size:40px;color:var(--neon);}
-
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;padding:20px;}
-
-    .card{background:var(--card);border:1px solid rgba(0,255,163,0.15);border-radius:14px;padding:16px;}
-
-    iframe{width:100%;height:520px;border-radius:12px;border:0;}
-
-    .bar{height:8px;background:#111a2e;border-radius:10px;overflow:hidden;margin-top:6px;}
-    .fill{height:100%;background:var(--neon);}
-
-    .btn{display:inline-block;margin:8px;padding:12px 18px;background:var(--neon);color:#000;border-radius:10px;text-decoration:none;font-weight:bold;}
-
-  </style></head><body><div class="topbar">
-  <span class="live">● LIVE</span>
-  <span>MGOT / SOL</span>
-  <span id="price">PRICE: ...</span>
-  <span id="mc">MCAP: ...</span>
-</div><header>
-  <div class="logo">MACGYVER OFFICIAL TOKEN</div>
-  <nav>
-    <a href="#chart">Live</a>
-    <a href="#wallets">Wallets</a>
-    <a href="#token">Token</a>
-  </nav>
-</header><section class="hero">
-  <h1>MACGYVER OFFICIAL TOKEN (MGOT)</h1>
-</section><section id="chart" class="card" style="margin:20px;">
-  <iframe src="https://dexscreener.com/solana/coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom?embed=1"></iframe>
-</section><!-- UPDATED WALLETS --><section id="wallets" class="grid">  <div class="card">
-    <h3>Community Allocation</h3>
-    <p>40%</p>
-    <div class="bar"><div class="fill" style="width:40%"></div></div>
-  </div>  <div class="card">
-    <h3>Liquidity Pool</h3>
-    <p>35%</p>
-    <div class="bar"><div class="fill" style="width:35%"></div></div>
-  </div>  <div class="card">
-    <h3>Treasury</h3>
-    <p>15%</p>
-    <div class="bar"><div class="fill" style="width:15%"></div></div>
-  </div>  <div class="card">
-    <h3>Marketing</h3>
-    <p>7%</p>
-    <div class="bar"><div class="fill" style="width:7%"></div></div>
-  </div>  <div class="card">
-    <h3>Team</h3>
-    <p>3%</p>
-    <div class="bar"><div class="fill" style="width:3%"></div></div>
-  </div></section><section style="text-align:center;padding:30px;">
-  <a class="btn" href="#">Buy MGOT</a>
-  <a class="btn" href="#">Telegram</a>
-</section><script>
-async function load(){
- const r=await fetch('https://api.dexscreener.com/latest/dex/pairs/solana/coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom');
- const d=await r.json();
- const p=d.pairs[0];
- document.getElementById('price').innerText="PRICE: $"+p.priceUsd;
- document.getElementById('mc').innerText="MCAP: $"+(p.fdv||"n/a");
+<style>
+:root{
+--bg:#030614;
+--card:rgba(255,255,255,0.04);
+--neon:#00ffa3;
+--text:#eaeaea;
+--muted:#9aa4b2;
 }
-load();setInterval(load,10000);
-</script></body>
+
+body{
+margin:0;
+font-family:Arial;
+background:#040712;
+color:var(--text);
+}
+
+.topbar{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:center;
+gap:20px;
+padding:8px;
+font-size:12px;
+background:#050a18;
+color:var(--muted);
+z-index:999;
+}
+
+.live{color:var(--neon);animation:pulse 1.5s infinite;}
+@keyframes pulse{0%{opacity:1;}50%{opacity:.3;}100%{opacity:1;}}
+
+header{
+margin-top:35px;
+display:flex;
+justify-content:space-between;
+padding:15px;
+background:#050a18;
+}
+
+.logo{color:var(--neon);font-weight:bold;}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+padding:20px;
+}
+
+.card{
+background:var(--card);
+padding:15px;
+border-radius:12px;
+border:1px solid rgba(0,255,163,0.15);
+}
+
+.bar{height:8px;background:#111;border-radius:10px;}
+.fill{height:100%;background:var(--neon);}
+
+iframe{width:100%;height:500px;border:0;border-radius:10px;}
+
+.btn{
+display:inline-block;
+padding:12px 18px;
+background:var(--neon);
+color:#000;
+font-weight:bold;
+border-radius:10px;
+text-decoration:none;
+margin:5px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+<span class="live">● LIVE</span>
+<span id="price">PRICE: ...</span>
+<span id="mc">MCAP: ...</span>
+<span id="liq">LIQ: ...</span>
+<span id="vol">VOL: ...</span>
+</div>
+
+<header>
+<div class="logo">MACGYVER OFFICIAL TOKEN (MGOT)</div>
+</header>
+
+<!-- CHART -->
+<div style="padding:20px;">
+<iframe src="https://dexscreener.com/solana/coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom?embed=1"></iframe>
+</div>
+
+<!-- WALLETS -->
+<section class="grid">
+
+<div class="card">
+<h3>Community</h3>
+<p>40%</p>
+<div class="bar"><div class="fill" style="width:40%"></div></div>
+</div>
+
+<div class="card">
+<h3>Liquidity Pool</h3>
+<p>35%</p>
+<div class="bar"><div class="fill" style="width:35%"></div></div>
+</div>
+
+<div class="card">
+<h3>Treasury</h3>
+<p>15%</p>
+<div class="bar"><div class="fill" style="width:15%"></div></div>
+</div>
+
+<div class="card">
+<h3>Marketing</h3>
+<p>7%</p>
+<div class="bar"><div class="fill" style="width:7%"></div></div>
+</div>
+
+<div class="card">
+<h3>Team</h3>
+<p>3%</p>
+<div class="bar"><div class="fill" style="width:3%"></div></div>
+</div>
+
+</section>
+
+<!-- HOLDERS -->
+<section class="grid">
+
+<div class="card">
+<h3>Holders</h3>
+<p id="holders">Loading...</p>
+</div>
+
+<div class="card">
+<h3>Top Holders</h3>
+<ul id="topHolders"></ul>
+</div>
+
+</section>
+
+<!-- TRANSACTIONS -->
+<section class="grid">
+<div class="card">
+<h3>Latest Trades</h3>
+<ul id="txs"></ul>
+</div>
+</section>
+
+<!-- CTA -->
+<div style="text-align:center;padding:30px;">
+<a class="btn" href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom">BUY MGOT</a>
+</div>
+
+<script>
+const pair="coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom";
+
+// DEX DATA
+async function loadDex(){
+const r=await fetch(`https://api.dexscreener.com/latest/dex/pairs/solana/${pair}`);
+const d=await r.json();
+const p=d.pairs[0];
+
+document.getElementById("price").innerText="PRICE: $"+p.priceUsd;
+document.getElementById("mc").innerText="MCAP: $"+(p.fdv||"n/a");
+document.getElementById("liq").innerText="LIQ: $"+p.liquidity.usd;
+document.getElementById("vol").innerText="VOL: $"+p.volume.h24;
+}
+
+// HOLDERS (Solscan unofficial)
+async function loadHolders(){
+try{
+const r=await fetch(`https://public-api.solscan.io/token/holders?tokenAddress=${pair}&limit=5`);
+const d=await r.json();
+
+document.getElementById("holders").innerText=d.total;
+
+let html="";
+d.data.forEach(w=>{
+html+=`<li>${w.owner.slice(0,6)}... (${(w.amount/1e6).toFixed(2)})</li>`;
+});
+document.getElementById("topHolders").innerHTML=html;
+}catch(e){}
+}
+
+// TXS (Dexscreener trades)
+async function loadTx(){
+const r=await fetch(`https://api.dexscreener.com/latest/dex/pairs/solana/${pair}`);
+const d=await r.json();
+const trades=d.pairs[0].txns.h1;
+
+document.getElementById("txs").innerHTML=`
+<li>Buys: ${trades.buys}</li>
+<li>Sells: ${trades.sells}</li>
+`;
+}
+
+// INIT
+loadDex();
+loadHolders();
+loadTx();
+
+setInterval(loadDex,10000);
+setInterval(loadHolders,20000);
+setInterval(loadTx,10000);
+</script>
+
+</body>
 </html>
