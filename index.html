@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Macgyver Official Token (MGOT)</title>
+<title>MGOT | Macgyver Official Token</title>
 
 <style>
 :root{
@@ -14,70 +14,94 @@
 --muted:#9aa4b2;
 }
 
-body{margin:0;font-family:Arial;background:var(--bg);color:var(--text);}
+body{
+margin:0;
+font-family:Arial;
+background:var(--bg);
+color:var(--text);
+}
 
+/* HEADER */
 header{
-padding:20px;
 display:flex;
 justify-content:space-between;
+padding:20px;
 border-bottom:1px solid rgba(255,255,255,0.05);
 }
-
 .logo{color:var(--neon);font-weight:bold;}
 
-.hero{text-align:center;padding:80px 20px;}
-.hero h1{font-size:46px;color:var(--neon);}
+/* HERO */
+.hero{
+text-align:center;
+padding:80px 20px;
+}
+.hero h1{color:var(--neon);font-size:48px;margin:0;}
 .hero p{color:var(--muted);}
 
+/* BUTTON */
 .btn{
-display:inline-block;
-padding:12px 20px;
-margin:8px;
 background:var(--neon);
 color:#000;
-font-weight:bold;
+padding:12px 20px;
 border-radius:10px;
 text-decoration:none;
+margin:6px;
+display:inline-block;
+font-weight:bold;
 }
 
+/* METRICS */
 .metrics{
 display:flex;
-justify-content:center;
-gap:15px;
 flex-wrap:wrap;
+justify-content:center;
+gap:10px;
 padding:20px;
 }
-
 .metric{
 background:var(--card);
 padding:10px 15px;
 border-radius:10px;
 }
 
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 padding:40px 20px;
 }
-
 .card{
 background:var(--card);
 padding:20px;
 border-radius:14px;
 border:1px solid rgba(0,255,163,0.2);
 }
-
 .card h3{color:var(--neon);margin-top:0;}
 
-.section-title{text-align:center;font-size:26px;margin-top:40px;}
+.section-title{
+text-align:center;
+font-size:26px;
+margin-top:40px;
+}
 
-iframe{width:100%;height:500px;border:0;border-radius:12px;}
+iframe{
+width:100%;
+height:500px;
+border:0;
+border-radius:12px;
+}
 
-.copy{cursor:pointer;color:var(--neon);}
+.copy{
+cursor:pointer;
+color:var(--neon);
+}
 
-footer{text-align:center;padding:40px;color:#666;}
-
+footer{
+text-align:center;
+padding:40px;
+color:#666;
+}
 </style>
 </head>
 
@@ -91,7 +115,8 @@ footer{text-align:center;padding:40px;color:#666;}
 <section class="hero">
 <h1>Macgyver Official Token (MGOT)</h1>
 <p>On-chain • Transparent • Investor-grade Solana asset</p>
-<a class="btn" href="#chart">Live Chart</a>
+
+<a class="btn" href="#chart">Chart</a>
 <a class="btn" href="#buy">Buy</a>
 </section>
 
@@ -101,6 +126,7 @@ footer{text-align:center;padding:40px;color:#666;}
 <div class="metric" id="mc">MCAP: ...</div>
 <div class="metric" id="liq">Liquidity: ...</div>
 <div class="metric" id="vol">Volume: ...</div>
+<div class="metric" id="tx">Tx (1h): ...</div>
 </div>
 
 <!-- CHART -->
@@ -110,12 +136,12 @@ footer{text-align:center;padding:40px;color:#666;}
 </div>
 
 <!-- TRUST -->
-<h2 class="section-title">Trust & Security</h2>
+<h2 class="section-title">Trust</h2>
 <section class="grid">
-<div class="card"><h3>LP Locked</h3><p>Liquidity secured</p></div>
-<div class="card"><h3>Mint Revoked</h3><p>No inflation risk</p></div>
-<div class="card"><h3>Ownership Renounced</h3><p>No central control</p></div>
-<div class="card"><h3>On-chain</h3><p>Fully verifiable</p></div>
+<div class="card"><h3>On-chain</h3><p>All data verifiable</p></div>
+<div class="card"><h3>Liquidity</h3><p>Real DEX liquidity</p></div>
+<div class="card"><h3>No Fake Metrics</h3><p>Direct blockchain data</p></div>
+<div class="card"><h3>Transparent</h3><p>Open token structure</p></div>
 </section>
 
 <!-- TOKEN -->
@@ -133,30 +159,30 @@ footer{text-align:center;padding:40px;color:#666;}
 <section class="grid">
 <div class="card">
 <h3>Token Address</h3>
-<p class="copy" onclick="copyAddr()" id="addr">
+<p class="copy" onclick="copy('addr')" id="addr">
 54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17
+</p>
+</div>
+
+<div class="card">
+<h3>Pool Address</h3>
+<p class="copy" onclick="copy('pool')" id="pool">
+whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc
 </p>
 </div>
 </section>
 
-<!-- ORCA POOL -->
-<h2 class="section-title">Orca Pool (Real Data)</h2>
+<!-- POOL -->
+<h2 class="section-title">Liquidity (DEX Data)</h2>
 <section class="grid">
 <div class="card">
-<h3>Pool Address</h3>
-<p class="copy" onclick="copyPool()" id="pool">
-whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc
-</p>
+<h3>Total Liquidity</h3>
+<p id="poolUSD">Loading...</p>
 </div>
 
 <div class="card">
-<h3>SOL in Pool</h3>
-<p id="solPool">Loading...</p>
-</div>
-
-<div class="card">
-<h3>MGOT in Pool</h3>
-<p id="tokenPool">Loading...</p>
+<h3>Buys / Sells (1h)</h3>
+<p id="txs">Loading...</p>
 </div>
 </section>
 
@@ -179,14 +205,9 @@ Buy on Raydium
 
 <script>
 const pair="coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom";
-const RPC="https://api.mainnet-beta.solana.com";
-
-/* 🔥 DOPLŇ TOTO (VEĽMI DÔLEŽITÉ) */
-const SOL_VAULT="REPLACE_SOL_VAULT";
-const TOKEN_VAULT="REPLACE_TOKEN_VAULT";
 
 /* DEX DATA */
-async function loadDex(){
+async function load(){
 const r=await fetch(`https://api.dexscreener.com/latest/dex/pairs/solana/${pair}`);
 const d=await r.json();
 const p=d.pairs[0];
@@ -195,51 +216,25 @@ document.getElementById("price").innerText="Price: $"+p.priceUsd;
 document.getElementById("mc").innerText="MCAP: $"+(p.fdv||"n/a");
 document.getElementById("liq").innerText="Liquidity: $"+p.liquidity.usd;
 document.getElementById("vol").innerText="Volume: $"+p.volume.h24;
-}
 
-/* REAL ORCA */
-async function getBalance(addr){
-const r=await fetch(RPC,{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({
-jsonrpc:"2.0",
-id:1,
-method:"getTokenAccountBalance",
-params:[addr]
-})
-});
-const d=await r.json();
-return d.result.value.uiAmount;
-}
+document.getElementById("poolUSD").innerText="$"+p.liquidity.usd;
 
-async function loadPool(){
-try{
-const sol=await getBalance(SOL_VAULT);
-const token=await getBalance(TOKEN_VAULT);
+const tx=p.txns.h1;
+document.getElementById("txs").innerText=
+"Buys: "+tx.buys+" | Sells: "+tx.sells;
 
-document.getElementById("solPool").innerText=sol+" SOL";
-document.getElementById("tokenPool").innerText=token+" MGOT";
-}catch(e){}
+document.getElementById("tx").innerText=
+"Tx (1h): "+(tx.buys+tx.sells);
 }
 
 /* COPY */
-function copyAddr(){
-navigator.clipboard.writeText(document.getElementById("addr").innerText);
+function copy(id){
+navigator.clipboard.writeText(document.getElementById(id).innerText);
 alert("Copied");
 }
 
-function copyPool(){
-navigator.clipboard.writeText(document.getElementById("pool").innerText);
-alert("Pool copied");
-}
-
-/* INIT */
-loadDex();
-loadPool();
-
-setInterval(loadDex,10000);
-setInterval(loadPool,15000);
+load();
+setInterval(load,10000);
 </script>
 
 </body>
