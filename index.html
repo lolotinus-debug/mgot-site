@@ -28,11 +28,9 @@
       100%{background-position:0% 50%;}
     }
 
-    /* TOP LIVE BAR */
     .topbar{
       position:fixed;
       top:0;
-      left:0;
       width:100%;
       display:flex;
       justify-content:center;
@@ -45,7 +43,7 @@
       color:var(--muted);
     }
 
-    .live{color:var(--neon);font-weight:bold;animation:pulse 1.5s infinite;}
+    .live{color:var(--neon);animation:pulse 1.5s infinite;}
 
     @keyframes pulse{0%{opacity:1;}50%{opacity:0.3;}100%{opacity:1;}}
 
@@ -55,192 +53,77 @@
       top:35px;
       display:flex;
       justify-content:space-between;
-      align-items:center;
       padding:14px 20px;
       background:rgba(5,8,20,0.85);
       backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(255,255,255,0.05);
     }
 
     .logo{color:var(--neon);font-weight:bold;}
 
-    nav a{
-      color:var(--muted);
-      margin-left:14px;
-      text-decoration:none;
-      font-size:14px;
-    }
-
+    nav a{color:var(--muted);margin-left:14px;text-decoration:none;}
     nav a:hover{color:var(--neon);}
 
-    .hero{
-      text-align:center;
-      padding:60px 20px 20px;
-    }
+    .hero{text-align:center;padding:60px 20px 20px;}
+    .hero h1{font-size:40px;color:var(--neon);}
 
-    .hero h1{
-      font-size:40px;
-      margin:0;
-      color:var(--neon);
-      text-shadow:0 0 25px rgba(0,255,163,0.25);
-    }
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;padding:20px;}
 
-    .hero p{color:var(--muted);}
+    .card{background:var(--card);border:1px solid rgba(0,255,163,0.15);border-radius:14px;padding:16px;}
 
-    .ticker{
-      margin-top:10px;
-      font-size:14px;
-      color:var(--neon);
-    }
+    iframe{width:100%;height:520px;border-radius:12px;border:0;}
 
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-      gap:10px;
-      padding:20px;
-    }
-
-    .stat{
-      background:var(--card);
-      border:1px solid rgba(0,255,163,0.15);
-      border-radius:12px;
-      padding:12px;
-      text-align:center;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:16px;
-      padding:20px;
-    }
-
-    .card{
-      background:var(--card);
-      border:1px solid rgba(0,255,163,0.15);
-      border-radius:14px;
-      padding:16px;
-    }
-
-    iframe{
-      width:100%;
-      height:520px;
-      border:0;
-      border-radius:12px;
-    }
-
-    .btn{
-      display:inline-block;
-      margin:8px;
-      padding:12px 18px;
-      background:var(--neon);
-      color:#000;
-      font-weight:bold;
-      border-radius:10px;
-      text-decoration:none;
-    }
-
-    .badge{
-      display:inline-block;
-      margin:4px;
-      padding:4px 10px;
-      border:1px solid var(--neon);
-      color:var(--neon);
-      border-radius:20px;
-      font-size:12px;
-    }
-
-    .bar{height:8px;background:#111a2e;border-radius:10px;overflow:hidden;}
+    .bar{height:8px;background:#111a2e;border-radius:10px;overflow:hidden;margin-top:6px;}
     .fill{height:100%;background:var(--neon);}
 
-    footer{text-align:center;padding:30px;color:#666;font-size:12px;}
+    .btn{display:inline-block;margin:8px;padding:12px 18px;background:var(--neon);color:#000;border-radius:10px;text-decoration:none;font-weight:bold;}
+
   </style></head><body><div class="topbar">
   <span class="live">● LIVE</span>
   <span>MGOT / SOL</span>
-  <span id="price">PRICE: loading...</span>
-  <span id="mc">MCAP: loading...</span>
+  <span id="price">PRICE: ...</span>
+  <span id="mc">MCAP: ...</span>
 </div><header>
-  <div class="logo">MGOT OFFICIAL TOKEN</div>
+  <div class="logo">MACGYVER OFFICIAL TOKEN</div>
   <nav>
     <a href="#chart">Live</a>
     <a href="#wallets">Wallets</a>
     <a href="#token">Token</a>
-    <a href="#info">Info</a>
   </nav>
 </header><section class="hero">
   <h1>MACGYVER OFFICIAL TOKEN (MGOT)</h1>
-  <p>Fully on-chain Solana asset • VC dashboard • real liquidity</p>
-  <div class="ticker" id="ticker">Live market data syncing...</div>
 </section><section id="chart" class="card" style="margin:20px;">
-  <h3>📊 Live Chart</h3>
   <iframe src="https://dexscreener.com/solana/coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom?embed=1"></iframe>
-</section><section id="wallets" class="grid">  <div class="card">
-    <h3>Liquidity Pool</h3>
-    <p>40%</p><div class="bar"><div class="fill" style="width:40%"></div></div>
+</section><!-- UPDATED WALLETS --><section id="wallets" class="grid">  <div class="card">
+    <h3>Community Allocation</h3>
+    <p>40%</p>
+    <div class="bar"><div class="fill" style="width:40%"></div></div>
   </div>  <div class="card">
-    <h3>Community</h3>
-    <p>35%</p><div class="bar"><div class="fill" style="width:35%"></div></div>
+    <h3>Liquidity Pool</h3>
+    <p>35%</p>
+    <div class="bar"><div class="fill" style="width:35%"></div></div>
   </div>  <div class="card">
     <h3>Treasury</h3>
-    <p>15%</p><div class="bar"><div class="fill" style="width:15%"></div></div>
+    <p>15%</p>
+    <div class="bar"><div class="fill" style="width:15%"></div></div>
   </div>  <div class="card">
     <h3>Marketing</h3>
-    <p>7%</p><div class="bar"><div class="fill" style="width:7%"></div></div>
+    <p>7%</p>
+    <div class="bar"><div class="fill" style="width:7%"></div></div>
   </div>  <div class="card">
     <h3>Team</h3>
-    <p>3%</p><div class="bar"><div class="fill" style="width:3%"></div></div>
-  </div></section><section id="token" class="grid">
-  <div class="card">
-    <h3>🪙 SPL Token</h3>
-    <p>Deployed on Solana network</p>
-  </div>  <div class="card">
-    <h3>📦 Fixed Supply</h3>
-    <p>No mint authority</p>
-  </div>  <div class="card">
-    <h3>💧 Liquidity</h3>
-    <p>DEX tracked in real time</p>
-  </div>  <div class="card">
-    <h3>🔐 Security</h3>
-    <p>Fully on-chain verified</p>
-  </div>
-</section><section id="info" class="grid">  <div class="card" style="grid-column:1/-1;">
-    <h3>VC OVERVIEW</h3>
-    <p style="color:#9aa4b2;">Institutional-grade token dashboard</p>
-  </div>  <div class="card">
-    <h3>Transparency</h3>
-    <p>On-chain verified data only</p>
-  </div>  <div class="card">
-    <h3>Infrastructure</h3>
-    <p>Built on Solana</p>
-  </div>  <div class="card">
-    <h3>Growth</h3>
-    <p>Community-driven expansion</p>
+    <p>3%</p>
+    <div class="bar"><div class="fill" style="width:3%"></div></div>
   </div></section><section style="text-align:center;padding:30px;">
-  <h2 style="color:var(--neon);">Buy MGOT</h2>
-  <a class="btn" href="#">Buy on Raydium</a>
+  <a class="btn" href="#">Buy MGOT</a>
   <a class="btn" href="#">Telegram</a>
-  <a class="btn" href="#">Discord</a>
-  <div class="badge">VC READY</div>
-</section><footer>
-  MGOT © 2026 • Macgyver Official Token
-</footer><script>
-async function loadData(){
-  try{
-    const res = await fetch('https://api.dexscreener.com/latest/dex/pairs/solana/coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom');
-    const data = await res.json();
-    const pair = data.pairs?.[0];
-
-    if(pair){
-      document.getElementById('price').innerText = "PRICE: $" + pair.priceUsd;
-      document.getElementById('mc').innerText = "MCAP: $" + (pair.fdv || "n/a");
-      document.getElementById('ticker').innerText = "Liquidity: $" + pair.liquidity.usd;
-    }
-  }catch(e){
-    console.log(e);
-  }
+</section><script>
+async function load(){
+ const r=await fetch('https://api.dexscreener.com/latest/dex/pairs/solana/coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom');
+ const d=await r.json();
+ const p=d.pairs[0];
+ document.getElementById('price').innerText="PRICE: $"+p.priceUsd;
+ document.getElementById('mc').innerText="MCAP: $"+(p.fdv||"n/a");
 }
-
-loadData();
-setInterval(loadData,10000);
+load();setInterval(load,10000);
 </script></body>
 </html>
