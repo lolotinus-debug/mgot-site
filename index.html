@@ -8,7 +8,7 @@
 <style>
 :root{
 --bg:#02050f;
---card:rgba(255,255,255,0.05);
+--card:rgba(255,255,255,0.06);
 --neon:#00ffa3;
 --text:#ffffff;
 --muted:#9aa4b2;
@@ -17,54 +17,42 @@
 body{
 margin:0;
 font-family:Arial;
-background:var(--bg);
 color:var(--text);
 overflow-x:hidden;
 }
 
-/* animated background */
+/* BACKGROUND IMAGE */
 body::before{
 content:"";
 position:fixed;
 top:0;left:0;
 width:100%;height:100%;
 background:
-radial-gradient(circle at 20% 20%, rgba(0,255,163,0.06), transparent),
-radial-gradient(circle at 80% 80%, rgba(0,255,163,0.04), transparent);
-animation: moveBg 12s infinite linear;
+linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.95)),
+url("https://images.unsplash.com/photo-1605902711622-cfb43c44367f");
+background-size:cover;
+background-position:center;
 z-index:-1;
 }
 
-@keyframes moveBg{
-0%{transform:translate(0,0);}
-50%{transform:translate(-25px,25px);}
-100%{transform:translate(0,0);}
-}
-
-/* header */
+/* HEADER */
 header{
 display:flex;
 justify-content:space-between;
 padding:20px;
+backdrop-filter:blur(10px);
 border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-.logo{
-color:var(--neon);
-font-weight:bold;
-}
+.logo{color:var(--neon);font-weight:bold;}
 
-/* hero */
-.hero{
-text-align:center;
-padding:70px 20px;
-}
+/* HERO */
+.hero{text-align:center;padding:80px 20px;}
 
 .hero h1{
 color:var(--neon);
-font-size:46px;
-margin:0;
-animation: glow 2.5s infinite;
+font-size:48px;
+animation:glow 2.5s infinite;
 }
 
 @keyframes glow{
@@ -75,7 +63,7 @@ animation: glow 2.5s infinite;
 
 .hero p{color:var(--muted);}
 
-/* buttons */
+/* BUTTON */
 .btn{
 background:var(--neon);
 color:#000;
@@ -87,7 +75,7 @@ display:inline-block;
 font-weight:bold;
 }
 
-/* metrics */
+/* METRICS */
 .metrics{
 display:flex;
 flex-wrap:wrap;
@@ -98,19 +86,14 @@ padding:20px;
 
 .metric{
 background:var(--card);
-padding:10px 15px;
-border-radius:10px;
+padding:12px 15px;
+border-radius:12px;
 min-width:170px;
 text-align:center;
-transition:0.3s;
+backdrop-filter:blur(10px);
 }
 
-.metric.flash{
-transform:scale(1.05);
-border:1px solid var(--neon);
-}
-
-/* grid */
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -121,22 +104,17 @@ padding:40px 20px;
 .card{
 background:var(--card);
 padding:20px;
-border-radius:14px;
+border-radius:16px;
 border:1px solid rgba(0,255,163,0.2);
+backdrop-filter:blur(10px);
 }
 
-.card h3{color:var(--neon);margin-top:0;}
+.card h3{color:var(--neon);}
 
 .section-title{
 text-align:center;
-font-size:26px;
+font-size:28px;
 margin-top:40px;
-}
-
-.copy{
-cursor:pointer;
-color:var(--neon);
-word-break:break-all;
 }
 
 iframe{
@@ -146,10 +124,12 @@ border:0;
 border-radius:12px;
 }
 
+.copy{cursor:pointer;color:var(--neon);word-break:break-all;}
+
 footer{
 text-align:center;
 padding:40px;
-color:#666;
+color:#777;
 font-size:12px;
 }
 </style>
@@ -158,57 +138,98 @@ font-size:12px;
 <body>
 
 <header>
-<div class="logo">MGOT • Macgyver Official Token</div>
+<div class="logo">MGOT</div>
 <a class="btn" href="#buy">Buy</a>
 </header>
 
 <section class="hero">
 <h1>MGOT Token</h1>
-<p>On-chain • Transparent • Solana ecosystem asset</p>
+<p>On-chain • Transparent • Built on Solana</p>
 <a class="btn" href="#chart">Chart</a>
 <a class="btn" href="#buy">Buy</a>
 </section>
 
-<!-- LIVE METRICS -->
+<!-- METRICS -->
 <div class="metrics">
 <div class="metric" id="price">Price: loading...</div>
 <div class="metric" id="mc">MCAP: loading...</div>
-<div class="metric" id="liq-usd">Liquidity: loading...</div>
+<div class="metric" id="liq">Liquidity: loading...</div>
 <div class="metric" id="vol">Volume 24h: loading...</div>
 </div>
 
+<!-- TOKEN UTILITY -->
+<h2 class="section-title">Token Utility</h2>
+<section class="grid">
+<div class="card">
+<h3>Community Access</h3>
+<p>Exclusive access to MGOT ecosystem & events.</p>
+</div>
+<div class="card">
+<h3>Rewards</h3>
+<p>Future staking & reward mechanics.</p>
+</div>
+<div class="card">
+<h3>Governance</h3>
+<p>Community voting on project direction.</p>
+</div>
+</section>
+
+<!-- TOKENOMICS -->
+<h2 class="section-title">Tokenomics</h2>
+<section class="grid">
+<div class="card"><h3>Total Supply</h3><p>Dynamic</p></div>
+<div class="card"><h3>Liquidity</h3><p>On-chain pool</p></div>
+<div class="card"><h3>Distribution</h3><p>Community-focused</p></div>
+</section>
+
+<!-- ROADMAP -->
+<h2 class="section-title">Roadmap</h2>
+<section class="grid">
+<div class="card"><h3>Phase 1</h3><p>Launch & liquidity</p></div>
+<div class="card"><h3>Phase 2</h3><p>Community growth</p></div>
+<div class="card"><h3>Phase 3</h3><p>Utility expansion</p></div>
+<div class="card"><h3>Phase 4</h3><p>Ecosystem scaling</p></div>
+</section>
+
+<!-- SECURITY -->
+<h2 class="section-title">Security & Transparency</h2>
+<section class="grid">
+<div class="card">
+<h3>On-chain</h3>
+<p>All transactions verifiable on Solana.</p>
+</div>
+<div class="card">
+<h3>Liquidity</h3>
+<p>Public pool visibility.</p>
+</div>
+<div class="card">
+<h3>Open Data</h3>
+<p>Live market tracking via Dexscreener.</p>
+</div>
+</section>
+
+<!-- CHART -->
 <h2 class="section-title">Live Market</h2>
 <div style="padding:20px;">
 <iframe src="https://dexscreener.com/solana/coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom?embed=1"></iframe>
 </div>
 
-<h2 class="section-title">Liquidity Pool</h2>
-<section class="grid">
-<div class="card">
-<h3>SOL in Pool</h3>
-<p id="liq-sol">loading...</p>
-</div>
-
-<div class="card">
-<h3>Liquidity USD</h3>
-<p id="liq-usd-card">loading...</p>
-</div>
-</section>
-
+<!-- CONTRACT -->
 <h2 class="section-title">Contract</h2>
 <section class="grid">
 <div class="card">
-<h3>Token Address</h3>
 <p class="copy" onclick="copy(this)">54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17</p>
 </div>
 </section>
 
+<!-- COMMUNITY -->
 <h2 class="section-title">Community</h2>
 <div style="text-align:center;">
 <a class="btn" href="https://t.me/MGOT_Community">Telegram</a>
 <a class="btn" href="https://discord.gg/zK32pzW4K">Discord</a>
 </div>
 
+<!-- BUY -->
 <section id="buy" style="text-align:center;padding:60px;">
 <h2 style="color:var(--neon);">Buy MGOT</h2>
 <a class="btn" href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom">
@@ -217,92 +238,50 @@ Buy on Raydium
 </section>
 
 <footer>
-Live data powered by Dexscreener API • MGOT © 2026
+Live data via Dexscreener • MGOT © 2026
 </footer>
 
 <script>
-
 const pair="coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom";
 
-/* SAFE SET */
 function set(id,val){
 const el=document.getElementById(id);
 if(el) el.innerText=val;
 }
 
-/* COPY */
 function copy(el){
 navigator.clipboard.writeText(el.innerText);
 alert("Copied");
 }
 
-/* FORMAT */
 function money(x){
-if(x===undefined||x===null) return "n/a";
-return "$"+Number(x).toLocaleString(undefined,{maximumFractionDigits:2});
+if(!x&&x!==0) return "n/a";
+return "$"+Number(x).toLocaleString();
 }
 
-/* MAIN DATA */
-async function loadData(){
+async function load(){
 try{
 const r=await fetch(`https://api.dexscreener.com/latest/dex/pairs/solana/${pair}`);
 const d=await r.json();
+const p=d?.pairs?.[0];
 
-if(!d?.pairs?.length) throw new Error("No data");
-
-const p=d.pairs[0];
+if(!p) throw new Error();
 
 set("price","Price: $"+(p.priceUsd||"n/a"));
 set("mc","MCAP: "+money(p.fdv));
-set("liq-usd","Liquidity: "+money(p.liquidity?.usd));
-set("liq-usd-card",money(p.liquidity?.usd));
+set("liq","Liquidity: "+money(p.liquidity?.usd));
 set("vol","Volume 24h: "+money(p.volume?.h24));
 
 }catch(e){
-console.log(e);
 set("price","Price: n/a");
 set("mc","MCAP: n/a");
-set("liq-usd","Liquidity: n/a");
-set("liq-usd-card","n/a");
+set("liq","Liquidity: n/a");
 set("vol","Volume 24h: n/a");
 }
 }
 
-/* POOL */
-async function loadPool(){
-try{
-const r=await fetch(`https://api.dexscreener.com/latest/dex/pairs/solana/${pair}`);
-const d=await r.json();
-
-if(!d?.pairs?.length) throw new Error();
-
-const p=d.pairs[0];
-
-set("liq-sol",(p.liquidity?.quote||"n/a")+" SOL");
-
-}catch(e){
-set("liq-sol","n/a");
-}
-}
-
-/* PULSE */
-function pulse(){
-document.querySelectorAll(".metric").forEach(m=>{
-m.classList.add("flash");
-setTimeout(()=>m.classList.remove("flash"),300);
-});
-}
-
-/* INIT */
-window.addEventListener("load",()=>{
-loadData();
-loadPool();
-
-setInterval(loadData,15000);
-setInterval(loadPool,15000);
-setInterval(pulse,3000);
-});
-
+setInterval(load,15000);
+window.onload=load;
 </script>
 
 </body>
