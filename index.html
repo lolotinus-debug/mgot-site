@@ -19,6 +19,26 @@ margin:0;
 font-family:Arial;
 background:var(--bg);
 color:var(--text);
+overflow-x:hidden;
+}
+
+/* BACKGROUND ANIMATION */
+body::before{
+content:"";
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:
+radial-gradient(circle at 20% 20%, rgba(0,255,163,0.05), transparent),
+radial-gradient(circle at 80% 80%, rgba(0,255,163,0.03), transparent);
+animation: moveBg 12s infinite linear;
+z-index:-1;
+}
+
+@keyframes moveBg{
+0%{transform:translate(0,0);}
+50%{transform:translate(-20px,20px);}
+100%{transform:translate(0,0);}
 }
 
 /* HEADER */
@@ -28,15 +48,34 @@ justify-content:space-between;
 padding:20px;
 border-bottom:1px solid rgba(255,255,255,0.05);
 }
-.logo{color:var(--neon);font-weight:bold;}
+
+.logo{
+color:var(--neon);
+font-weight:bold;
+}
 
 /* HERO */
 .hero{
 text-align:center;
 padding:70px 20px;
 }
-.hero h1{color:var(--neon);font-size:46px;margin:0;}
-.hero p{color:var(--muted);}
+
+.hero h1{
+color:var(--neon);
+font-size:46px;
+margin:0;
+animation: glow 2.5s infinite;
+}
+
+.hero p{
+color:var(--muted);
+}
+
+@keyframes glow {
+0% { text-shadow: 0 0 5px var(--neon); }
+50% { text-shadow: 0 0 25px var(--neon); }
+100% { text-shadow: 0 0 5px var(--neon); }
+}
 
 /* BUTTON */
 .btn{
@@ -58,12 +97,19 @@ justify-content:center;
 gap:10px;
 padding:20px;
 }
+
 .metric{
 background:var(--card);
 padding:10px 15px;
 border-radius:10px;
 min-width:160px;
 text-align:center;
+transition:0.3s;
+}
+
+.metric.flash{
+transform:scale(1.05);
+border:1px solid var(--neon);
 }
 
 /* GRID */
@@ -73,12 +119,14 @@ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 padding:40px 20px;
 }
+
 .card{
 background:var(--card);
 padding:20px;
 border-radius:14px;
 border:1px solid rgba(0,255,163,0.2);
 }
+
 .card h3{color:var(--neon);margin-top:0;}
 
 .section-title{
@@ -116,7 +164,7 @@ color:#666;
 
 <section class="hero">
 <h1>Macgyver Official Token (MGOT)</h1>
-<p>On-chain • Transparent • Investor-grade Solana asset</p>
+<p>On-chain • Transparent • Solana ecosystem asset</p>
 <a class="btn" href="#chart">Chart</a>
 <a class="btn" href="#buy">Buy</a>
 </section>
@@ -125,7 +173,7 @@ color:#666;
 <div class="metrics">
 <div class="metric" id="price">Price: loading...</div>
 <div class="metric" id="mc">MCAP: loading...</div>
-<div class="metric" id="liq">Liquidity: loading...</div>
+<div class="metric" id="liq-usd">Liquidity USD: loading...</div>
 <div class="metric" id="vol">Volume 24h: loading...</div>
 </div>
 
@@ -159,91 +207,38 @@ color:#666;
 <div class="card"><h3>Team</h3><p>3%</p></div>
 </section>
 
+<!-- LIQUIDITY -->
+<h2 class="section-title">Liquidity Pool</h2>
+<section class="grid">
+
+<div class="card">
+<h3>SOL in Pool</h3>
+<p id="liq-sol">loading...</p>
+</div>
+
+<div class="card">
+<h3>Liquidity USD</h3>
+<p id="liq-usd">loading...</p>
+</div>
+
+</section>
+
 <!-- CONTRACT -->
 <h2 class="section-title">Contract</h2>
 <section class="grid">
 <div class="card">
 <h3>Token Address</h3>
-<p class="copy" id="addr" onclick="copy(this)">
+<p class="copy" onclick="copy(this)">
 54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17
 </p>
 </div>
 </section>
 
 <!-- ORCA -->
-<h2 class="section-title">Orca Pool</h2>
+<h2 class="section-title">Pool Address</h2>
 <section class="grid">
-
 <div class="card">
-<h3>Pool Address</h3>
-<p class="copy" id="pool" onclick="copy(this)">
+<p class="copy" onclick="copy(this)">
 Coro6hS7QcpmN5qsif83zSwZv6e3e6badpZkqom
 </p>
-</div>
-
-<div class="card">
-<h3>SOL in Pool</h3>
-<p>1.81 SOL</p>
-</div>
-
-<div class="card">
-<h3>MGOT in Pool</h3>
-<p>2,120,301 MGOT</p>
-</div>
-
-</section>
-
-<!-- COMMUNITY -->
-<h2 class="section-title">Community</h2>
-<div style="text-align:center;">
-<a class="btn" href="https://t.me/MGOT_Community" target="_blank">Telegram</a>
-<a class="btn" href="https://discord.gg/zK32pzW4K" target="_blank">Discord</a>
-</div>
-
-<!-- BUY -->
-<section id="buy" style="text-align:center;padding:60px;">
-<h2 style="color:var(--neon);">Buy MGOT</h2>
-<a class="btn" href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom">
-Buy on Raydium
-</a>
-</section>
-
-<footer>MGOT © 2026</footer>
-
-<script>
-
-const pair="coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom";
-
-/* COPY */
-function copy(el){
-navigator.clipboard.writeText(el.innerText);
-alert("Copied");
-}
-
-/* LIVE DATA */
-async function loadData(){
-try{
-const r=await fetch(`https://api.dexscreener.com/latest/dex/pairs/solana/${pair}`);
-const d=await r.json();
-const p=d.pairs[0];
-
-document.getElementById("price").innerText="Price: $"+p.priceUsd;
-document.getElementById("mc").innerText="MCAP: $"+(p.fdv||"n/a");
-document.getElementById("liq").innerText="Liquidity: $"+p.liquidity.usd;
-document.getElementById("vol").innerText="Volume 24h: $"+p.volume.h24;
-
-}catch(e){
-console.log("API error",e);
-}
-}
-
-/* INIT AFTER LOAD (FIX FOR YOUR ISSUE) */
-window.addEventListener("load",()=>{
-loadData();
-setInterval(loadData,10000);
-});
-
-</script>
-
-</body>
-</html>
+</div
