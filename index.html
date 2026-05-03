@@ -21,23 +21,31 @@ color:var(--text);
 overflow-x:hidden;
 }
 
-/* BACKGROUND IMAGE */
+/* ===== ULTRA NEON BACKGROUND ===== */
 body::before{
 content:"";
 position:fixed;
 top:0;left:0;
 width:100%;height:100%;
-background:
-linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.95)),
-url("bg.png");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
-filter:brightness(0.85) contrast(1.2);
 z-index:-2;
+
+background:
+radial-gradient(circle at 20% 20%, rgba(0,255,163,0.25), transparent 40%),
+radial-gradient(circle at 80% 30%, rgba(0,120,255,0.20), transparent 45%),
+radial-gradient(circle at 50% 80%, rgba(180,0,255,0.15), transparent 50%),
+linear-gradient(180deg, #02050f 0%, #000000 100%);
+
+background-size:200% 200%;
+animation:bgMove 10s ease-in-out infinite;
 }
 
-/* LIGHT EFFECT */
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* LIGHT OVERLAY */
 body::after{
 content:"";
 position:fixed;
@@ -181,7 +189,7 @@ font-size:12px;
 <a class="btn" href="#buy">Buy</a>
 </section>
 
-<!-- LIVE METRICS -->
+<!-- METRICS -->
 <div class="metrics">
 <div class="metric" id="price">Price: loading...</div>
 <div class="metric" id="mc">MCAP: loading...</div>
@@ -247,20 +255,19 @@ font-size:12px;
 
 <div style="margin-top:20px;">
 
-  <a class="btn" href="https://www.orca.so/pools?tokens=54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17" target="_blank" rel="noopener noreferrer">
-    Buy on Orca
-  </a>
+<a class="btn" href="https://www.orca.so/pools?tokens=54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17" target="_blank">
+Buy on Orca
+</a>
 
-  <a class="btn" href="https://jup.ag/tokens/54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17" target="_blank" rel="noopener noreferrer">
-    Buy on Jupiter (Best Price)
-  </a>
+<a class="btn" href="https://jup.ag/tokens/54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17" target="_blank">
+Buy on Jupiter
+</a>
 
-  <a class="btn" href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom" target="_blank" rel="noopener noreferrer">
-    Buy on Raydium
-  </a>
+<a class="btn" href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom" target="_blank">
+Buy on Raydium
+</a>
 
 </div>
-
 </section>
 
 <footer>
