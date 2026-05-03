@@ -22,26 +22,26 @@ color:var(--text);
 overflow-x:hidden;
 }
 
-/* BACKGROUND ANIMATION */
+/* animated background */
 body::before{
 content:"";
 position:fixed;
 top:0;left:0;
 width:100%;height:100%;
 background:
-radial-gradient(circle at 20% 20%, rgba(0,255,163,0.05), transparent),
-radial-gradient(circle at 80% 80%, rgba(0,255,163,0.03), transparent);
+radial-gradient(circle at 20% 20%, rgba(0,255,163,0.06), transparent),
+radial-gradient(circle at 80% 80%, rgba(0,255,163,0.04), transparent);
 animation: moveBg 12s infinite linear;
 z-index:-1;
 }
 
 @keyframes moveBg{
 0%{transform:translate(0,0);}
-50%{transform:translate(-20px,20px);}
+50%{transform:translate(-25px,25px);}
 100%{transform:translate(0,0);}
 }
 
-/* HEADER */
+/* header */
 header{
 display:flex;
 justify-content:space-between;
@@ -54,7 +54,7 @@ color:var(--neon);
 font-weight:bold;
 }
 
-/* HERO */
+/* hero */
 .hero{
 text-align:center;
 padding:70px 20px;
@@ -67,17 +67,15 @@ margin:0;
 animation: glow 2.5s infinite;
 }
 
-.hero p{
-color:var(--muted);
+@keyframes glow{
+0%{text-shadow:0 0 5px var(--neon);}
+50%{text-shadow:0 0 25px var(--neon);}
+100%{text-shadow:0 0 5px var(--neon);}
 }
 
-@keyframes glow {
-0% { text-shadow: 0 0 5px var(--neon); }
-50% { text-shadow: 0 0 25px var(--neon); }
-100% { text-shadow: 0 0 5px var(--neon); }
-}
+.hero p{color:var(--muted);}
 
-/* BUTTON */
+/* buttons */
 .btn{
 background:var(--neon);
 color:#000;
@@ -89,7 +87,7 @@ display:inline-block;
 font-weight:bold;
 }
 
-/* METRICS */
+/* metrics */
 .metrics{
 display:flex;
 flex-wrap:wrap;
@@ -102,7 +100,7 @@ padding:20px;
 background:var(--card);
 padding:10px 15px;
 border-radius:10px;
-min-width:160px;
+min-width:170px;
 text-align:center;
 transition:0.3s;
 }
@@ -112,7 +110,7 @@ transform:scale(1.05);
 border:1px solid var(--neon);
 }
 
-/* GRID */
+/* grid */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -135,6 +133,12 @@ font-size:26px;
 margin-top:40px;
 }
 
+.copy{
+cursor:pointer;
+color:var(--neon);
+word-break:break-all;
+}
+
 iframe{
 width:100%;
 height:500px;
@@ -142,15 +146,11 @@ border:0;
 border-radius:12px;
 }
 
-.copy{
-cursor:pointer;
-color:var(--neon);
-}
-
 footer{
 text-align:center;
 padding:40px;
 color:#666;
+font-size:12px;
 }
 </style>
 </head>
@@ -163,7 +163,7 @@ color:#666;
 </header>
 
 <section class="hero">
-<h1>Macgyver Official Token (MGOT)</h1>
+<h1>MGOT Token</h1>
 <p>On-chain • Transparent • Solana ecosystem asset</p>
 <a class="btn" href="#chart">Chart</a>
 <a class="btn" href="#buy">Buy</a>
@@ -173,44 +173,17 @@ color:#666;
 <div class="metrics">
 <div class="metric" id="price">Price: loading...</div>
 <div class="metric" id="mc">MCAP: loading...</div>
-<div class="metric" id="liq-usd">Liquidity USD: loading...</div>
+<div class="metric" id="liq-usd">Liquidity: loading...</div>
 <div class="metric" id="vol">Volume 24h: loading...</div>
 </div>
 
-<!-- ABOUT -->
-<h2 class="section-title">About MGOT</h2>
-<section class="grid">
-<div class="card">
-<h3>Origin</h3>
-<p>Community-driven token inspired by MacGyver mindset.</p>
-</div>
-
-<div class="card">
-<h3>Vision</h3>
-<p>Transparent Solana ecosystem with real on-chain liquidity.</p>
-</div>
-</section>
-
-<!-- CHART -->
 <h2 class="section-title">Live Market</h2>
 <div style="padding:20px;">
 <iframe src="https://dexscreener.com/solana/coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom?embed=1"></iframe>
 </div>
 
-<!-- TOKEN -->
-<h2 class="section-title">Token Allocation</h2>
-<section class="grid">
-<div class="card"><h3>Community</h3><p>40%</p></div>
-<div class="card"><h3>Liquidity</h3><p>35%</p></div>
-<div class="card"><h3>Treasury</h3><p>15%</p></div>
-<div class="card"><h3>Marketing</h3><p>7%</p></div>
-<div class="card"><h3>Team</h3><p>3%</p></div>
-</section>
-
-<!-- LIQUIDITY -->
 <h2 class="section-title">Liquidity Pool</h2>
 <section class="grid">
-
 <div class="card">
 <h3>SOL in Pool</h3>
 <p id="liq-sol">loading...</p>
@@ -218,27 +191,119 @@ color:#666;
 
 <div class="card">
 <h3>Liquidity USD</h3>
-<p id="liq-usd">loading...</p>
+<p id="liq-usd-card">loading...</p>
 </div>
-
 </section>
 
-<!-- CONTRACT -->
 <h2 class="section-title">Contract</h2>
 <section class="grid">
 <div class="card">
 <h3>Token Address</h3>
-<p class="copy" onclick="copy(this)">
-54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17
-</p>
+<p class="copy" onclick="copy(this)">54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17</p>
 </div>
 </section>
 
-<!-- ORCA -->
-<h2 class="section-title">Pool Address</h2>
-<section class="grid">
-<div class="card">
-<p class="copy" onclick="copy(this)">
-Coro6hS7QcpmN5qsif83zSwZv6e3e6badpZkqom
-</p>
-</div
+<h2 class="section-title">Community</h2>
+<div style="text-align:center;">
+<a class="btn" href="https://t.me/MGOT_Community">Telegram</a>
+<a class="btn" href="https://discord.gg/zK32pzW4K">Discord</a>
+</div>
+
+<section id="buy" style="text-align:center;padding:60px;">
+<h2 style="color:var(--neon);">Buy MGOT</h2>
+<a class="btn" href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom">
+Buy on Raydium
+</a>
+</section>
+
+<footer>
+Live data powered by Dexscreener API • MGOT © 2026
+</footer>
+
+<script>
+
+const pair="coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom";
+
+/* SAFE SET */
+function set(id,val){
+const el=document.getElementById(id);
+if(el) el.innerText=val;
+}
+
+/* COPY */
+function copy(el){
+navigator.clipboard.writeText(el.innerText);
+alert("Copied");
+}
+
+/* FORMAT */
+function money(x){
+if(x===undefined||x===null) return "n/a";
+return "$"+Number(x).toLocaleString(undefined,{maximumFractionDigits:2});
+}
+
+/* MAIN DATA */
+async function loadData(){
+try{
+const r=await fetch(`https://api.dexscreener.com/latest/dex/pairs/solana/${pair}`);
+const d=await r.json();
+
+if(!d?.pairs?.length) throw new Error("No data");
+
+const p=d.pairs[0];
+
+set("price","Price: $"+(p.priceUsd||"n/a"));
+set("mc","MCAP: "+money(p.fdv));
+set("liq-usd","Liquidity: "+money(p.liquidity?.usd));
+set("liq-usd-card",money(p.liquidity?.usd));
+set("vol","Volume 24h: "+money(p.volume?.h24));
+
+}catch(e){
+console.log(e);
+set("price","Price: n/a");
+set("mc","MCAP: n/a");
+set("liq-usd","Liquidity: n/a");
+set("liq-usd-card","n/a");
+set("vol","Volume 24h: n/a");
+}
+}
+
+/* POOL */
+async function loadPool(){
+try{
+const r=await fetch(`https://api.dexscreener.com/latest/dex/pairs/solana/${pair}`);
+const d=await r.json();
+
+if(!d?.pairs?.length) throw new Error();
+
+const p=d.pairs[0];
+
+set("liq-sol",(p.liquidity?.quote||"n/a")+" SOL");
+
+}catch(e){
+set("liq-sol","n/a");
+}
+}
+
+/* PULSE */
+function pulse(){
+document.querySelectorAll(".metric").forEach(m=>{
+m.classList.add("flash");
+setTimeout(()=>m.classList.remove("flash"),300);
+});
+}
+
+/* INIT */
+window.addEventListener("load",()=>{
+loadData();
+loadPool();
+
+setInterval(loadData,15000);
+setInterval(loadPool,15000);
+setInterval(pulse,3000);
+});
+
+</script>
+
+</body>
+</html>
