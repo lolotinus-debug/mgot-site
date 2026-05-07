@@ -3,317 +3,621 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MGOT | Macgyver Official Token</title>
+
+<title>MGOT | Mindset Growth Optimization Token</title>
 
 <style>
+
 :root{
---bg:#02050f;
---card:rgba(255,255,255,0.06);
---neon:#00ffa3;
+--bg:#020617;
+--card:rgba(255,255,255,0.05);
 --text:#ffffff;
---muted:#9aa4b2;
+--muted:#94a3b8;
+}
+
+*{
+box-sizing:border-box;
 }
 
 body{
 margin:0;
-font-family:Arial;
+font-family:Arial,sans-serif;
 color:var(--text);
 overflow-x:hidden;
+background:#020617;
+position:relative;
 }
 
-/* ===== ULTRA NEON BACKGROUND ===== */
+/* ===== ANIMATED FUTURE BACKGROUND ===== */
+
 body::before{
 content:"";
 position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-z-index:-2;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-3;
 
 background:
-radial-gradient(circle at 20% 20%, rgba(0,255,163,0.25), transparent 40%),
-radial-gradient(circle at 80% 30%, rgba(0,120,255,0.20), transparent 45%),
-radial-gradient(circle at 50% 80%, rgba(180,0,255,0.15), transparent 50%),
-linear-gradient(180deg, #02050f 0%, #000000 100%);
+radial-gradient(circle at 15% 20%, rgba(0,140,255,0.35), transparent 30%),
+radial-gradient(circle at 85% 30%, rgba(0,255,255,0.25), transparent 35%),
+radial-gradient(circle at 50% 80%, rgba(0,89,255,0.25), transparent 40%),
+linear-gradient(180deg,#020617 0%,#000000 100%);
 
-background-size:200% 200%;
-animation:bgMove 10s ease-in-out infinite;
+background-size:250% 250%;
+animation:bgShift 14s ease infinite;
 }
 
-@keyframes bgMove{
+@keyframes bgShift{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
 }
 
-/* LIGHT OVERLAY */
-body::after{
-content:"";
+/* FUTURE GRID */
+
+.grid-bg{
 position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:
-radial-gradient(circle at 20% 30%, rgba(0,255,163,0.08), transparent),
-radial-gradient(circle at 80% 70%, rgba(0,255,163,0.05), transparent);
-animation:move 12s infinite linear;
-z-index:-1;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background-image:
+linear-gradient(rgba(0,170,255,0.07) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0,170,255,0.07) 1px, transparent 1px);
+background-size:45px 45px;
+z-index:-2;
+opacity:0.35;
+animation:gridMove 25s linear infinite;
 }
 
-@keyframes move{
-0%{transform:translate(0,0);}
-50%{transform:translate(-30px,30px);}
-100%{transform:translate(0,0);}
+@keyframes gridMove{
+0%{
+transform:translateY(0px);
+}
+100%{
+transform:translateY(45px);
+}
+}
+
+/* GLOW ORBS */
+
+.orb{
+position:fixed;
+border-radius:50%;
+filter:blur(90px);
+z-index:-1;
+opacity:0.5;
+animation:float 10s ease-in-out infinite;
+}
+
+.orb1{
+width:300px;
+height:300px;
+background:#00c3ff;
+top:10%;
+left:-80px;
+}
+
+.orb2{
+width:280px;
+height:280px;
+background:#0048ff;
+bottom:10%;
+right:-60px;
+animation-delay:3s;
+}
+
+@keyframes float{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-30px);}
+100%{transform:translateY(0px);}
 }
 
 /* HEADER */
+
 header{
 display:flex;
 justify-content:space-between;
-padding:20px;
-backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(255,255,255,0.05);
+align-items:center;
+padding:20px 28px;
+backdrop-filter:blur(14px);
+border-bottom:1px solid rgba(255,255,255,0.06);
+background:rgba(255,255,255,0.02);
+position:sticky;
+top:0;
+z-index:20;
 }
 
-.logo{color:var(--neon);font-weight:bold;}
+.logo-wrap{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.logo-wrap img{
+width:46px;
+height:46px;
+border-radius:14px;
+box-shadow:
+0 0 12px #00b7ff,
+0 0 25px #006eff;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+letter-spacing:2px;
+background:linear-gradient(90deg,#00d9ff,#0066ff,#00d9ff);
+background-size:200%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:neonText 4s linear infinite;
+}
+
+@keyframes neonText{
+0%{background-position:0%;}
+100%{background-position:200%;}
+}
 
 /* HERO */
-.hero{text-align:center;padding:90px 20px;}
+
+.hero{
+text-align:center;
+padding:100px 20px;
+max-width:950px;
+margin:auto;
+position:relative;
+}
+
+.hero-logo{
+width:150px;
+height:150px;
+border-radius:32px;
+margin-bottom:30px;
+box-shadow:
+0 0 20px #00d9ff,
+0 0 50px #006eff;
+animation:heroPulse 4s ease infinite;
+}
+
+@keyframes heroPulse{
+0%{
+transform:scale(1);
+box-shadow:0 0 20px #00d9ff;
+}
+50%{
+transform:scale(1.05);
+box-shadow:
+0 0 35px #00d9ff,
+0 0 60px #006eff;
+}
+100%{
+transform:scale(1);
+box-shadow:0 0 20px #00d9ff;
+}
+}
 
 .hero h1{
-color:var(--neon);
-font-size:52px;
-animation:glow 2.5s infinite;
+font-size:62px;
+line-height:1.1;
+margin-bottom:20px;
+
+background:linear-gradient(90deg,#00e1ff,#0077ff,#00e1ff);
+background-size:200%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+animation:titleFlow 6s linear infinite;
 }
 
-@keyframes glow{
-0%{text-shadow:0 0 5px var(--neon);}
-50%{text-shadow:0 0 30px var(--neon);}
-100%{text-shadow:0 0 5px var(--neon);}
+@keyframes titleFlow{
+0%{background-position:0%;}
+100%{background-position:200%;}
 }
 
-.hero p{color:var(--muted);}
+.hero p{
+color:var(--muted);
+font-size:20px;
+line-height:1.7;
+max-width:760px;
+margin:auto;
+}
 
 /* BUTTON */
+
 .btn{
-background:var(--neon);
-color:#000;
-padding:12px 22px;
-border-radius:12px;
-text-decoration:none;
-margin:6px;
 display:inline-block;
+margin-top:30px;
+padding:14px 26px;
+border-radius:16px;
+text-decoration:none;
 font-weight:bold;
-transition:0.2s;
+color:#fff;
+
+background:
+linear-gradient(90deg,#00c3ff,#005eff,#00c3ff);
+
+background-size:200%;
+animation:btnFlow 5s linear infinite;
+
+box-shadow:
+0 0 15px rgba(0,195,255,0.5);
+
+transition:0.25s;
+}
+
+@keyframes btnFlow{
+0%{background-position:0%;}
+100%{background-position:200%;}
 }
 
 .btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 15px var(--neon);
+transform:translateY(-3px) scale(1.03);
+
+box-shadow:
+0 0 20px rgba(0,195,255,0.8),
+0 0 40px rgba(0,94,255,0.6);
 }
 
-/* METRICS */
-.metrics{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:12px;
-padding:20px;
-}
-
-.metric{
-background:var(--card);
-padding:14px 18px;
-border-radius:14px;
-min-width:180px;
-text-align:center;
-backdrop-filter:blur(12px);
-border:1px solid rgba(0,255,163,0.15);
-}
-
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-padding:40px 20px;
-}
-
-.card{
-background:var(--card);
-padding:22px;
-border-radius:18px;
-border:1px solid rgba(0,255,163,0.15);
-backdrop-filter:blur(12px);
-}
-
-.card h3{color:var(--neon);}
+/* SECTION */
 
 .section-title{
 text-align:center;
-font-size:30px;
-margin-top:50px;
+font-size:38px;
+margin-top:80px;
+margin-bottom:20px;
+
+background:linear-gradient(90deg,#00d9ff,#006eff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:24px;
+padding:30px 20px;
+max-width:1200px;
+margin:auto;
+}
+
+/* CARD */
+
+.card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(0,180,255,0.18);
+border-radius:24px;
+padding:26px;
+backdrop-filter:blur(16px);
+
+transition:0.3s;
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,0.08),
+transparent
+);
+transition:0.6s;
+}
+
+.card:hover::before{
+left:100%;
+}
+
+.card:hover{
+transform:translateY(-6px);
+
+box-shadow:
+0 0 25px rgba(0,183,255,0.18),
+0 0 40px rgba(0,94,255,0.10);
+}
+
+.card h3{
+font-size:24px;
+margin-top:0;
+margin-bottom:14px;
+color:#00d9ff;
+}
+
+.card p{
+color:#b8c5d6;
+line-height:1.7;
+}
+
+/* CONTRACT */
 
 .copy{
 cursor:pointer;
-color:var(--neon);
+font-size:15px;
+color:#00d9ff;
 word-break:break-all;
 }
 
-iframe{
-width:100%;
-height:500px;
-border:0;
-border-radius:14px;
+/* COMMUNITY */
+
+.community{
+text-align:center;
+padding-bottom:30px;
 }
+
+/* FOOTER */
 
 footer{
 text-align:center;
-padding:40px;
-color:#777;
-font-size:12px;
+padding:50px 20px;
+color:#667085;
+font-size:13px;
 }
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+.section-title{
+font-size:30px;
+}
+
+.hero-logo{
+width:120px;
+height:120px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
+<div class="grid-bg"></div>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
 <header>
+
+<div class="logo-wrap">
+<img src="https://i.imgur.com/NpkjQld.jpeg" alt="MGOT Logo">
 <div class="logo">MGOT</div>
+</div>
+
 <a class="btn" href="#buy">Buy</a>
+
 </header>
 
 <section class="hero">
-<h1>MGOT Token</h1>
-<p>On-chain • Transparent • Solana ecosystem asset</p>
-<a class="btn" href="#chart">Chart</a>
-<a class="btn" href="#buy">Buy</a>
+
+<img class="hero-logo"
+src="https://i.imgur.com/NpkjQld.jpeg"
+alt="MGOT Logo">
+
+<h1>
+Mindset Growth Optimization Token
+</h1>
+
+<p>
+A futuristic community-driven Solana ecosystem focused on mindset,
+growth, innovation and long-term Web3 expansion.
+</p>
+
+<a class="btn" href="#buy">
+Enter Ecosystem
+</a>
+
 </section>
 
-<!-- METRICS -->
-<div class="metrics">
-<div class="metric" id="price">Price: loading...</div>
-<div class="metric" id="mc">MCAP: loading...</div>
-<div class="metric" id="liq">Liquidity: loading...</div>
-<div class="metric" id="vol">Volume 24h: loading...</div>
+<!-- UTILITY -->
+
+<h2 class="section-title">
+Utility
+</h2>
+
+<section class="grid">
+
+<div class="card">
+<h3>Community</h3>
+<p>
+Building a strong Web3 ecosystem powered by people and collaboration.
+</p>
 </div>
 
-<!-- UTILITY -->
-<h2 class="section-title">Token Utility</h2>
-<section class="grid">
-<div class="card"><h3>Community</h3><p>Access & events</p></div>
-<div class="card"><h3>Rewards</h3><p>Future staking</p></div>
-<div class="card"><h3>Governance</h3><p>Voting power</p></div>
+<div class="card">
+<h3>Optimization</h3>
+<p>
+Focused on future tools, expansion and ecosystem evolution.
+</p>
+</div>
+
+<div class="card">
+<h3>Governance</h3>
+<p>
+Future community participation and decentralized direction systems.
+</p>
+</div>
+
 </section>
 
 <!-- TOKENOMICS -->
-<h2 class="section-title">Tokenomics</h2>
+
+<h2 class="section-title">
+Tokenomics
+</h2>
+
 <section class="grid">
-<div class="card"><h3>Supply</h3><p>Dynamic</p></div>
-<div class="card"><h3>Liquidity</h3><p>On-chain</p></div>
-<div class="card"><h3>Distribution</h3><p>Community</p></div>
+
+<div class="card">
+<h3>Supply</h3>
+<p>
+Structured for long-term ecosystem growth and scalability.
+</p>
+</div>
+
+<div class="card">
+<h3>Liquidity</h3>
+<p>
+Transparent and publicly visible on-chain liquidity infrastructure.
+</p>
+</div>
+
+<div class="card">
+<h3>Distribution</h3>
+<p>
+Community-oriented token distribution model.
+</p>
+</div>
+
 </section>
 
 <!-- ROADMAP -->
-<h2 class="section-title">Roadmap</h2>
+
+<h2 class="section-title">
+Roadmap
+</h2>
+
 <section class="grid">
-<div class="card"><h3>Phase 1</h3><p>Launch</p></div>
-<div class="card"><h3>Phase 2</h3><p>Growth</p></div>
-<div class="card"><h3>Phase 3</h3><p>Utility</p></div>
+
+<div class="card">
+<h3>Phase 1</h3>
+<p>
+Launch, branding and initial ecosystem foundation.
+</p>
+</div>
+
+<div class="card">
+<h3>Phase 2</h3>
+<p>
+Community expansion, visibility and strategic partnerships.
+</p>
+</div>
+
+<div class="card">
+<h3>Phase 3</h3>
+<p>
+Future utilities, integrations and ecosystem growth.
+</p>
+</div>
+
 </section>
 
 <!-- SECURITY -->
-<h2 class="section-title">Security</h2>
+
+<h2 class="section-title">
+Security
+</h2>
+
 <section class="grid">
-<div class="card"><h3>On-chain</h3><p>Transparent</p></div>
-<div class="card"><h3>Liquidity</h3><p>Visible</p></div>
+
+<div class="card">
+<h3>Transparency</h3>
+<p>
+Public blockchain verification and visible on-chain activity.
+</p>
+</div>
+
+<div class="card">
+<h3>Infrastructure</h3>
+<p>
+Built within the Solana ecosystem with transparent accessibility.
+</p>
+</div>
+
 </section>
 
-<!-- CHART -->
-<h2 class="section-title">Live Market</h2>
-<div style="padding:20px;">
-<iframe src="https://dexscreener.com/solana/coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom?embed=1"></iframe>
+<!-- CONTRACT -->
+
+<h2 class="section-title">
+Contract
+</h2>
+
+<section class="grid">
+
+<div class="card">
+
+<p class="copy" onclick="copy(this)">
+NEW_TOKEN_ADDRESS_HERE
+</p>
+
 </div>
 
-<!-- CONTRACT -->
-<h2 class="section-title">Contract</h2>
-<section class="grid">
-<div class="card">
-<p class="copy" onclick="copy(this)">54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17</p>
-</div>
 </section>
 
 <!-- COMMUNITY -->
-<h2 class="section-title">Community</h2>
-<div style="text-align:center;">
-<a class="btn" href="https://t.me/MGOT_Community">Telegram</a>
-<a class="btn" href="https://discord.gg/zK32pzW4K">Discord</a>
+
+<h2 class="section-title">
+Community
+</h2>
+
+<div class="community">
+
+<a class="btn"
+href="https://t.me/MGOT_Community"
+target="_blank">
+Telegram
+</a>
+
+<a class="btn"
+href="https://discord.gg/zK32pzW4K"
+target="_blank">
+Discord
+</a>
+
 </div>
 
 <!-- BUY -->
-<section id="buy" style="text-align:center;padding:60px;">
-<h2 style="color:var(--neon);">Buy MGOT</h2>
 
-<div style="margin-top:20px;">
+<section id="buy"
+style="text-align:center;padding:80px 20px;">
 
-<a class="btn" href="https://www.orca.so/pools?tokens=54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17" target="_blank">
-Buy on Orca
-</a>
+<h2 class="section-title">
+Buy MGOT
+</h2>
 
-<a class="btn" href="https://jup.ag/tokens/54SW86tXqXRo7tCJJRgNZcjvCtjcPaoFrjDGKAPmgw17" target="_blank">
-Buy on Jupiter
-</a>
+<p style="
+color:var(--muted);
+font-size:18px;
+">
+Trading integrations coming soon.
+</p>
 
-<a class="btn" href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom" target="_blank">
-Buy on Raydium
-</a>
-
-</div>
 </section>
 
 <footer>
-Live data via Dexscreener • MGOT © 2026
+MGOT • Mindset Growth Optimization Token • 2026
 </footer>
 
 <script>
-const pair="coro6hs7af1w7qcpmn5qsif83zswzv6e3e6badpzkqom";
-
-function set(id,val){
-const el=document.getElementById(id);
-if(el) el.innerText=val;
-}
 
 function copy(el){
+
 navigator.clipboard.writeText(el.innerText);
-alert("Copied");
+
+alert("Contract copied");
+
 }
 
-function money(x){
-if(!x&&x!==0) return "n/a";
-return "$"+Number(x).toLocaleString();
-}
-
-async function load(){
-try{
-const r=await fetch(`https://api.dexscreener.com/latest/dex/pairs/solana/${pair}`);
-const d=await r.json();
-const p=d?.pairs?.[0];
-if(!p) throw new Error();
-
-set("price","Price: $"+(p.priceUsd||"n/a"));
-set("mc","MCAP: "+money(p.fdv));
-set("liq","Liquidity: "+money(p.liquidity?.usd));
-set("vol","Volume 24h: "+money(p.volume?.h24));
-
-}catch(e){
-set("price","Price: n/a");
-set("mc","MCAP: n/a");
-set("liq","Liquidity: n/a");
-set("vol","Volume 24h: n/a");
-}
-}
-
-setInterval(load,15000);
-window.onload=load;
 </script>
 
 </body>
