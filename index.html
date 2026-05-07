@@ -28,7 +28,7 @@ background:#020617;
 position:relative;
 }
 
-/* ===== ANIMATED FUTURE BACKGROUND ===== */
+/* ===== FUTURE BACKGROUND ===== */
 
 body::before{
 content:"";
@@ -137,22 +137,29 @@ gap:14px;
 }
 
 .logo-wrap img{
-width:46px;
-height:46px;
-border-radius:14px;
-box-shadow:
-0 0 12px #00b7ff,
-0 0 25px #006eff;
+width:52px;
+height:52px;
+object-fit:contain;
+
+filter:
+drop-shadow(0 0 8px #00d9ff)
+drop-shadow(0 0 22px #006eff);
+
+background:transparent;
 }
 
 .logo{
 font-size:22px;
 font-weight:bold;
 letter-spacing:2px;
+
 background:linear-gradient(90deg,#00d9ff,#0066ff,#00d9ff);
+
 background-size:200%;
+
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+
 animation:neonText 4s linear infinite;
 }
 
@@ -172,30 +179,29 @@ position:relative;
 }
 
 .hero-logo{
-width:150px;
-height:150px;
-border-radius:32px;
+width:220px;
+height:220px;
+object-fit:contain;
 margin-bottom:30px;
-box-shadow:
-0 0 20px #00d9ff,
-0 0 50px #006eff;
+
+filter:
+drop-shadow(0 0 18px #00d9ff)
+drop-shadow(0 0 50px #006eff);
+
 animation:heroPulse 4s ease infinite;
+
+background:transparent;
 }
 
 @keyframes heroPulse{
 0%{
 transform:scale(1);
-box-shadow:0 0 20px #00d9ff;
 }
 50%{
 transform:scale(1.05);
-box-shadow:
-0 0 35px #00d9ff,
-0 0 60px #006eff;
 }
 100%{
 transform:scale(1);
-box-shadow:0 0 20px #00d9ff;
 }
 }
 
@@ -206,6 +212,7 @@ margin-bottom:20px;
 
 background:linear-gradient(90deg,#00e1ff,#0077ff,#00e1ff);
 background-size:200%;
+
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 
@@ -270,6 +277,7 @@ margin-top:80px;
 margin-bottom:20px;
 
 background:linear-gradient(90deg,#00d9ff,#006eff);
+
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
@@ -306,12 +314,14 @@ top:0;
 left:-100%;
 width:100%;
 height:100%;
+
 background:linear-gradient(
 90deg,
 transparent,
 rgba(255,255,255,0.08),
 transparent
 );
+
 transition:0.6s;
 }
 
@@ -381,8 +391,8 @@ font-size:30px;
 }
 
 .hero-logo{
-width:120px;
-height:120px;
+width:160px;
+height:160px;
 }
 
 }
@@ -400,18 +410,28 @@ height:120px;
 <header>
 
 <div class="logo-wrap">
-<img src="https://i.imgur.com/NpkjQld.jpeg" alt="MGOT Logo">
-<div class="logo">MGOT</div>
+
+<img
+src="PASTE_YOUR_TRANSPARENT_LOGO_HERE"
+alt="MGOT Logo">
+
+<div class="logo">
+MGOT
 </div>
 
-<a class="btn" href="#buy">Buy</a>
+</div>
+
+<a class="btn" href="#buy">
+Buy
+</a>
 
 </header>
 
 <section class="hero">
 
-<img class="hero-logo"
-src="https://i.imgur.com/NpkjQld.jpeg"
+<img
+class="hero-logo"
+src="PASTE_YOUR_TRANSPARENT_LOGO_HERE"
 alt="MGOT Logo">
 
 <h1>
@@ -438,23 +458,29 @@ Utility
 
 <div class="card">
 <h3>Community</h3>
+
 <p>
 Building a strong Web3 ecosystem powered by people and collaboration.
 </p>
+
 </div>
 
 <div class="card">
 <h3>Optimization</h3>
+
 <p>
 Focused on future tools, expansion and ecosystem evolution.
 </p>
+
 </div>
 
 <div class="card">
 <h3>Governance</h3>
+
 <p>
 Future community participation and decentralized direction systems.
 </p>
+
 </div>
 
 </section>
@@ -469,23 +495,29 @@ Tokenomics
 
 <div class="card">
 <h3>Supply</h3>
+
 <p>
 Structured for long-term ecosystem growth and scalability.
 </p>
+
 </div>
 
 <div class="card">
 <h3>Liquidity</h3>
+
 <p>
 Transparent and publicly visible on-chain liquidity infrastructure.
 </p>
+
 </div>
 
 <div class="card">
 <h3>Distribution</h3>
+
 <p>
 Community-oriented token distribution model.
 </p>
+
 </div>
 
 </section>
@@ -500,23 +532,29 @@ Roadmap
 
 <div class="card">
 <h3>Phase 1</h3>
+
 <p>
 Launch, branding and initial ecosystem foundation.
 </p>
+
 </div>
 
 <div class="card">
 <h3>Phase 2</h3>
+
 <p>
 Community expansion, visibility and strategic partnerships.
 </p>
+
 </div>
 
 <div class="card">
 <h3>Phase 3</h3>
+
 <p>
 Future utilities, integrations and ecosystem growth.
 </p>
+
 </div>
 
 </section>
@@ -531,16 +569,20 @@ Security
 
 <div class="card">
 <h3>Transparency</h3>
+
 <p>
 Public blockchain verification and visible on-chain activity.
 </p>
+
 </div>
 
 <div class="card">
 <h3>Infrastructure</h3>
+
 <p>
 Built within the Solana ecosystem with transparent accessibility.
 </p>
+
 </div>
 
 </section>
@@ -556,7 +598,7 @@ Contract
 <div class="card">
 
 <p class="copy" onclick="copy(this)">
-  Under development
+NEW_TOKEN_ADDRESS_HERE
 </p>
 
 </div>
@@ -571,13 +613,15 @@ Community
 
 <div class="community">
 
-<a class="btn"
+<a
+class="btn"
 href="https://t.me/MGOT_Community"
 target="_blank">
 Telegram
 </a>
 
-<a class="btn"
+<a
+class="btn"
 href="https://discord.gg/zK32pzW4K"
 target="_blank">
 Discord
@@ -587,7 +631,8 @@ Discord
 
 <!-- BUY -->
 
-<section id="buy"
+<section
+id="buy"
 style="text-align:center;padding:80px 20px;">
 
 <h2 class="section-title">
@@ -598,7 +643,7 @@ Buy MGOT
 color:var(--muted);
 font-size:18px;
 ">
-Trading integrations coming soon.
+Preparing the next phase of the MGOT ecosystem.
 </p>
 
 </section>
