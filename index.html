@@ -28,21 +28,52 @@ margin:auto;
 padding:20px;
 }
 
+/* HEADER */
 .header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 0;
+padding:18px 0;
+}
+
+.logo-wrap{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo-img{
+width:44px;
+height:44px;
+object-fit:contain;
+filter:drop-shadow(0 0 10px #00d9ff);
 }
 
 .title{
-font-size:26px;
+font-size:22px;
 font-weight:bold;
 background:linear-gradient(90deg,#00d9ff,#0066ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
+/* HERO */
+.hero{
+display:flex;
+align-items:center;
+gap:15px;
+margin:25px 0;
+color:#94a3b8;
+}
+
+.hero img{
+width:80px;
+height:80px;
+object-fit:contain;
+filter:drop-shadow(0 0 15px #00d9ff);
+}
+
+/* BUTTON */
 .btn{
 padding:10px 16px;
 border-radius:12px;
@@ -52,12 +83,7 @@ text-decoration:none;
 font-weight:bold;
 }
 
-.hero{
-padding:30px 0;
-color:var(--muted);
-line-height:1.6;
-}
-
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -91,9 +117,10 @@ font-size:20px;
 color:#00d9ff;
 }
 
+/* CHART */
 iframe{
 width:100%;
-height:500px;
+height:520px;
 border:0;
 border-radius:18px;
 margin-top:15px;
@@ -107,20 +134,31 @@ margin-top:15px;
 
 <!-- HEADER -->
 <div class="header">
-<div class="title">MGOT – Mindset Growth Optimization Token</div>
-<a class="btn" href="https://jup.ag/tokens/97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN" target="_blank">Buy</a>
+
+<div class="logo-wrap">
+
+<img src="logo.png" class="logo-img" onerror="this.style.display='none'">
+
+<div class="title">MGOT</div>
+
+</div>
+
+<a class="btn" href="https://jup.ag/tokens/97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN" target="_blank">
+Buy
+</a>
+
 </div>
 
 <!-- HERO -->
 <div class="hero">
-MGOT is a Community Token for growing together.
-Focused on mindset, personal development and collective Web3 ecosystem expansion.
+<img src="logo.png" onerror="this.style.display='none'">
+<div>
+MGOT is a Community Token for growing together.<br>
+Mindset • Growth • Optimization • Web3 Expansion
+</div>
 </div>
 
-<!-- LINKS -->
-<a class="btn" href="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9" target="_blank">Dexscreener</a>
-
-<!-- LIVE DATA (REAL FROM DEXSCREENER) -->
+<!-- LIVE DATA -->
 <div class="section-title">Live Market Data</div>
 
 <div class="grid">
@@ -148,25 +186,18 @@ Focused on mindset, personal development and collective Web3 ecosystem expansion
 </div>
 
 <!-- CHART -->
-<div class="section-title">Live Chart (Dexscreener)</div>
+<div class="section-title">Live Chart</div>
 
 <iframe
-src="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9?embed=1"
-allowfullscreen>
+src="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9?embed=1">
 </iframe>
 
-<!-- TOKEN INFO -->
+<!-- CONTRACT -->
 <div class="section-title">Contract</div>
 
 <div class="card">
 97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN
 </div>
-
-<!-- LINKS -->
-<div class="section-title">Community</div>
-
-<a class="btn" href="https://t.me/MGOT_Community" target="_blank">Telegram</a>
-<a class="btn" href="https://discord.gg/zK32pzW4K" target="_blank">Discord</a>
 
 </div>
 
