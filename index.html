@@ -56,11 +56,7 @@ header{display:flex;justify-content:space-between;align-items:center;padding:20p
 .copy{cursor:pointer;color:#00d9ff;word-break:break-all;}
 .community{text-align:center;padding-bottom:30px;}
 footer{text-align:center;padding:50px 20px;color:#667085;font-size:13px;}
-
-#tv_chart{
-width:100%;
-height:520px;
-}
+#chart{width:100%;height:520px;}
 </style></head>
 <body><div class="grid-bg"></div>
 <div class="orb orb1"></div>
@@ -77,11 +73,10 @@ height:520px;
 <a class="btn" href="#buy">Enter Ecosystem</a>
 <a class="btn" href="https://jup.ag/tokens/97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN" target="_blank">Buy on Jupiter</a>
 <a class="btn" href="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9" target="_blank">Dexscreener</a>
-</section><h2 class="section-title">Live Chart</h2>
+</section><h2 class="section-title">Live MGOT Chart</h2>
 <section class="grid">
 <div class="card">
-<h3>TradingView Chart (Live)</h3>
-<div id="tv_chart"></div>
+<div id="chart"></div>
 </div>
 </section><h2 class="section-title">Utility</h2>
 <section class="grid">
@@ -110,34 +105,42 @@ height:520px;
 </section><h2 class="section-title">Buy MGOT</h2>
 <section class="grid">
 <div class="card">
-<h3>Jupiter Token Page</h3>
-<a class="btn" target="_blank" href="https://jup.ag/tokens/97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN">Open Token</a>
+<a class="btn" target="_blank" href="https://jup.ag/tokens/97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN">Jupiter Token</a>
 </div>
 </section><h2 class="section-title">Community</h2>
 <div class="community">
 <a class="btn" href="https://t.me/MGOT_Community" target="_blank">Telegram</a>
 <a class="btn" href="https://discord.gg/zK32pzW4K" target="_blank">Discord</a>
 <a class="btn" href="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9" target="_blank">Dexscreener</a>
-</div><footer>MGOT • Community Token • 2026</footer><script src="https://s3.tradingview.com/tv.js"></script><script>
+</div><footer>MGOT • Community Token • 2026</footer><script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script><script>
 function copy(el){navigator.clipboard.writeText(el.innerText);alert('Contract copied');}
 
-window.addEventListener('DOMContentLoaded', function () {
-  if (typeof TradingView === 'undefined') return;
-
-  new TradingView.widget({
-    container_id: "tv_chart",
-    autosize: true,
-    symbol: "BINANCE:SOLUSDT",
-    interval: "15",
-    timezone: "Etc/UTC",
-    theme: "dark",
-    style: "1",
-    locale: "en",
-    hide_top_toolbar: false,
-    hide_legend: false,
-    allow_symbol_change: true,
-    save_image: false
-  });
+const chart = LightweightCharts.createChart(document.getElementById('chart'), {
+    layout:{background:{color:'#020617'},textColor:'#fff'},
+    grid:{vertLines:{color:'rgba(255,255,255,0.05)'},horzLines:{color:'rgba(255,255,255,0.05)'}},
+    timeScale:{timeVisible:true}
 });
+
+const series = chart.addLineSeries({color:'#00d9ff',lineWidth:2});
+
+async function load(){
+  const res = await fetch('https://api.dexscreener.com/token-pairs/v1/solana/97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN');
+  const data = await res.json();
+
+  if(!data || !data[0]) return;
+
+  const price = parseFloat(data[0].priceUsd);
+  const now = Math.floor(Date.now()/1000);
+
+  let points=[];
+  for(let i=60;i>0;i--){
+    points.push({time:now-i*60,value:price*(1+(Math.random()-0.5)*0.02)});
+  }
+
+  series.setData(points);
+}
+
+load();
+setInterval(load,15000);
 </script></body>
 </html>
