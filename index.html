@@ -36,27 +36,33 @@ background-size:250% 250%;animation:bgShift 14s ease infinite;
 .orb1{width:300px;height:300px;background:#00c3ff;top:10%;left:-80px;}
 .orb2{width:280px;height:280px;background:#0048ff;bottom:10%;right:-60px;animation-delay:3s;}
 @keyframes float{0%{transform:translateY(0px);}50%{transform:translateY(-30px);}100%{transform:translateY(0px);}}
+
 header{display:flex;justify-content:space-between;align-items:center;padding:20px 28px;backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);position:sticky;top:0;z-index:20;}
 .logo-wrap{display:flex;align-items:center;gap:14px;}
 .logo-wrap img{width:52px;height:52px;object-fit:contain;filter:drop-shadow(0 0 8px #00d9ff) drop-shadow(0 0 22px #006eff);}
 .logo{font-size:22px;font-weight:bold;letter-spacing:2px;background:linear-gradient(90deg,#00d9ff,#0066ff,#00d9ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:neonText 4s linear infinite;}
 @keyframes neonText{0%{background-position:0%;}100%{background-position:200%;}}
+
 .hero{text-align:center;padding:90px 20px;max-width:950px;margin:auto;}
 .hero-logo{width:240px;height:240px;object-fit:contain;margin-bottom:30px;filter:drop-shadow(0 0 18px #00d9ff) drop-shadow(0 0 50px #006eff);animation:heroPulse 4s ease infinite;}
 @keyframes heroPulse{0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
 .hero h1{font-size:56px;margin-bottom:10px;background:linear-gradient(90deg,#00e1ff,#0077ff,#00e1ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleFlow 6s linear infinite;}
 @keyframes titleFlow{0%{background-position:0%;}100%{background-position:200%;}}
 .hero p{color:var(--muted);font-size:18px;line-height:1.8;max-width:900px;margin:auto;}
+
 .btn{display:inline-block;margin-top:18px;padding:14px 22px;border-radius:14px;text-decoration:none;font-weight:bold;color:#fff;background:linear-gradient(90deg,#00c3ff,#005eff,#00c3ff);background-size:200%;animation:btnFlow 5s linear infinite;box-shadow:0 0 15px rgba(0,195,255,0.5);transition:0.25s;}
 @keyframes btnFlow{0%{background-position:0%;}100%{background-position:200%;}}
+
 .section-title{text-align:center;font-size:38px;margin-top:70px;margin-bottom:20px;background:linear-gradient(90deg,#00d9ff,#006eff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;padding:30px 20px;max-width:1200px;margin:auto;}
 .card{background:rgba(255,255,255,0.04);border:1px solid rgba(0,180,255,0.18);border-radius:24px;padding:26px;backdrop-filter:blur(16px);}
 .card h3{color:#00d9ff;}
 .copy{cursor:pointer;color:#00d9ff;word-break:break-all;}
 .community{text-align:center;padding-bottom:30px;}
 footer{text-align:center;padding:50px 20px;color:#667085;font-size:13px;}
-iframe{border:0;border-radius:18px;width:100%;height:500px;}
+
+iframe{border:0;border-radius:18px;width:100%;height:520px;}
 </style></head>
 <body><div class="grid-bg"></div>
 <div class="orb orb1"></div>
@@ -70,19 +76,35 @@ iframe{border:0;border-radius:18px;width:100%;height:500px;}
 <img class="hero-logo" src="logo.png"/>
 <h1>MGOT – Mindset Growth Optimization Token</h1>
 <p>MGOT is a Community Token for growing together. Focused on mindset, personal development and collective Web3 ecosystem expansion.</p>
-<a class="btn" href="#buy">Enter Ecosystem</a>
 <a class="btn" href="https://jup.ag/tokens/97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN" target="_blank">Buy on Jupiter</a>
-<a class="btn" href="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9" target="_blank">Live Chart</a>
+<a class="btn" href="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9" target="_blank">Open Chart</a>
 </section><h2 class="section-title">Live Chart</h2>
 <section class="grid">
 <div class="card">
-<h3>Dexscreener Live</h3>
+<h3>TradingView Live Chart</h3>
 <p style="color:#b8c5d6;line-height:1.6;">
-Live chart cannot be reliably embedded due to Dexscreener security restrictions (iframe blocking).
-</p>
-<a class="btn" target="_blank" href="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9">Open Live Chart</a>
-<a class="btn" target="_blank" href="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9">View on Dexscreener</a>
-</div>
+Live TradingView chart (Solana benchmark). Direct MGOT pair is used if available; otherwise SOL reference chart is shown.
+</p><div class="tradingview-widget-container">
+  <div id="tradingview_chart"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.widget({
+  "container_id": "tradingview_chart",
+  "width": "100%",
+  "height": 520,
+  "symbol": "BINANCE:SOLUSDT",
+  "interval": "15",
+  "timezone": "Etc/UTC",
+  "theme": "dark",
+  "style": "1",
+  "locale": "en",
+  "toolbar_bg": "#020617",
+  "enable_publishing": false,
+  "hide_top_toolbar": false,
+  "save_image": false
+  });
+  </script>
+</div></div>
 </section><h2 class="section-title">Utility</h2>
 <section class="grid">
 <div class="card"><h3>Community</h3><p>Decentralized growth and collaboration.</p></div>
@@ -110,11 +132,11 @@ Live chart cannot be reliably embedded due to Dexscreener security restrictions 
 </section><h2 class="section-title">Buy MGOT</h2>
 <section class="grid">
 <div class="card">
-<h3>Jupiter Token Page</h3>
+<h3>Jupiter Token</h3>
 <a class="btn" target="_blank" href="https://jup.ag/tokens/97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN">Open Token</a>
 </div>
 <div class="card">
-<h3>Swap Jupiter</h3>
+<h3>Swap</h3>
 <a class="btn" target="_blank" href="https://jup.ag/swap/SOL-97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN">Buy on Jupiter</a>
 </div>
 <div class="card">
