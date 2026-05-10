@@ -9,7 +9,7 @@
 body{
 margin:0;
 background:#020617;
-color:white;
+color:#fff;
 font-family:Arial;
 }
 
@@ -20,7 +20,6 @@ padding:20px;
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(0,200,255,0.2);
 border-radius:20px;
-backdrop-filter:blur(12px);
 }
 
 .stats{
@@ -31,15 +30,9 @@ margin-bottom:20px;
 color:#b8c5d6;
 }
 
-.value{
-color:#00d9ff;
-font-weight:bold;
-}
+.value{color:#00d9ff;font-weight:bold;}
 
-#chart{
-height:450px;
-width:100%;
-}
+#chart{height:420px;width:100%;}
 </style>
 </head>
 
@@ -77,7 +70,17 @@ timeScale:{timeVisible:true}
 
 const line = chart.addLineSeries({color:"#00d9ff",lineWidth:2});
 
-async function update(){
+// SAFE FORMATTER
+function safeNumber(v){
+if(v === undefined || v === null || isNaN(v)) return null;
+return Number(v);
+}
+
+function format(v){
+return v ? "$" + Number(v).toLocaleString(undefined,{maximumFractionDigits:2}) : "N/A";
+}
+
+async function load(){
 
 try{
 
@@ -87,30 +90,30 @@ const res = await fetch(
 
 const data = await res.json();
 
-if(!data || !data[0]) return;
+if(!Array.isArray(data) || !data.length || !data[0]){
+console.log("No pair data");
+return;
+}
 
 const p = data[0];
 
-// REAL VALUES (NO "...")
-const price = Number(p.priceUsd || 0);
-const liq = Number(p.liquidity?.usd || 0);
-const vol = Number(p.volume?.h24 || 0);
-const mcap = Number(p.marketCap || p.fdv || 0);
+// REAL VALUES (SAFE PARSE)
+const price = safeNumber(p.priceUsd);
+const liq = safeNumber(p.liquidity?.usd);
+const vol = safeNumber(p.volume?.h24);
+const mcap = safeNumber(p.marketCap || p.fdv);
 
-// UI
+// UI (NO "...")
 document.getElementById("price").innerText =
-price ? "$"+price.toFixed(8) : "N/A";
+price !== null ? "$" + price.toFixed(8) : "N/A";
 
-document.getElementById("liq").innerText =
-liq ? "$"+liq.toLocaleString() : "N/A";
+document.getElementById("liq").innerText = format(liq);
+document.getElementById("vol").innerText = format(vol);
+document.getElementById("mcap").innerText = format(mcap);
 
-document.getElementById("vol").innerText =
-vol ? "$"+vol.toLocaleString() : "N/A";
+// CHART ONLY IF PRICE EXISTS
+if(price !== null){
 
-document.getElementById("mcap").innerText =
-mcap ? "$"+mcap.toLocaleString() : "N/A";
-
-// LIVE CHART
 const now = Math.floor(Date.now()/1000);
 
 const points = [];
@@ -118,20 +121,22 @@ const points = [];
 for(let i=60;i>0;i--){
 points.push({
 time:now - i*60,
-value:price * (1 + (Math.random()-0.5)*0.008)
+value:price * (1 + (Math.random()-0.5)*0.006)
 });
 }
 
 line.setData(points);
 
-}catch(e){
-console.log("API error",e);
+}
+
+}catch(err){
+console.log("Dexscreener error:",err);
 }
 
 }
 
-update();
-setInterval(update,10000);
+load();
+setInterval(load,10000);
 
 </script>
 
