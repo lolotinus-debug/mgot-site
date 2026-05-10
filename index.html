@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MGOT – Pro Dashboard</title>
+
+<title>MGOT – Mindset Growth Optimization Token</title>
 
 <style>
 :root{
 --bg:#020617;
---card:rgba(255,255,255,0.05);
 --text:#ffffff;
 --muted:#94a3b8;
 }
@@ -17,23 +17,22 @@
 
 body{
 margin:0;
-font-family:Arial;
+font-family:Arial,sans-serif;
 background:var(--bg);
 color:var(--text);
 }
 
-.container{
-max-width:1100px;
-margin:auto;
-padding:20px;
-}
-
 /* HEADER */
-.header{
+header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 0;
+padding:20px 28px;
+border-bottom:1px solid rgba(255,255,255,0.06);
+background:rgba(255,255,255,0.02);
+position:sticky;
+top:0;
+backdrop-filter:blur(12px);
 }
 
 .logo-wrap{
@@ -42,201 +41,226 @@ align-items:center;
 gap:12px;
 }
 
-.logo-img{
+.logo{
+font-weight:bold;
+font-size:20px;
+color:#00d9ff;
+letter-spacing:1px;
+}
+
+.logo-wrap img{
 width:44px;
 height:44px;
 object-fit:contain;
-filter:drop-shadow(0 0 10px #00d9ff);
 }
 
-.title{
-font-size:22px;
-font-weight:bold;
+/* HERO */
+.hero{
+text-align:center;
+padding:80px 20px;
+max-width:900px;
+margin:auto;
+}
+
+.hero img{
+width:160px;
+height:160px;
+object-fit:contain;
+margin-bottom:20px;
+filter:drop-shadow(0 0 20px #00d9ff);
+}
+
+.hero h1{
+font-size:42px;
+margin:0;
 background:linear-gradient(90deg,#00d9ff,#0066ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
-/* HERO */
-.hero{
-display:flex;
-align-items:center;
-gap:15px;
-margin:25px 0;
-color:#94a3b8;
+.hero p{
+color:var(--muted);
+font-size:18px;
+line-height:1.6;
+margin-top:15px;
 }
 
-.hero img{
-width:80px;
-height:80px;
-object-fit:contain;
-filter:drop-shadow(0 0 15px #00d9ff);
-}
-
-/* BUTTON */
+/* BUTTONS */
 .btn{
-padding:10px 16px;
+display:inline-block;
+margin:10px;
+padding:12px 18px;
 border-radius:12px;
-background:linear-gradient(90deg,#00c3ff,#005eff);
-color:white;
 text-decoration:none;
 font-weight:bold;
+color:#fff;
+background:linear-gradient(90deg,#00c3ff,#005eff);
+}
+
+/* SECTIONS */
+.section-title{
+text-align:center;
+margin-top:60px;
+font-size:28px;
+color:#00d9ff;
 }
 
 /* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
-margin-top:20px;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:16px;
+padding:30px;
+max-width:1100px;
+margin:auto;
 }
 
 .card{
-background:var(--card);
-border:1px solid rgba(0,180,255,0.2);
-padding:18px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(0,180,255,0.15);
+padding:20px;
 border-radius:18px;
 backdrop-filter:blur(10px);
 }
 
-.label{
+.card h3{
+margin:0 0 10px 0;
+color:#00d9ff;
+}
+
+.muted{
 color:var(--muted);
-font-size:13px;
 }
 
-.value{
-font-size:18px;
-margin-top:6px;
-color:#00d9ff;
-font-weight:bold;
+/* LIVE CHART */
+.chart{
+max-width:1100px;
+margin:30px auto;
+padding:0 20px;
 }
 
-.section-title{
-margin-top:40px;
-font-size:20px;
-color:#00d9ff;
-}
-
-/* CHART */
 iframe{
 width:100%;
 height:520px;
 border:0;
 border-radius:18px;
-margin-top:15px;
+}
+
+/* CONTRACT */
+.contract{
+text-align:center;
+padding:20px;
+color:#00d9ff;
+word-break:break-all;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:50px 20px;
+color:#667085;
+font-size:13px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-<!-- HEADER -->
-<div class="header">
-
+<header>
 <div class="logo-wrap">
-
-<img src="logo.png" class="logo-img" onerror="this.style.display='none'">
-
-<div class="title">MGOT</div>
-
+<img src="logo.png" onerror="this.style.display='none'">
+<div class="logo">MGOT</div>
 </div>
 
-<a class="btn" href="https://jup.ag/tokens/97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN" target="_blank">
-Buy
-</a>
-
-</div>
+<a class="btn" href="https://jup.ag/tokens/97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN" target="_blank">Buy</a>
+</header>
 
 <!-- HERO -->
-<div class="hero">
+<section class="hero">
+
 <img src="logo.png" onerror="this.style.display='none'">
-<div>
+
+<h1>MGOT – Mindset Growth Optimization Token</h1>
+
+<p>
 MGOT is a Community Token for growing together.<br>
-Mindset • Growth • Optimization • Web3 Expansion
-</div>
+Focused on mindset, personal development and collective Web3 ecosystem expansion.
+</p>
+
+<a class="btn" href="https://jup.ag/tokens/97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN" target="_blank">Jupiter Buy</a>
+<a class="btn" href="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9" target="_blank">Dexscreener</a>
+
+</section>
+
+<!-- LIVE CHART -->
+<div class="section-title">Live Chart</div>
+
+<div class="chart">
+<iframe src="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9?embed=1"></iframe>
 </div>
 
-<!-- LIVE DATA -->
-<div class="section-title">Live Market Data</div>
+<!-- UTILITY -->
+<div class="section-title">Utility</div>
 
 <div class="grid">
 
 <div class="card">
-<div class="label">Price</div>
-<div class="value" id="price">loading...</div>
+<h3>Community</h3>
+<p class="muted">Decentralized growth and collaboration.</p>
 </div>
 
 <div class="card">
-<div class="label">Market Cap</div>
-<div class="value" id="mcap">loading...</div>
+<h3>Mindset</h3>
+<p class="muted">Long-term personal development focus.</p>
 </div>
 
 <div class="card">
-<div class="label">Liquidity</div>
-<div class="value" id="liq">loading...</div>
+<h3>Expansion</h3>
+<p class="muted">Future ecosystem tools and integrations.</p>
+</div>
+
+</div>
+
+<!-- TOKENOMICS -->
+<div class="section-title">Tokenomics</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Supply</h3>
+<p class="muted">Fixed ecosystem supply.</p>
 </div>
 
 <div class="card">
-<div class="label">Volume 24h</div>
-<div class="value" id="vol">loading...</div>
+<h3>Liquidity</h3>
+<p class="muted">On-chain visible liquidity pools.</p>
+</div>
+
+<div class="card">
+<h3>Distribution</h3>
+<p class="muted">Community-driven allocation model.</p>
 </div>
 
 </div>
-
-<!-- CHART -->
-<div class="section-title">Live Chart</div>
-
-<iframe
-src="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9?embed=1">
-</iframe>
 
 <!-- CONTRACT -->
 <div class="section-title">Contract</div>
 
-<div class="card">
+<div class="contract">
 97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN
 </div>
 
+<!-- COMMUNITY -->
+<div class="section-title">Community</div>
+
+<div style="text-align:center;">
+<a class="btn" href="https://t.me/MGOT_Community" target="_blank">Telegram</a>
+<a class="btn" href="https://discord.gg/zK32pzW4K" target="_blank">Discord</a>
 </div>
 
-<script>
-
-const TOKEN="97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN";
-
-function fmt(v){
-return v ? "$"+Number(v).toLocaleString() : "N/A";
-}
-
-async function load(){
-
-try{
-
-const r = await fetch(`https://api.dexscreener.com/token-pairs/v1/solana/${TOKEN}`);
-const d = await r.json();
-
-if(!d || !d[0]) return;
-
-const p = d[0];
-
-document.getElementById("price").innerText =
-p.priceUsd ? "$"+Number(p.priceUsd).toFixed(8) : "N/A";
-
-document.getElementById("mcap").innerText = fmt(p.marketCap || p.fdv);
-document.getElementById("liq").innerText = fmt(p.liquidity?.usd);
-document.getElementById("vol").innerText = fmt(p.volume?.h24);
-
-}catch(e){
-console.log(e);
-}
-
-}
-
-load();
-setInterval(load,10000);
-
-</script>
+<footer>
+MGOT • Community Token • 2026
+</footer>
 
 </body>
 </html>
