@@ -2,18 +2,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>MGOT – Community Token</title><style>
-
 :root{
 --bg:#020617;
 --card:rgba(255,255,255,0.05);
 --text:#ffffff;
 --muted:#94a3b8;
 }
-
 *{box-sizing:border-box;}
-
 html{scroll-behavior:smooth;}
-
 body{
 margin:0;
 font-family:Arial,sans-serif;
@@ -22,154 +18,109 @@ overflow-x:hidden;
 background:#020617;
 position:relative;
 }
-
 body::before{
 content:"";
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:-3;
+top:0;left:0;width:100%;height:100%;z-index:-3;
 background:
 radial-gradient(circle at 15% 20%, rgba(0,140,255,0.35), transparent 30%),
 radial-gradient(circle at 85% 30%, rgba(0,255,255,0.25), transparent 35%),
 radial-gradient(circle at 50% 80%, rgba(0,89,255,0.25), transparent 40%),
 linear-gradient(180deg,#020617 0%,#000000 100%);
-background-size:250% 250%;
-animation:bgShift 14s ease infinite;
+background-size:250% 250%;animation:bgShift 14s ease infinite;
 }
-
-@keyframes bgShift{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-.grid-bg{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background-image:
-linear-gradient(rgba(0,170,255,0.07) 1px, transparent 1px),
-linear-gradient(90deg, rgba(0,170,255,0.07) 1px, transparent 1px);
-background-size:45px 45px;
-z-index:-2;
-opacity:0.35;
-animation:gridMove 25s linear infinite;
-}
-
-@keyframes gridMove{
-0%{transform:translateY(0px);}
-100%{transform:translateY(45px);}
-}
-
+@keyframes bgShift{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.grid-bg{position:fixed;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(0,170,255,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(0,170,255,0.07) 1px,transparent 1px);background-size:45px 45px;z-index:-2;opacity:0.35;animation:gridMove 25s linear infinite;}
+@keyframes gridMove{0%{transform:translateY(0px);}100%{transform:translateY(45px);}}
 .orb{position:fixed;border-radius:50%;filter:blur(90px);z-index:-1;opacity:0.5;animation:float 10s ease-in-out infinite;}
 .orb1{width:300px;height:300px;background:#00c3ff;top:10%;left:-80px;}
 .orb2{width:280px;height:280px;background:#0048ff;bottom:10%;right:-60px;animation-delay:3s;}
-
-@keyframes float{
-0%{transform:translateY(0px);}50%{transform:translateY(-30px);}100%{transform:translateY(0px);}
-}
-
-header{
-display:flex;justify-content:space-between;align-items:center;padding:20px 28px;
-backdrop-filter:blur(14px);
-border-bottom:1px solid rgba(255,255,255,0.06);
-background:rgba(255,255,255,0.02);
-position:sticky;top:0;z-index:20;
-}
-
+@keyframes float{0%{transform:translateY(0px);}50%{transform:translateY(-30px);}100%{transform:translateY(0px);}}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 28px;backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);position:sticky;top:0;z-index:20;}
 .logo-wrap{display:flex;align-items:center;gap:14px;}
-
-.logo-wrap img{width:52px;height:52px;object-fit:contain;filter:drop-shadow(0 0 8px #00d9ff) drop-shadow(0 0 22px #006eff);background:transparent;}
-
+.logo-wrap img{width:52px;height:52px;object-fit:contain;filter:drop-shadow(0 0 8px #00d9ff) drop-shadow(0 0 22px #006eff);}
 .logo{font-size:22px;font-weight:bold;letter-spacing:2px;background:linear-gradient(90deg,#00d9ff,#0066ff,#00d9ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:neonText 4s linear infinite;}
-
 @keyframes neonText{0%{background-position:0%;}100%{background-position:200%;}}
-
-.hero{text-align:center;padding:100px 20px;max-width:950px;margin:auto;position:relative;}
-
-.hero-logo{width:240px;height:240px;object-fit:contain;margin-bottom:30px;filter:drop-shadow(0 0 18px #00d9ff) drop-shadow(0 0 50px #006eff);animation:heroPulse 4s ease infinite;background:transparent;}
-
+.hero{text-align:center;padding:90px 20px;max-width:950px;margin:auto;}
+.hero-logo{width:240px;height:240px;object-fit:contain;margin-bottom:30px;filter:drop-shadow(0 0 18px #00d9ff) drop-shadow(0 0 50px #006eff);animation:heroPulse 4s ease infinite;}
 @keyframes heroPulse{0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
-
-.hero h1{font-size:64px;line-height:1.1;margin-bottom:20px;background:linear-gradient(90deg,#00e1ff,#0077ff,#00e1ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleFlow 6s linear infinite;}
-
+.hero h1{font-size:64px;margin-bottom:20px;background:linear-gradient(90deg,#00e1ff,#0077ff,#00e1ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleFlow 6s linear infinite;}
 @keyframes titleFlow{0%{background-position:0%;}100%{background-position:200%;}}
-
-.hero p{color:var(--muted);font-size:20px;line-height:1.8;max-width:760px;margin:auto;}
-
-.btn{display:inline-block;margin-top:30px;padding:14px 26px;border-radius:16px;text-decoration:none;font-weight:bold;color:#fff;background:linear-gradient(90deg,#00c3ff,#005eff,#00c3ff);background-size:200%;animation:btnFlow 5s linear infinite;box-shadow:0 0 15px rgba(0,195,255,0.5);transition:0.25s;}
-
+.hero p{color:var(--muted);font-size:20px;line-height:1.8;}
+.btn{display:inline-block;margin-top:18px;padding:14px 22px;border-radius:14px;text-decoration:none;font-weight:bold;color:#fff;background:linear-gradient(90deg,#00c3ff,#005eff,#00c3ff);background-size:200%;animation:btnFlow 5s linear infinite;box-shadow:0 0 15px rgba(0,195,255,0.5);transition:0.25s;}
 @keyframes btnFlow{0%{background-position:0%;}100%{background-position:200%;}}
-
-.btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 0 20px rgba(0,195,255,0.8),0 0 40px rgba(0,94,255,0.6);}
-
-.section-title{text-align:center;font-size:38px;margin-top:80px;margin-bottom:20px;background:linear-gradient(90deg,#00d9ff,#006eff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-
+.section-title{text-align:center;font-size:38px;margin-top:70px;margin-bottom:20px;background:linear-gradient(90deg,#00d9ff,#006eff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;padding:30px 20px;max-width:1200px;margin:auto;}
-
-.card{background:rgba(255,255,255,0.04);border:1px solid rgba(0,180,255,0.18);border-radius:24px;padding:26px;backdrop-filter:blur(16px);transition:0.3s;position:relative;overflow:hidden;}
-
-.card::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);transition:0.6s;}
-
-.card:hover::before{left:100%;}
-
-.card:hover{transform:translateY(-6px);box-shadow:0 0 25px rgba(0,183,255,0.18),0 0 40px rgba(0,94,255,0.10);}
-
-.card h3{font-size:24px;margin-top:0;margin-bottom:14px;color:#00d9ff;}
-.card p{color:#b8c5d6;line-height:1.7;}
-
-.copy{cursor:pointer;font-size:15px;color:#00d9ff;word-break:break-all;}
-
+.card{background:rgba(255,255,255,0.04);border:1px solid rgba(0,180,255,0.18);border-radius:24px;padding:26px;backdrop-filter:blur(16px);}
+.card h3{color:#00d9ff;}
+.copy{cursor:pointer;color:#00d9ff;word-break:break-all;}
 .community{text-align:center;padding-bottom:30px;}
-
 footer{text-align:center;padding:50px 20px;color:#667085;font-size:13px;}
-
-@media(max-width:768px){
-.hero h1{font-size:42px;}
-.hero p{font-size:17px;}
-.section-title{font-size:30px;}
-.hero-logo{width:180px;height:180px;}
-}
-
-</style></head><body><div class="grid-bg"></div>
+iframe{border:0;border-radius:18px;width:100%;height:420px;}
+</style></head>
+<body><div class="grid-bg"></div>
 <div class="orb orb1"></div>
 <div class="orb orb2"></div><header>
 <div class="logo-wrap">
-<img src="logo.png" alt="MGOT Logo">
+<img src="logo.png"/>
 <div class="logo">MGOT</div>
 </div>
 <a class="btn" href="#buy">Buy</a>
 </header><section class="hero">
-<img class="hero-logo" src="logo.png" alt="MGOT Logo">
+<img class="hero-logo" src="logo.png"/>
 <h1>MGOT – Community Token</h1>
-<p>Focused on personal development, future mindset, community expansion and collective growth within the Web3 ecosystem.</p>
+<p>Web3 community focused on mindset, growth and decentralized ecosystem expansion.</p>
 <a class="btn" href="#buy">Enter Ecosystem</a>
 <a class="btn" href="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9" target="_blank">Live Chart</a>
+</section><h2 class="section-title">Live Chart</h2>
+<section class="grid">
+<div class="card">
+<iframe src="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9"></iframe>
+</div>
 </section><h2 class="section-title">Utility</h2>
-<section class="grid">...</section><h2 class="section-title">Tokenomics</h2>
-<section class="grid">...</section><h2 class="section-title">Roadmap</h2>
-<section class="grid">...</section><h2 class="section-title">Security</h2>
-<section class="grid">...</section><h2 class="section-title">Contract</h2>
+<section class="grid">
+<div class="card"><h3>Community</h3><p>Decentralized growth and collaboration.</p></div>
+<div class="card"><h3>Mindset</h3><p>Long-term personal and financial development.</p></div>
+<div class="card"><h3>Expansion</h3><p>Future tools, utilities and integrations.</p></div>
+</section><h2 class="section-title">Tokenomics</h2>
+<section class="grid">
+<div class="card"><h3>Supply</h3><p>Fixed supply designed for ecosystem sustainability.</p></div>
+<div class="card"><h3>Liquidity</h3><p>On-chain visible liquidity pools.</p></div>
+<div class="card"><h3>Distribution</h3><p>Community-driven allocation model.</p></div>
+</section><h2 class="section-title">Roadmap</h2>
+<section class="grid">
+<div class="card"><h3>Phase 1</h3><p>Launch & foundation.</p></div>
+<div class="card"><h3>Phase 2</h3><p>Community scaling.</p></div>
+<div class="card"><h3>Phase 3</h3><p>Utilities & partnerships.</p></div>
+</section><h2 class="section-title">Security</h2>
+<section class="grid">
+<div class="card"><h3>Transparency</h3><p>On-chain verifiable data.</p></div>
+<div class="card"><h3>Infrastructure</h3><p>Built on Solana ecosystem.</p></div>
+</section><h2 class="section-title">Contract</h2>
 <section class="grid">
 <div class="card">
 <p class="copy" onclick="copy(this)">97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN</p>
+</div>
+</section><h2 class="section-title">Buy MGOT</h2>
+<section class="grid">
+<div class="card">
+<h3>Jupiter Swap</h3>
+<a class="btn" target="_blank" href="https://jup.ag/swap/SOL-97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN">Buy on Jupiter</a>
+</div>
+<div class="card">
+<h3>Raydium Swap</h3>
+<a class="btn" target="_blank" href="https://raydium.io/swap/?inputMint=sol&outputMint=97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN">Buy on Raydium</a>
+</div>
+<div class="card">
+<h3>Dexscreener</h3>
+<a class="btn" target="_blank" href="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9">Live Chart</a>
 </div>
 </section><h2 class="section-title">Community</h2>
 <div class="community">
 <a class="btn" href="https://t.me/MGOT_Community" target="_blank">Telegram</a>
 <a class="btn" href="https://discord.gg/zK32pzW4K" target="_blank">Discord</a>
 <a class="btn" href="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9" target="_blank">Dexscreener</a>
-</div><section id="buy" style="text-align:center;padding:80px 20px;">
-<h2 class="section-title">Buy MGOT</h2>
-<p style="color:var(--muted);font-size:18px;">Preparing the next phase of the MGOT ecosystem.</p>
-</section><footer>MGOT • Community Token • 2026</footer><script>
-function copy(el){navigator.clipboard.writeText(el.innerText);alert("Contract copied");}
-</script>
-
-</body>
+</div><footer>MGOT • Community Token • 2026</footer><script>
+function copy(el){navigator.clipboard.writeText(el.innerText);alert('Contract copied');}
+</script></body>
 </html>
