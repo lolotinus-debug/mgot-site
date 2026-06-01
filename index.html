@@ -7,446 +7,298 @@
 <title>MGOT – Mindset Growth Optimization Token</title>
 
 <style>
-
 :root{
 --bg:#020617;
---card:#0f172a;
 --text:#ffffff;
 --muted:#94a3b8;
---primary:#3b82f6;
---border:rgba(255,255,255,0.08);
 }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
+*{box-sizing:border-box;}
 
 body{
+margin:0;
 font-family:Arial,sans-serif;
 background:var(--bg);
 color:var(--text);
-line-height:1.6;
 }
 
 header{
-position:sticky;
-top:0;
-z-index:1000;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 40px;
-background:rgba(2,6,23,.85);
-backdrop-filter:blur(10px);
-border-bottom:1px solid var(--border);
+padding:20px 28px;
+border-bottom:1px solid rgba(255,255,255,0.06);
+background:rgba(255,255,255,0.02);
+position:sticky;
+top:0;
+backdrop-filter:blur(12px);
+}
+
+.logo-wrap{
+display:flex;
+align-items:center;
+gap:12px;
 }
 
 .logo{
-font-size:24px;
 font-weight:bold;
+font-size:20px;
+color:#00d9ff;
+letter-spacing:1px;
 }
 
-nav{
-display:flex;
-gap:25px;
-}
-
-nav a{
-text-decoration:none;
-color:white;
-opacity:.8;
-transition:.3s;
-}
-
-nav a:hover{
-opacity:1;
-color:var(--primary);
-}
-
-section{
-padding:100px 20px;
-}
-
-.container{
-max-width:1200px;
-margin:auto;
+.logo-wrap img{
+width:44px;
+height:44px;
+object-fit:contain;
 }
 
 .hero{
 text-align:center;
-padding:140px 20px;
+padding:80px 20px;
+max-width:900px;
+margin:auto;
+}
+
+.hero img{
+width:160px;
+height:160px;
+object-fit:contain;
+margin-bottom:20px;
+filter:drop-shadow(0 0 20px #00d9ff);
 }
 
 .hero h1{
-font-size:64px;
-margin-bottom:20px;
+font-size:42px;
+margin:0;
+background:linear-gradient(90deg,#00d9ff,#0066ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .hero p{
-max-width:750px;
-margin:auto;
 color:var(--muted);
-font-size:20px;
-}
-
-.buttons{
-margin-top:40px;
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
+font-size:18px;
+line-height:1.6;
+margin-top:15px;
 }
 
 .btn{
-padding:14px 30px;
+display:inline-block;
+margin:10px;
+padding:12px 18px;
 border-radius:12px;
 text-decoration:none;
 font-weight:bold;
-background:var(--primary);
-color:white;
-transition:.3s;
-}
-
-.btn:hover{
-transform:translateY(-2px);
-}
-
-.btn-secondary{
-background:transparent;
-border:1px solid rgba(255,255,255,.15);
+color:#fff;
+background:linear-gradient(90deg,#00c3ff,#005eff);
 }
 
 .section-title{
-font-size:42px;
 text-align:center;
-margin-bottom:50px;
+margin-top:60px;
+font-size:28px;
+color:#00d9ff;
 }
 
-.cards{
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:16px;
+padding:30px;
+max-width:1100px;
+margin:auto;
 }
 
 .card{
-background:var(--card);
-padding:30px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(0,180,255,0.15);
+padding:20px;
 border-radius:18px;
-border:1px solid var(--border);
+backdrop-filter:blur(10px);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+border-color:#00d9ff;
 }
 
 .card h3{
-margin-bottom:15px;
+margin:0 0 10px 0;
+color:#00d9ff;
 }
 
-.card p{
+.muted{
 color:var(--muted);
 }
 
-.tokenomics{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+.chart{
+max-width:1100px;
+margin:30px auto;
+padding:0 20px;
 }
 
-.token-box{
-background:var(--card);
-padding:30px;
+iframe{
+width:100%;
+height:520px;
+border:0;
 border-radius:18px;
+}
+
+.contract{
 text-align:center;
-border:1px solid var(--border);
+padding:20px;
+color:#00d9ff;
+word-break:break-all;
 }
 
-.token-box h2{
-color:var(--primary);
-margin-bottom:10px;
+.wallets{
+max-width:1100px;
+margin:0 auto;
+padding:20px;
 }
 
-.roadmap{
-display:grid;
-gap:25px;
-}
-
-.phase{
-background:var(--card);
-padding:25px;
-border-radius:18px;
-border:1px solid var(--border);
-}
-
-.phase h3{
-margin-bottom:10px;
-color:var(--primary);
-}
-
-.community{
-text-align:center;
-}
-
-.socials{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-margin-top:30px;
-}
-
-.socials a{
-text-decoration:none;
-color:white;
-padding:12px 22px;
-background:var(--card);
+.wallet{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(0,180,255,0.15);
+padding:12px;
 border-radius:12px;
-border:1px solid var(--border);
+margin-bottom:10px;
+word-break:break-all;
+font-size:13px;
 }
 
 footer{
-padding:40px 20px;
 text-align:center;
-border-top:1px solid var(--border);
-color:var(--muted);
+padding:50px 20px;
+color:#667085;
+font-size:13px;
 }
-
-@media(max-width:768px){
-
-.hero h1{
-font-size:42px;
-}
-
-nav{
-display:none;
-}
-
-}
-
 </style>
 </head>
+
 <body>
 
 <header>
-<div class="logo">🧠 MGOT</div>
+<div class="logo-wrap">
+<img src="logo.png" onerror="this.style.display='none'">
+<div class="logo">MGOT</div>
+</div>
 
-<nav>
-<a href="#about">About</a>
-<a href="#tokenomics">Tokenomics</a>
-<a href="#treasury">Treasury</a>
-<a href="#roadmap">Roadmap</a>
-<a href="#community">Community</a>
-</nav>
+<a class="btn" href="https://jup.ag/tokens/97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN" target="_blank">Buy</a>
 </header>
 
+<!-- HERO -->
 <section class="hero">
 
-<div class="container">
+<img src="logo.png" onerror="this.style.display='none'">
 
-<h1>Mindset Growth Optimization Token</h1>
+<h1>MGOT – Mindset Growth Optimization Token</h1>
 
 <p>
-A community-driven Web3 ecosystem focused on education,
-mindset development, transparency, sustainability and long-term growth.
-Built on Solana.
+MGOT is a Community Token for growing together.<br>
+Focused on mindset, personal development and collective Web3 ecosystem expansion.
 </p>
 
-<div class="buttons">
-<a href="#" class="btn">Buy MGOT</a>
-<a href="#" class="btn btn-secondary">Whitepaper</a>
-</div>
-
-</div>
+<a class="btn" href="https://jup.ag/tokens/97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN" target="_blank">Jupiter Buy</a>
+<a class="btn" href="https://dexscreener.com/solana/5dnhapu3ynmqvsbrngxy2qtpgvsziemvdcegdg5shrj9" target="_blank">Dexscreener</a>
 
 </section>
 
-<section id="about">
+<!-- CONTRACT -->
+<div class="contract">
+Contract Address:<br>
+97aV7NrYib41PSJ3ENXaTSQicYTPc6vCVGqLdiMYsZQN
+</div>
 
-<div class="container">
+<!-- LIVE CHART -->
+<div class="section-title">Live Chart</div>
 
-<h2 class="section-title">About MGOT</h2>
+<div class="chart">
+<iframe src="https://www.geckoterminal.com/solana/pools/5dNhaPu3yNmQVSBrnGXy2QTPgvSZiemvDCEgDg5shRJ9?embed=1"></iframe>
+</div>
 
-<div class="cards">
+<!-- ABOUT -->
+<div class="section-title">About MGOT</div>
+
+<div class="grid">
 
 <div class="card">
-<h3>Community First</h3>
-<p>
-MGOT is built around long-term community growth rather than short-term hype.
+<h3>Project Overview</h3>
+<p class="muted">
+MGOT is a community-driven Web3 project focused on long-term growth, mindset development, education, and building a sustainable ecosystem.
+</p>
+</div>
+
+<div class="card">
+<h3>Core Vision</h3>
+<p class="muted">
+Long-term ecosystem growth powered by community participation and transparency.
 </p>
 </div>
 
 <div class="card">
 <h3>Transparency</h3>
-<p>
-Treasury, liquidity and project development remain transparent and visible.
-</p>
-</div>
-
-<div class="card">
-<h3>Education</h3>
-<p>
-Focused on personal development, financial literacy and Web3 education.
+<p class="muted">
+All wallets, locks and treasury systems are on-chain and verifiable.
 </p>
 </div>
 
 </div>
 
-</div>
+<!-- TRANSPARENCY -->
+<div class="section-title">Transparency & Wallets</div>
 
-</section>
+<div class="wallets">
 
-<section id="tokenomics">
-
-<div class="container">
-
-<h2 class="section-title">Tokenomics</h2>
-
-<div class="tokenomics">
-
-<div class="token-box">
-<h2>25M</h2>
-<p>Total Supply</p>
-</div>
-
-<div class="token-box">
-<h2>50%</h2>
-<p>Multisig Treasury</p>
-</div>
-
-<div class="token-box">
-<h2>Locked</h2>
-<p>Liquidity Pool</p>
-</div>
-
-<div class="token-box">
-<h2>Solana</h2>
-<p>Blockchain Network</p>
-</div>
+<div class="wallet">LP Reserve: FGY11K1XZJUmECHiP3egmSAjdHc1zMYJEZEB5wQHnyjx</div>
+<div class="wallet">Community: 9njztfSoyXB2prATEkA675MGfNxWWL9km4n5CdM6Wbou</div>
+<div class="wallet">Vesting: EmGmjTn1QEkddEpkpQJdCNJvHD8567XvQvfYo5tUp6Gw</div>
+<div class="wallet">Treasury: 7mJyVjhaRDbtehfkG6SjhX52E4f6pwmLiLh6g7i8Efx1</div>
+<div class="wallet">Founder: 2iSaE7DsN2hZKnLU2FjSiaJSEisjQBvmmMrvJABT3FLS</div>
+<div class="wallet">Reward: 57H4CqAU2nswVoeHAMCFCVDMs12nsrsk1keSEBTXWEDq</div>
 
 </div>
 
+<!-- LOCKS -->
+<div class="section-title">Locks & Vesting</div>
+
+<div class="wallets">
+
+<div class="wallet">LP Lock: https://stakepoint.app/locks/cmp2ixo520000jp04av40wdf4</div>
+<div class="wallet">Founder Lock: https://stakepoint.app/locks/cmp2hk7jx0000l804mkasoovb</div>
+
+<div class="wallet">
+Additional LP Locks:
+https://stakepoint.app/locks/cmp2aj7460000ky041otmllri
+https://stakepoint.app/locks/cmp3mksm60000l204plyexr0j
+https://stakepoint.app/locks/cmpfes8650000jl04xslu4ypt
 </div>
 
-</section>
-
-<section id="treasury">
-
-<div class="container">
-
-<h2 class="section-title">Treasury & Security</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>Multisig Treasury</h3>
-<p>
-50% of the supply is secured through a transparent treasury structure.
-</p>
+<div class="wallet">
+Streamflow Vesting:
+https://app.streamflow.finance/contract/solana/mainnet/BwYkA1iLu6U7EnKBfntkQ4YQJZKYnzWkzzKytEvWUBrm
 </div>
 
-<div class="card">
-<h3>Liquidity Lock</h3>
-<p>
-Liquidity is locked to increase trust and long-term project stability.
-</p>
-</div>
-
-<div class="card">
-<h3>Community Driven</h3>
-<p>
-Decisions are focused on ecosystem growth and sustainability.
-</p>
+<div class="wallet">
+Multisig Treasury:
+https://app.squads.so/squads/FWMCBACULR7W5oKXGhvonPKQfPzki31HYciG3htMuWsE/treasury/FWMCBACULR7W5oKXGhvonPKQfPzki31HYciG3htMuWsE
 </div>
 
 </div>
 
+<!-- COMMUNITY -->
+<div class="section-title">Community</div>
+
+<div style="text-align:center;">
+<a class="btn" href="https://t.me/MGOT_Community" target="_blank">Telegram</a>
+<a class="btn" href="https://discord.gg/zK32pzW4K" target="_blank">Discord</a>
+<a class="btn" href="https://www.geckoterminal.com/solana/pools/5dNhaPu3yNmQVSBrnGXy2QTPgvSZiemvDCEgDg5shRJ9" target="_blank">GeckoTerminal</a>
 </div>
-
-</section>
-
-<section id="roadmap">
-
-<div class="container">
-
-<h2 class="section-title">Roadmap</h2>
-
-<div class="roadmap">
-
-<div class="phase">
-<h3>Phase 1</h3>
-<p>
-Launch MGOT, build community, establish liquidity and transparency systems.
-</p>
-</div>
-
-<div class="phase">
-<h3>Phase 2</h3>
-<p>
-Expand marketing, educational content and strategic partnerships.
-</p>
-</div>
-
-<div class="phase">
-<h3>Phase 3</h3>
-<p>
-Develop ecosystem utilities, community rewards and governance tools.
-</p>
-</div>
-
-<div class="phase">
-<h3>Phase 4</h3>
-<p>
-Scale globally and continue long-term ecosystem development.
-</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="community">
-
-<div class="container community">
-
-<h2 class="section-title">Join the Community</h2>
-
-<p>
-Connect with MGOT across all platforms.
-</p>
-
-<div class="socials">
-
-<a href="#">X (Twitter)</a>
-
-<a href="#">Telegram</a>
-
-<a href="#">Discord</a>
-
-<a href="#">GeckoTerminal</a>
-
-</div>
-
-</div>
-
-</section>
 
 <footer>
-
-<p>MGOT — Mindset Growth Optimization Token</p>
-
-<p>
-Contract Address:
-PASTE_YOUR_CONTRACT_HERE
-</p>
-
-<p>
-© 2026 MGOT. All rights reserved.
-</p>
-
+MGOT • Mindset Growth Optimization Token • Built on Solana • 2026
 </footer>
 
 </body>
