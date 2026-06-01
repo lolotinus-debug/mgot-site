@@ -116,12 +116,13 @@ border:1px solid rgba(0,180,255,0.15);
 padding:20px;
 border-radius:18px;
 backdrop-filter:blur(10px);
-transition:0.3s;
+transition:0.4s ease;
 }
 
 .card:hover{
-transform:translateY(-5px);
+transform:translateY(-5px) scale(1.02);
 border-color:#00d9ff;
+box-shadow:0 0 25px rgba(0,217,255,0.15);
 }
 
 .card h3{
@@ -167,6 +168,13 @@ border-radius:12px;
 margin-bottom:10px;
 word-break:break-all;
 font-size:13px;
+transition:0.4s ease;
+}
+
+.wallet:hover{
+transform:translateY(-3px);
+border-color:#00d9ff;
+box-shadow:0 0 20px rgba(0,217,255,0.1);
 }
 
 footer{
@@ -175,6 +183,19 @@ padding:50px 20px;
 color:#667085;
 font-size:13px;
 }
+
+/* ===== ANIMATION ===== */
+.fade-in{
+opacity:0;
+transform:translateY(20px);
+transition:all 0.8s ease;
+}
+
+.fade-in.show{
+opacity:1;
+transform:translateY(0);
+}
+
 </style>
 </head>
 
@@ -226,23 +247,83 @@ Contract Address:<br>
 
 <div class="card">
 <h3>Project Overview</h3>
-<p class="muted">
-MGOT is a community-driven Web3 project focused on long-term growth, mindset development, education, and building a sustainable ecosystem.
-</p>
+<p class="muted">Community-driven Web3 ecosystem focused on long-term growth and transparency.</p>
 </div>
 
 <div class="card">
 <h3>Core Vision</h3>
-<p class="muted">
-Long-term ecosystem growth powered by community participation and transparency.
-</p>
+<p class="muted">Sustainable growth, education and ecosystem development.</p>
 </div>
 
 <div class="card">
 <h3>Transparency</h3>
-<p class="muted">
-All wallets, locks and treasury systems are on-chain and verifiable.
-</p>
+<p class="muted">All wallets and systems are verifiable on-chain.</p>
+</div>
+
+</div>
+
+<!-- EDUCATION -->
+<div class="section-title">Education & Growth</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Mindset Training</h3>
+<p class="muted">Weekly mindset & discipline education for long-term builders.</p>
+</div>
+
+<div class="card">
+<h3>Web3 Learning Hub</h3>
+<p class="muted">Guides explaining DeFi, liquidity, tokens and blockchain systems.</p>
+</div>
+
+<div class="card">
+<h3>Community Learning Calls</h3>
+<p class="muted">Live sessions for holders and builders.</p>
+</div>
+
+</div>
+
+<!-- COMMUNITY ACTIVITIES -->
+<div class="section-title">Community Activities</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Weekly Challenges</h3>
+<p class="muted">Tasks, missions and engagement rewards.</p>
+</div>
+
+<div class="card">
+<h3>Contribution Rewards</h3>
+<p class="muted">Active members get rewarded for ecosystem contribution.</p>
+</div>
+
+<div class="card">
+<h3>Governance (Future DAO)</h3>
+<p class="muted">Community voting system for ecosystem decisions.</p>
+</div>
+
+</div>
+
+<!-- GAMING -->
+<div class="section-title">Gamification & Gaming</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Skill Rewards</h3>
+<p class="muted">Future skill-based earning system for users.</p>
+</div>
+
+<div class="card">
+<h3>Leaderboard</h3>
+<p class="muted">Ranking system for active community members.</p>
+</div>
+
+<div class="card">
+<h3>Mini Web3 Games</h3>
+<p class="muted">Educational blockchain-based games.</p>
 </div>
 
 </div>
@@ -269,23 +350,6 @@ All wallets, locks and treasury systems are on-chain and verifiable.
 <div class="wallet">LP Lock: https://stakepoint.app/locks/cmp2ixo520000jp04av40wdf4</div>
 <div class="wallet">Founder Lock: https://stakepoint.app/locks/cmp2hk7jx0000l804mkasoovb</div>
 
-<div class="wallet">
-Additional LP Locks:
-https://stakepoint.app/locks/cmp2aj7460000ky041otmllri
-https://stakepoint.app/locks/cmp3mksm60000l204plyexr0j
-https://stakepoint.app/locks/cmpfes8650000jl04xslu4ypt
-</div>
-
-<div class="wallet">
-Streamflow Vesting:
-https://app.streamflow.finance/contract/solana/mainnet/BwYkA1iLu6U7EnKBfntkQ4YQJZKYnzWkzzKytEvWUBrm
-</div>
-
-<div class="wallet">
-Multisig Treasury:
-https://app.squads.so/squads/FWMCBACULR7W5oKXGhvonPKQfPzki31HYciG3htMuWsE/treasury/FWMCBACULR7W5oKXGhvonPKQfPzki31HYciG3htMuWsE
-</div>
-
 </div>
 
 <!-- COMMUNITY -->
@@ -300,6 +364,24 @@ https://app.squads.so/squads/FWMCBACULR7W5oKXGhvonPKQfPzki31HYciG3htMuWsE/treasu
 <footer>
 MGOT • Mindset Growth Optimization Token • Built on Solana • 2026
 </footer>
+
+<!-- ANIMATION SCRIPT -->
+<script>
+const elements = document.querySelectorAll('.card, .section-title, .wallet');
+
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+}
+});
+}, {threshold:0.1});
+
+elements.forEach(el => {
+el.classList.add('fade-in');
+observer.observe(el);
+});
+</script>
 
 </body>
 </html>
